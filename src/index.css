@@ -1,12 +1,51 @@
-* {
-  margin: 0;
-  padding: 0;
+/* importando a font montserrat do google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* reset padrao css */
+*{
   box-sizing: border-box;
 }
+
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, ul, ol, li, table, th, td, input, button, textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Garantir que todas as imagens fiquem no tamanho correto */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Garantir que os links não tenham decoração de texto padrão */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Inputs e botões sem estilos de borda padrão */
+input, button, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
 
 html,
 body {
   height: 100%;
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
@@ -23,7 +62,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #171b23a6;
-  z-index: 1;
+  background-color: #171b239f;
+  z-index: -1;
   pointer-events: none;
 }
