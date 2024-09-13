@@ -73,8 +73,10 @@ body {
   background-color: #171b239f; 
   z-index: -1;
   pointer-events: none;
+  transition: 0.5s;
 }
 
 .container.light::before{
   background-color: #f2f2f29a;
+  transition: 0.5s;
 }

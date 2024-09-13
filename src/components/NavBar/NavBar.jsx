@@ -17,7 +17,9 @@ const toggle_mode = () =>{
         <p className="text">Portal de Vagas</p>
       </div>
       <div className="theme-button" onClick={()=>toggle_mode()}>
-        {theme == "dark"? <FaSun size={30}/> : <FaMoon size={30}/>}
+        {/* {theme == "dark"? <FaSun size={30}/> : <FaMoon size={30}/>} */}
+        <FaMoon size={30} className={`iconMoon ${theme}`}/>
+        <FaSun size={30} className={`iconSun ${theme}`}/>
       </div>
     </nav>
   );
