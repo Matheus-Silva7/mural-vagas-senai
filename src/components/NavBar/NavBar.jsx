@@ -16,10 +16,16 @@ const toggle_mode = () =>{
         <p className="line">|</p>
         <p className="text">Portal de Vagas</p>
       </div>
+      <div className="right-side">
+      <ul>
+        <li>Vagas</li>
+        <li>Dúvidas</li>
+      </ul>
       <div className="theme-button" onClick={()=>toggle_mode()}>
         {/* {theme == "dark"? <FaSun size={30}/> : <FaMoon size={30}/>} */}
-        <FaMoon size={30} className={`iconMoon ${theme}`}/>
         <FaSun size={30} className={`iconSun ${theme}`}/>
+        <FaMoon size={30} className={`iconMoon ${theme}`}/>
+      </div>
       </div>
     </nav>
   );
