@@ -1,8 +1,8 @@
+// App.js
 import { useState } from "react";
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Singin from "./Routes/Signin"
-
+import Signin from "./Routes/Signin";
+import "./App.css";
 
 function App() {
   const [theme, setTheme] = useState("dark");
@@ -10,7 +10,7 @@ function App() {
   return (
     <div className={`container ${theme}`}>
       <Routes>
-        <Route path="/" element={<Singin theme={theme} setTheme={setTheme}/>}/>
+        <Route path="/" element={<Signin theme={theme} setTheme={setTheme} />} />
       </Routes>
     </div>
   );

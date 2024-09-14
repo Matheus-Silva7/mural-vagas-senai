@@ -1,6 +1,7 @@
 // src/components/ParticlesBackground.js
 import React from 'react';
 import Particles from 'react-tsparticles';
+import "./ParticlesBackground.css"
 
 const ParticlesBackground = () => {
   const particlesInit = (main) => {
