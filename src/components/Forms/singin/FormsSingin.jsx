@@ -1,7 +1,7 @@
 import React from 'react'
-import "./Forms.css"
-import InputButton from '../Inputs/InputButton'
-import InputText from '../Inputs/InputText'
+import "../Forms.css"
+import InputButton from '../../Inputs/InputButton'
+import InputText from '../../Inputs/InputText'
 const FormsSingin = () => {
   return (
     <div className='content-forms'>

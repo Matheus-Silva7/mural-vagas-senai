@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../components/NavBar/NavBar';
-import FormsSingin from '../components/Forms/FormsSingin';
+import FormsSingin from '../components/Forms/singin/FormsSingin';
 import Footer from '../components/Footer/Footer';
 
 

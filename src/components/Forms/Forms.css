@@ -1,4 +1,4 @@
-.content-forms{
+.content-forms {
     width: 100%;
     height: 80vh;
     display: flex;
@@ -7,45 +7,44 @@
     align-items: center;
 }
 
-.content-forms.formsingup{
+.content-forms.formsingup {
     height: 100%;
-padding: 2rem;
+    padding: 2rem;
 }
 
-
-.content-forms form{
+.content-forms form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     background-color: #273145c4;
-    padding: 2rem;
+    padding: 2rem 5rem;
     border-radius: 10px;
     color: #fff;
 }
 
-.content-forms form h2{
+.content-forms form h2 {
     font-size: 30px;
     margin: 5px 0;
 }
 
-.content-forms form p{
+.content-forms form p {
     font-size: 14px;
     color: #D1CECE;
 }
 
-.content-forms form .forgot-password{
+.content-forms form .forgot-password {
     text-align: end;
     text-decoration: underline;
     font-size: 14px;
     cursor: pointer;
 }
 
-.content-forms form .not-acess a{
+.content-forms form .not-acess a {
     color: #fff;
     cursor: pointer;
 }
 
-.light .content-forms form{
+.light .content-forms form {
     background-color: #CECECE;
     color: #333;
 }
@@ -54,8 +53,6 @@ padding: 2rem;
     color: #333;
 }
 
-
-.light .content-forms form p a{
+.light .content-forms form p a {
     color: #034AA6;
 }
-
