@@ -51,6 +51,7 @@ body {
   background-image: url('./assets/background/main-background.jpg');
   background-size: cover;
   background-position: center;
+  
   position: relative;
 }
 

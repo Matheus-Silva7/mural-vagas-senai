@@ -7,11 +7,11 @@
     align-items: center;
 }
 
-.content-forms .input-content{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.content-forms.formsingup{
+    height: 100%;
+padding: 2rem;
 }
+
 
 .content-forms form{
     display: flex;
@@ -31,24 +31,6 @@
 .content-forms form p{
     font-size: 14px;
     color: #D1CECE;
-}
-
-.content-forms form input{
-background-color: #D9D9D9;
-color: #000;
-width: 40vw;
-height: 40px;
-padding: 8px;
-border-radius: 5px;
-}
-
-
-.content-forms form input[type="submit"]{
-    width: 100px;
-    margin: 0 auto;
-    background-color: #072029;
-    color: #fff;
-    font-weight: 600;
 }
 
 .content-forms form .forgot-password{
@@ -77,14 +59,3 @@ border-radius: 5px;
     color: #034AA6;
 }
 
-@media screen and (max-width: 1000px) {
-    .content-forms form input{
-        width: 50vw;
-    }
-}
-
-@media screen and (max-width: 700px) {
-    .content-forms form input{
-        width: 80vw;
-    }
-}

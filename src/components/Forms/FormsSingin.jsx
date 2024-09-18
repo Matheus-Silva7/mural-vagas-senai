@@ -1,5 +1,7 @@
 import React from 'react'
-import "./FormsSingin.css"
+import "./Forms.css"
+import InputButton from '../Inputs/InputButton'
+import InputText from '../Inputs/InputText'
 const FormsSingin = () => {
   return (
     <div className='content-forms'>
@@ -8,17 +10,11 @@ const FormsSingin = () => {
           <h2>Login</h2>
           <p>Bem vindo ao portal de vagas do Senai Cotia!</p>
         </div>
-        <div className='input-content'>
-          <label>Email:</label>
-          <input type="email" placeholder='Insira seu email...' />
-        </div>
-        <div className='input-content'>
-          <label >Senha:</label>
-          <input type="password" placeholder='Insira sua senha...' />
-        </div>
+        <InputText label={"Email"} type={"email"} placeholder={"Insira seu email..."} />
+        <InputText label={"Senha"} type={"password"} placeholder={"Insira sua Senha..."} />
         <a className='forgot-password'>Esqueci minha senha</a>
         <p className='not-acess'>Não tenho acesso? <a>O que fazer?</a></p>
-        <input type="submit" value={"Entrar"} />
+        <InputButton text={"Entrar"} />
       </form>
     </div>
   )

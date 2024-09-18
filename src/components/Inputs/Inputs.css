@@ -1,0 +1,41 @@
+.buttonMain {
+  width: 100px;
+  margin: 0 auto;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #072029;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.light .buttonMain {
+  background-color: #000;
+}
+
+.input-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputText {
+  background-color: #D9D9D9;
+  color: #000;
+  width: 450px;
+  height: 40px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 1000px) {
+  .inputText {
+    width: 50vw;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .inputText {
+    width: 80vw;
+  }
+}
