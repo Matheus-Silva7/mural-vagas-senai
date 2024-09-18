@@ -19,7 +19,7 @@ const FormsSingup = () => {
         <div className="body"></div>
         <div className="footer">
           <button
-            disabled={page == 0}
+            disabled={page == 0} 
             onClick={() => {
               setPage((currPage) => currPage - 1)
             }}>Prev</button>
