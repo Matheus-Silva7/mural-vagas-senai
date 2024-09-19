@@ -1,5 +1,5 @@
 import React from 'react'
-import "../Forms.css"
+import "./FormsSingin.css"
 import InputButton from '../../Inputs/InputButton'
 import InputText from '../../Inputs/InputText'
 const FormsSingin = () => {
