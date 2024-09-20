@@ -6,7 +6,7 @@ import Footer from '../components/Footer/Footer';
 
 const Signin = ({theme, setTheme}) => {
   return (
-    <div className='signin-container'>
+    <div>
       <NavBar theme={theme} setTheme={setTheme} />
       <FormsSingin />
       <Footer />
