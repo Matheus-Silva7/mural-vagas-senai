@@ -1,11 +1,11 @@
 import React from "react";
-import InputText from "../../Inputs/InputText";
+import InputTextSingup from "../../Inputs/inputTextSingup";
 import "./FormsSingup.css";
 
 const FormDataCompany = ({ formData, setFormData }) => {
   return (
     <div className="input-container">
-      <InputText
+      <InputTextSingup
         label={"Nome Empresa"}
         type={"text"}
         placeholder={"Informe o nome..."}
@@ -14,16 +14,16 @@ const FormDataCompany = ({ formData, setFormData }) => {
           setFormData({ ...formData, nomeEmpresa: event.target.value })
         }
       />
-      <InputText
+      <InputTextSingup
         label={"CNPJ"}
-        type={"text"}
+        type={"number"}
         placeholder={"Informe o CNPJ ..."}
         value={formData.cnpj}
         onChange={(event) =>
           setFormData({ ...formData, cnpj: event.target.value })
         }
       />
-      <InputText
+      <InputTextSingup
         label={"Ramo"}
         type={"text"}
         placeholder={"Informe o ramo ..."}
@@ -32,7 +32,7 @@ const FormDataCompany = ({ formData, setFormData }) => {
           setFormData({ ...formData, ramo: event.target.value })
         }
       />
-      <InputText
+      <InputTextSingup
         label={"Site"}
         type={"text"}
         placeholder={"Informe o site ..."}
@@ -41,9 +41,9 @@ const FormDataCompany = ({ formData, setFormData }) => {
           setFormData({ ...formData, site: event.target.value })
         }
       />
-      <InputText
+      <InputTextSingup
         label={"Quantidade de funcionários"}
-        type={"text"}
+        type={"number"}
         placeholder={"Informe a quantidade de funcionários..."}
         value={formData.quantidadeFuncionarios}
         onChange={(event) =>

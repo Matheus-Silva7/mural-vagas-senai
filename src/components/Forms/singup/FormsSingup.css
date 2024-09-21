@@ -22,8 +22,10 @@
     margin: 0 auto;
 }
 
-.form-container .footer button {
+.light .form-container .footer button,
+.light .form-container .footer input {
     margin: 10px;
+    background-color: #000;
 }
 
 .form-container .header h1 {
@@ -55,3 +57,9 @@
     height: 5px;
     border-radius: 5px;
 }
+
+.light .form-container  {
+    background-color: #CECECE;
+    color: #333;
+}
+

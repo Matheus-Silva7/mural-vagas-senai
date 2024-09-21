@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Inputs.css"
 
 function InputText({type, label, placeholder}) {
   return (
