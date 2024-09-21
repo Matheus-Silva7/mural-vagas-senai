@@ -27,7 +27,7 @@ const FormsSignup = () => {
 
   const formTitles = ["Dados da empresa", "Endereço da empresa", "Cadastro da empresa"];
 
-  const bodyLight = document.body.className("light")
+ /*  const bodyLight = document.body.className("light") */
 
   const PageDisplay = () => {
     if (page === 0) {
