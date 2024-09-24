@@ -29,6 +29,10 @@
   font-weight: 500;
 }
 
+
+.inputText.CEP{
+  width: 170px;
+}
 @media screen and (max-width: 1000px) {
   .inputText {
     width: 50vw;
