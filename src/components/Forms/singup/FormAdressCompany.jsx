@@ -1,11 +1,13 @@
 import React from "react";
 import InputTextSingup from "../../Inputs/inputTextSingup";
 import "./FormsSingup.css";
+import {FaSearch} from "react-icons"
 
 const FormAdressCompany = ({ formData, setFormData }) => {
   return (
     <div className="input-container">
-      <InputTextSingup
+     <div className="search-cep">
+     <InputTextSingup
         label={"CEP "}
         type={"text"}
         placeholder={"Informe o CEP..."}
@@ -14,6 +16,9 @@ const FormAdressCompany = ({ formData, setFormData }) => {
           setFormData({ ...formData, cep: event.target.value })
         }
       />
+      <button className="buttonMain buttonCep"><FaSearch />
+      </button>
+     </div>
       <InputTextSingup
         label={"Logradouro"}
         type={"text"}

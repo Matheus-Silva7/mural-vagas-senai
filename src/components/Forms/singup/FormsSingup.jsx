@@ -58,14 +58,14 @@ const FormsSignup = () => {
         <div className="footer">
           <button
             className='buttonMain buttonLight'
-            style={{ backgroundColor: page === 0 ? "#162E36" : "#072029", cursor: page === 0 ? "not-allowed" : "pointer" }}
+            style={{ backgroundColor: page === 0 ? "#11242B" : "#072029", cursor: page === 0 ? "not-allowed" : "pointer" }}
             disabled={page === 0}
             onClick={() => setPage((currPage) => currPage - 1)}
           >
             Anterior
           </button>
           {page === 2 ? (
-            <InputButton text={"enviar"}/> 
+            <InputButton text={"Enviar"}/> 
           ) : (
             <button
               className='buttonMain'
