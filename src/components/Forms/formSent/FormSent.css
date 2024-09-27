@@ -1,0 +1,51 @@
+.form-sent{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: #273145c4;
+    padding: 4rem;
+    text-align: center;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.light .form-sent  {
+    background-color: #CECECE;
+    color: #333;
+}
+
+.form-sent h1{
+    font-size: 30px;
+}
+
+.form-sent h2{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.form-sent p{
+    font-weight:400;
+    font-size: 15px;
+}
+
+.form-sent p a{
+    color: #52D414;
+}
+
+.light .form-sent p a{
+    color: #48a31e;
+}
+
+.form-sent .icon{
+    margin: 0 auto;
+    color: #52D414;
+    font-size: 60px;
+    border: solid 1px #52D414;
+    padding: 10px;
+    border-radius: 100%;
+}
+
+.light .form-sent .icon{
+    color: #48a31e;
+    border: solid 1px #48a31e;
+}

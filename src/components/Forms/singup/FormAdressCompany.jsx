@@ -1,7 +1,7 @@
 import React from "react";
 import InputTextSingup from "../../Inputs/inputTextSingup";
 import "./FormsSingup.css";
-import {FaSearch} from "react-icons"
+import { FaSearch } from "react-icons/fa";
 
 const FormAdressCompany = ({ formData, setFormData }) => {
   return (
