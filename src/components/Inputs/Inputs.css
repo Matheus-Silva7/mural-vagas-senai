@@ -9,13 +9,30 @@
   cursor: pointer;
 }
 
+.buttonMain:hover{
+  background-color: #072029b0;
+}
+
+.buttonMain:active{
+  background-color: #07202970;
+}
+
 .light .buttonMain {
   background-color: #000;
 }
 
+
+.light .buttonMain:hover{
+  background-color: #000000c7;
+}
+
+.light .buttonMain:active{
+  background-color: #0000009a;
+}
 .input-content {
   display: flex;
   flex-direction: column;
+  
   gap: 10px;
 }
 
