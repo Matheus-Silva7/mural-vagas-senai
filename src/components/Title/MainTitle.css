@@ -1,0 +1,24 @@
+.content-title{
+  padding: 3rem;
+}
+
+.main-title{
+  font-size: 30px;
+  color: #3D849F;
+}
+
+.content-title hr {
+  border: none;          
+  border-top: 2px solid #3D849F; 
+  background-color: #3D849F;     
+  height: 2px;            
+}
+
+.light .main-title{
+  color: #63E4F2;
+}
+
+.light .content-title hr{
+  border-top: 2px solid #63E4F2; 
+  background-color: #63E4F2;     
+}

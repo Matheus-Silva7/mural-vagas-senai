@@ -15,7 +15,7 @@ const FormsSingin = () => {
         <InputText label={"Senha"} type={"password"} placeholder={"Insira sua Senha..."} />
         <a className='forgot-password'>Esqueci minha senha</a>
         <p className='not-acess'>Não tenho acesso? <Link to={"/cadastro"}>Cadastre-se</Link></p>
-        <InputButton text={"Entrar"} />
+        <InputButton text={<Link to={"/empresa"}>Entrar</Link>} />
       </form>
     </div>
   )

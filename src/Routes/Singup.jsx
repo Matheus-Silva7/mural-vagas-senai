@@ -6,11 +6,11 @@ import Footer from '../components/Footer/Footer';
 
 const Signin = ({theme, setTheme}) => {
   return (
-    <div>
+    <>
       <NavBar theme={theme} setTheme={setTheme} />
       <FormsSingup />
       <Footer />
-    </div>
+    </>
   );
 };
 

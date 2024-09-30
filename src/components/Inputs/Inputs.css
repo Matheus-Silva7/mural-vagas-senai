@@ -1,4 +1,4 @@
-.buttonMain {
+.buttonSubmit {
   width: auto;
   margin: 0 auto;
   padding: 10px 15px;
@@ -9,30 +9,29 @@
   cursor: pointer;
 }
 
-.buttonMain:hover{
+.buttonSubmit:hover{
   background-color: #072029b0;
 }
 
-.buttonMain:active{
+.buttonSubmit:active{
   background-color: #07202970;
 }
 
-.light .buttonMain {
+.light .buttonSubmit {
   background-color: #000;
 }
 
 
-.light .buttonMain:hover{
+.light .buttonSubmit:hover{
   background-color: #000000c7;
 }
 
-.light .buttonMain:active{
+.light .buttonSubmit:active{
   background-color: #0000009a;
 }
 .input-content {
   display: flex;
   flex-direction: column;
-  
   gap: 10px;
 }
 
@@ -50,6 +49,23 @@
 .inputText.CEP{
   width: 170px;
 }
+
+.input-dados{
+  border: 1px solid #38768E;
+  background-color: #232B3B;
+  width: 700px;
+  border-radius: 10px;
+  height: 50px;
+  padding: 10px;
+}
+
+.color-text label,
+.color-text input{
+  color: #fff;
+}
+
+
+
 @media screen and (max-width: 1000px) {
   .inputText {
     width: 50vw;

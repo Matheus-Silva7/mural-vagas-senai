@@ -57,7 +57,7 @@ const FormsSignup = () => {
         </div>
         <div className="footer">
           <button
-            className='buttonMain buttonLight'
+            className='buttonSubmit buttonLight'
             style={{ cursor: page === 0 ? "not-allowed" : "pointer" }}
             disabled={page === 0}
             onClick={() => setPage((currPage) => currPage - 1)}
@@ -68,7 +68,7 @@ const FormsSignup = () => {
             <InputButton text={"Enviar"}/> 
           ) : (
             <button
-              className='buttonMain'
+              className='buttonSubmit'
               disabled={page === formTitles.length - 1}
               onClick={() => setPage((currPage) => currPage + 1)}
             >

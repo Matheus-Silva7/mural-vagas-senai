@@ -5,11 +5,11 @@ import Footer from '../components/Footer/Footer'
 
 const SentMessage = ({theme, setTheme}) => {
   return (
-    <div>
+    <>
       <NavBar theme={theme} setTheme={setTheme}/>
       <FormSent/>
       <Footer/>
-    </div>
+    </>
   )
 }
 

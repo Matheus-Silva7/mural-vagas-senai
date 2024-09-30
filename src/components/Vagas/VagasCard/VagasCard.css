@@ -1,0 +1,63 @@
+.vagas-content{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.vagas-card{
+   background-color: #232B3B;
+   color: #fff;
+   padding: 3rem;
+   margin: 2rem;
+   display: flex;
+   flex-direction: column;
+   gap: 2rem;
+}
+
+.vagas-card p{
+  font-weight: 200;
+}
+
+.top-card{
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+.top-card img{
+  background-color: #cacaca;
+  width: 100px;
+}
+
+.top-card .right-top{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+ .top-card .right-top h2{
+ color: #fff;
+ font-size: 24px;
+ font-weight: 300;
+}
+
+.vagas-card  span{
+  color: #3D849F;
+}
+
+.vagas-card span p{
+  color: #fff;
+}
+
+.top-card .right-top .info-local{
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottom-card{
+  display: flex;
+  margin: 1rem 0;
+  justify-content: space-between;
+}
+

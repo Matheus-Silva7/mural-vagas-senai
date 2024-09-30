@@ -3,7 +3,7 @@ import "./Inputs.css"
 
 const InputButton = ({ text }) => {
   return (
-    <input  className='buttonMain' type='submit' value={text}></input>
+    <button  className='buttonSubmit' type='submit'>{text}</button>
   )
 }
 

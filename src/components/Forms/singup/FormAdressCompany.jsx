@@ -16,7 +16,7 @@ const FormAdressCompany = ({ formData, setFormData }) => {
           setFormData({ ...formData, cep: event.target.value })
         }
       />
-      <button className="buttonMain buttonCep"><FaSearch />
+      <button className="buttonSubmit buttonCep"><FaSearch />
       </button>
      </div>
       <InputTextSingup
