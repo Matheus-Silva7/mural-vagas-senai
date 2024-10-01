@@ -5,7 +5,7 @@ import TextArea from "../../Inputs/TextArea";
 
 const FormDescriptionCompany = ({ formData, setFormData }) => {
   return (
-    <div className="input-container">
+    <form className="input-container">
       <InputTextSingup
         label={"Site"}
         type={"text"}
@@ -38,7 +38,7 @@ const FormDescriptionCompany = ({ formData, setFormData }) => {
           })
         }
       />
-    </div>
+    </form>
   );
 };
 

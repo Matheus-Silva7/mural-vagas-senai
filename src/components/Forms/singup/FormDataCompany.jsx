@@ -4,7 +4,7 @@ import "./FormsSingup.css";
 
 const FormDataCompany = ({ formData, setFormData }) => {
   return (
-    <div className="input-container">
+    <form className="input-container">
       <InputTextSingup
         label={"Nome Empresa"}
         type={"text"}
@@ -16,11 +16,11 @@ const FormDataCompany = ({ formData, setFormData }) => {
       />
       <InputTextSingup
         label={"CNPJ"}
-        type={"number"}
+        type={"text"}
         placeholder={"Informe o CNPJ ..."}
         value={formData.cnpj}
         onChange={(event) =>
-          setFormData({ ...formData, cnpj: event.target.value })
+          setFormData({ ...formData, cnpj: event.target.value || "" })
         }
       />
       <InputTextSingup
@@ -42,7 +42,7 @@ const FormDataCompany = ({ formData, setFormData }) => {
         }
       />
     
-    </div>
+    </form>
   );
 };
 

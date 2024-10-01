@@ -4,7 +4,7 @@ import "./FormsSingup.css";
 
 const FormRegisterCompany = ({ formData, setFormData }) => {
   return (
-    <div className="input-container">
+    <form className="input-container">
       <InputText
         label={"Telefone"}
         type={"text"}
@@ -41,7 +41,7 @@ const FormRegisterCompany = ({ formData, setFormData }) => {
           setFormData({ ...formData, confirmSenha: event.target.value })
         }
       />
-    </div>
+    </form>
   );
 };
 

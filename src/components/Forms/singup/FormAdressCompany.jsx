@@ -5,7 +5,7 @@ import { FaSearch } from "react-icons/fa";
 
 const FormAdressCompany = ({ formData, setFormData }) => {
   return (
-    <div className="input-container">
+    <form className="input-container">
      <div className="search-cep">
      <InputTextSingup
         label={"CEP "}
@@ -73,7 +73,7 @@ const FormAdressCompany = ({ formData, setFormData }) => {
           setFormData({ ...formData, pais: event.target.value })
         }
       />
-    </div>
+    </form>
   );
 };
 
