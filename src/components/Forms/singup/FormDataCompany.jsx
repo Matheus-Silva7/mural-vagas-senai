@@ -9,7 +9,7 @@ const FormDataCompany = ({ formData, setFormData }) => {
         label={"Nome Empresa"}
         type={"text"}
         placeholder={"Informe o nome..."}
-        value={formData.nomeEmpresa}
+        value={formData.nomeEmpresa || ""}
         onChange={(event) =>
           setFormData({ ...formData, nomeEmpresa: event.target.value })
         }
@@ -18,7 +18,7 @@ const FormDataCompany = ({ formData, setFormData }) => {
         label={"CNPJ"}
         type={"text"}
         placeholder={"Informe o CNPJ ..."}
-        value={formData.cnpj}
+        value={formData.cnpj || ""}
         onChange={(event) =>
           setFormData({ ...formData, cnpj: event.target.value || "" })
         }
@@ -27,7 +27,7 @@ const FormDataCompany = ({ formData, setFormData }) => {
         label={"Ramo"}
         type={"text"}
         placeholder={"Informe o ramo ..."}
-        value={formData.ramo}
+        value={formData.ramo || ""}
         onChange={(event) =>
           setFormData({ ...formData, ramo: event.target.value })
         }
@@ -36,7 +36,7 @@ const FormDataCompany = ({ formData, setFormData }) => {
         label={"Logo"}
         type={"text"}
         placeholder={"Link da imagem"}
-        value={formData.logo}
+        value={formData.logo || ""}
         onChange={(event) =>
           setFormData({ ...formData, logo: event.target.value })
         }

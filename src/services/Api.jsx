@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const API_URL = "http://192.168.0.102:8080"; //http://ip:port/
+const API_URL = "http://10.92.198.47:8080"; //http://ip:port/
 
-const handleSubmit = async () => {
+const handleSubmit = async (formData) => {
   try {
-    const response = await axios.post(`http://${API_URL}/empresa`, formData, {
+    const response = await axios.post(`${API_URL}/empresa`, formData, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -16,6 +16,5 @@ const handleSubmit = async () => {
     alert("Ocorreu um erro ao enviar o formulário.");
   }
 };
-
 
 export { handleSubmit };

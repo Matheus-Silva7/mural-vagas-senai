@@ -39,7 +39,7 @@ const FormAdressCompany = ({ formData, setFormData }) => {
       />
       <InputTextSingup
         label={"Número"}
-        type={"number"}
+        type={"text"}
         placeholder={"Informe o nº ..."}
         value={formData.numero}
         onChange={(event) =>

@@ -1,3 +1,4 @@
+// Componente FormsSignup
 import React, { useState } from "react";
 import FormDataCompany from "./FormDataCompany";
 import FormAdressCompany from "./FormAdressCompany";
@@ -5,7 +6,7 @@ import FormRegisterCompany from "./FormRegisterCompany";
 import FormDescriptionCompany from "./FormDescriptionCompany";
 import "./FormsSingup.css";
 import InputButton from "../../Inputs/InputButton";
-import { handleSubmit } from "../../../services/Api";
+import { handleSubmit as apiSubmit } from "../../../services/Api"; // Renomeie para evitar conflitos
 
 const FormsSignup = () => {
   const [page, setPage] = useState(0);
@@ -13,12 +14,10 @@ const FormsSignup = () => {
     nomeEmpresa: "",
     cnpj: "",
     ramo: "",
-    logo: null,
-
+    logo: "",
     site: "",
     quantidadeFuncionarios: "",
     descricao: "",
-
     cep: "",
     rua: "",
     bairro: "",
@@ -26,7 +25,6 @@ const FormsSignup = () => {
     cidade: "",
     estado: "",
     pais: "",
-
     telefone: "",
     email: "",
     senha: "",
@@ -91,7 +89,12 @@ const FormsSignup = () => {
             Anterior
           </button>
           {page === 3 ? (
-            <InputButton text={"Enviar"} onClick={handleSubmit} />
+            <button
+              className="buttonSubmit"
+              onClick={() => apiSubmit(formData)} // Passar formData
+            >
+              Enviar
+            </button>
           ) : (
             <button
               className="buttonSubmit"
