@@ -20,12 +20,12 @@ const FormAdressCompany = ({ formData, setFormData }) => {
       </button>
      </div>
       <InputTextSingup
-        label={"Logradouro"}
+        label={"Rua"}
         type={"text"}
         placeholder={"Informe a Rua ..."}
-        value={formData.logradouro}
+        value={formData.rua}
         onChange={(event) =>
-          setFormData({ ...formData, logradouro: event.target.value })
+          setFormData({ ...formData, rua: event.target.value })
         }
       />
       <InputTextSingup
@@ -47,12 +47,30 @@ const FormAdressCompany = ({ formData, setFormData }) => {
         }
       />
       <InputTextSingup
-        label={"Complemento"}
+        label={"cidade"}
         type={"text"}
-        placeholder={"Informe o Complemento..."}
-        value={formData.complemento}
+        placeholder={"Informe o cidade..."}
+        value={formData.cidade}
         onChange={(event) =>
-          setFormData({ ...formData, complemento: event.target.value })
+          setFormData({ ...formData, cidade: event.target.value })
+        }
+      />
+      <InputTextSingup
+        label={"estado"}
+        type={"text"}
+        placeholder={"Informe o estado..."}
+        value={formData.estado}
+        onChange={(event) =>
+          setFormData({ ...formData, estado: event.target.value })
+        }
+      />
+      <InputTextSingup
+        label={"pais"}
+        type={"text"}
+        placeholder={"Informe o pais..."}
+        value={formData.pais}
+        onChange={(event) =>
+          setFormData({ ...formData, pais: event.target.value })
         }
       />
     </div>

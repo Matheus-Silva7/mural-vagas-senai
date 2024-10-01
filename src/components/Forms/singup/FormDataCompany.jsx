@@ -33,26 +33,15 @@ const FormDataCompany = ({ formData, setFormData }) => {
         }
       />
       <InputTextSingup
-        label={"Site"}
+        label={"Logo"}
         type={"text"}
-        placeholder={"Informe o site ..."}
-        value={formData.site}
+        placeholder={"Link da imagem"}
+        value={formData.logo}
         onChange={(event) =>
-          setFormData({ ...formData, site: event.target.value })
+          setFormData({ ...formData, logo: event.target.value })
         }
       />
-      <InputTextSingup
-        label={"Quantidade de funcionários"}
-        type={"number"}
-        placeholder={"Informe a quantidade de funcionários..."}
-        value={formData.quantidadeFuncionarios}
-        onChange={(event) =>
-          setFormData({
-            ...formData,
-            quantidadeFuncionarios: event.target.value,
-          })
-        }
-      />
+    
     </div>
   );
 };

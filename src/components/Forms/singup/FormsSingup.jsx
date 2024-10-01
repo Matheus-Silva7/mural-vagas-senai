@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FormDataCompany from "./FormDataCompany";
 import FormAdressCompany from "./FormAdressCompany";
 import FormRegisterCompany from "./FormRegisterCompany";
+import FormDescriptionCompany from "./FormDescriptionCompany";
 import "./FormsSingup.css";
 import InputButton from "../../Inputs/InputButton"; 
 
@@ -12,27 +13,36 @@ const FormsSignup = () => {
     nomeEmpresa: "",
     cnpj: "",
     ramo: "",
+    logo: null,
+
     site: "",
     quantidadeFuncionarios: "",
+    descricao: "",
+
     cep: "",
-    logradouro: "",
+    rua: "",
     bairro: "",
     numero: "",
-    complemento: "",
+    cidade: "",
+    estado: "",
+    pais: "",
+
     telefone: "",
     email: "",
     senha: "",
     confirmSenha: ""
   });
 
-  const formTitles = ["Dados da empresa", "Endereço da empresa", "Cadastro da empresa"];
+  const formTitles = ["Dados da empresa","Descrição empresa", "Endereço da empresa", "Cadastro da empresa"];
 
- /*  const bodyLight = document.body.className("light") */
+ 
 
   const PageDisplay = () => {
     if (page === 0) {
       return <FormDataCompany formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
+      return <FormDescriptionCompany formData={formData} setFormData={setFormData} />;
+    } else if (page === 2) {
       return <FormAdressCompany formData={formData} setFormData={setFormData} />;
     } else {
       return <FormRegisterCompany formData={formData} setFormData={setFormData} />;
@@ -45,7 +55,7 @@ const FormsSignup = () => {
         <div className="progressbar">
           <div
             className='progress'
-            style={{ width: page === 0 ? "33.3%" : page === 1 ? "66.6%" : "100%" }}
+            style={{ width: page === 0 ? "25%" : page === 1 ? "50%" : page === 2 ? "75%" : "100%" }}
           ></div>
         </div>
         <div className="header">
@@ -64,7 +74,7 @@ const FormsSignup = () => {
           >
             Anterior
           </button>
-          {page === 2 ? (
+          {page === 3 ? (
             <InputButton text={"Enviar"}/> 
           ) : (
             <button
