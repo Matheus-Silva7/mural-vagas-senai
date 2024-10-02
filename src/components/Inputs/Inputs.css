@@ -34,6 +34,15 @@
   padding: 10px;
 }
 
+.light .input-dados{
+  background-color: #E8E6E6;
+  color: #333;
+}
+
+.light .color-text label{
+  color: #63E4F2;
+}
+
 .color-text label,
 .color-text input{
   color: #fff;

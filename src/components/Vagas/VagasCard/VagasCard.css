@@ -16,7 +16,7 @@
 }
 
 .vagas-card p{
-  font-weight: 200;
+  font-weight: 300;
 }
 
 .top-card{
@@ -60,4 +60,20 @@
   margin: 1rem 0;
   justify-content: space-between;
 }
+
+.light .vagas-card{
+  background-color: #CECECE;
+  color: #333;
+}
+
+.light .top-card .right-top h2{
+  color: #333;
+}
+
+.light .vagas-card  span p{
+  color: #333;
+}
+
+
+
 

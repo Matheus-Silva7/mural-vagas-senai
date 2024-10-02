@@ -22,3 +22,7 @@
   text-align: center;
   display: block;
 }
+
+.light .ButtonMain{
+  color: #fff;
+}
