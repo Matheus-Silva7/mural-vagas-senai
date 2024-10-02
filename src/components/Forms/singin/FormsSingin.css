@@ -56,3 +56,21 @@
 .light .content-forms form p a {
     color: #034AA6;
 }
+
+@media screen and (max-width: 700px) {
+    .content-forms form {
+        padding: 2rem 3rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .content-forms form {
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .content-forms form {
+        padding: 1rem;
+    }
+}
