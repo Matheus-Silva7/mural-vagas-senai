@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  z-index: 2;
 }
 
 .navbar .logo .line {
@@ -14,4 +15,18 @@
   text-transform: uppercase;
   font-weight: 200;
   max-width: 8ch;
+}
+
+@media screen and (max-width:500px) {
+.logo img{
+  width: 110px;
+}
+
+.navbar .logo .line {
+  font-size: 30px;
+}
+
+.navbar .logo .text {
+  font-size: 15px;
+}
 }
