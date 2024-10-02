@@ -62,6 +62,6 @@
 @media screen and (max-width: 480px) {
   .inputText,
   .textarea {
-    width: 80vw;
+    width: 90vw;
   }
 }
