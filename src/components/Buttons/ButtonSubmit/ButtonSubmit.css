@@ -1,0 +1,36 @@
+.buttonSubmit {
+    width: auto;
+    margin: 0 auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #072029;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.buttonSubmit:hover {
+    background-color: #072029b0;
+}
+
+.buttonSubmit:active {
+    background-color: #07202970;
+}
+
+.light .buttonSubmit {
+    background-color: #000;
+}
+
+
+.light .buttonSubmit:hover {
+    background-color: #000000c7;
+}
+
+.light .buttonSubmit:active {
+    background-color: #0000009a;
+}
+
+.buttonSubmit.buttonCep {
+    margin: 0;
+    padding: 10px 12px;
+}

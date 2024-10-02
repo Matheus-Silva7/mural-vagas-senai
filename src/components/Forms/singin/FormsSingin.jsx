@@ -1,6 +1,6 @@
 import React from 'react'
 import "./FormsSingin.css"
-import InputButton from '../../Inputs/InputButton'
+import ButtonSubmit from '../../Buttons/ButtonSubmit/ButtonSubmit'
 import InputText from '../../Inputs/InputText'
 import { Link } from 'react-router-dom'
 const FormsSingin = () => {
@@ -15,7 +15,7 @@ const FormsSingin = () => {
         <InputText label={"Senha"} type={"password"} placeholder={"Insira sua Senha..."} />
         <a className='forgot-password'>Esqueci minha senha</a>
         <p className='not-acess'>Não tenho acesso? <Link to={"/cadastro"}>Cadastre-se</Link></p>
-        <InputButton text={<Link to={"/empresa"}>Entrar</Link>} />
+        <ButtonSubmit text={<Link to={"/empresa"}>Entrar</Link>} />
       </form>
     </div>
   )

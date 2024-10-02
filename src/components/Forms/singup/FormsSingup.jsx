@@ -5,8 +5,8 @@ import FormAdressCompany from "./FormAdressCompany";
 import FormRegisterCompany from "./FormRegisterCompany";
 import FormDescriptionCompany from "./FormDescriptionCompany";
 import "./FormsSingup.css";
-import InputButton from "../../Inputs/InputButton";
 import { handleSubmit as apiSubmit } from "../../../services/Api"; // Renomeie para evitar conflitos
+import { Link } from "react-router-dom";
 
 const FormsSignup = () => {
   const [page, setPage] = useState(0);
@@ -91,9 +91,9 @@ const FormsSignup = () => {
           {page === 3 ? (
             <button
               className="buttonSubmit"
-              onClick={() => apiSubmit(formData)} // Passar formData
+              onClick={() => apiSubmit(formData)} 
             >
-              Enviar
+              <Link to={"/formularioenviado"}>Enviar</Link>
             </button>
           ) : (
             <button

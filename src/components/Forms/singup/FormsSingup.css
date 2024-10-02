@@ -73,7 +73,25 @@
     gap: 1rem;
 }
 
-.buttonSubmit.buttonCep{
-    margin: 0;
-padding: 10px 12px;
+@media screen and (max-width: 700px) {
+    .form-container {
+        padding: 2rem 3rem;
+    }
+
+    .form-progress{
+        height: 100%;
+        margin: 2rem 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .form-container {
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .form-container {
+        padding: 1rem;
+    }
 }

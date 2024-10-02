@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Inputs.css"
+import "./ButtonSubmit.css"
 
 const InputButton = ({ text }) => {
   return (
