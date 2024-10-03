@@ -1,7 +1,6 @@
 /* Importando a fonte Montserrat do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* Reset padrão CSS */
 * {
   box-sizing: border-box;
 }
@@ -19,19 +18,18 @@ ul, ol {
   list-style: none;
 }
 
-/* Garantir que todas as imagens fiquem no tamanho correto */
+
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Garantir que os links não tenham decoração de texto padrão */
+
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Inputs e botões sem estilos de borda padrão */
 input, button, textarea {
   font-family: inherit;
   font-size: inherit;
@@ -46,16 +44,14 @@ html, body {
   font-family: "Montserrat", sans-serif;
 }
 
-/* Aplicar o background ao body */
+
 body {
   background-image: url('./assets/background/main-background.jpg');
   background-size: cover;
   background-position: center;
-  
   position: relative;
 }
 
-/* Estilo para a classe container */
 .container {
   background-image: inherit; 
   background-size: inherit;
