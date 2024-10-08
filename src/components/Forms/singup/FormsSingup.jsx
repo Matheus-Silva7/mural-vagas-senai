@@ -1,35 +1,36 @@
-// Componente FormsSignup
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FormDataCompany from "./FormDataCompany";
 import FormAdressCompany from "./FormAdressCompany";
 import FormRegisterCompany from "./FormRegisterCompany";
 import FormDescriptionCompany from "./FormDescriptionCompany";
 import "./FormsSingup.css";
 import { handleSubmit as apiSubmit } from "../../../services/Api"; // Renomeie para evitar conflitos
-import { Link } from "react-router-dom";
 
 const FormsSignup = () => {
+  const navigate = useNavigate(); // Hook para redirecionamento
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
-    nomeEmpresa: "",
-    cnpj: "",
-    ramo: "",
-    logo: "",
-    site: "",
-    quantidadeFuncionarios: "",
-    descricao: "",
-    cep: "",
-    rua: "",
-    bairro: "",
-    numero: "",
-    cidade: "",
-    estado: "",
-    pais: "",
-    telefone: "",
-    email: "",
-    senha: "",
-    confirmSenha: "",
+      nomeEmpresa: "",
+      senha: "",
+      logo: "",
+      cnpj: "",
+      cep: "",
+      rua: "",
+      bairro: "",
+      numero: "",
+      cidade: "",
+      estado: "",
+      pais: "",
+      ramo: "",
+      site: "",
+      quantidadeFuncionarios: 0,
+      descricao: "",
+      email: "",
+      telefone: "",
   });
+
+
 
   const formTitles = [
     "Dados da empresa",
@@ -39,20 +40,24 @@ const FormsSignup = () => {
   ];
 
   const PageDisplay = () => {
-    if (page === 0) {
-      return <FormDataCompany formData={formData} setFormData={setFormData} />;
-    } else if (page === 1) {
-      return (
-        <FormDescriptionCompany formData={formData} setFormData={setFormData} />
-      );
-    } else if (page === 2) {
-      return (
-        <FormAdressCompany formData={formData} setFormData={setFormData} />
-      );
-    } else {
-      return (
-        <FormRegisterCompany formData={formData} setFormData={setFormData} />
-      );
+    switch (page) {
+      case 0:
+        return <FormDataCompany formData={formData} setFormData={setFormData} />;
+      case 1:
+        return <FormDescriptionCompany formData={formData} setFormData={setFormData} />;
+      case 2:
+        return <FormAdressCompany formData={formData} setFormData={setFormData} />;
+      case 3:
+        return <FormRegisterCompany formData={formData} setFormData={setFormData} />;
+      default:
+        return null;
+    }
+  };
+
+  const handleFormSubmit = async () => {
+    const response = await apiSubmit(formData);
+    if (response) {
+      navigate("/formularioenviado"); // Redireciona após o envio
     }
   };
 
@@ -63,14 +68,7 @@ const FormsSignup = () => {
           <div
             className="progress"
             style={{
-              width:
-                page === 0
-                  ? "25%"
-                  : page === 1
-                  ? "50%"
-                  : page === 2
-                  ? "75%"
-                  : "100%",
+              width: `${(page + 1) * 25}%`,
             }}
           ></div>
         </div>
@@ -89,11 +87,8 @@ const FormsSignup = () => {
             Anterior
           </button>
           {page === 3 ? (
-            <button
-              className="buttonSubmit"
-              onClick={() => apiSubmit(formData)} 
-            >
-              <Link to={"/formularioenviado"}>Enviar</Link>
+            <button className="buttonSubmit" onClick={handleFormSubmit}>
+              Enviar
             </button>
           ) : (
             <button
