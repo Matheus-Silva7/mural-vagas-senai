@@ -5,32 +5,33 @@ import FormAdressCompany from "./FormAdressCompany";
 import FormRegisterCompany from "./FormRegisterCompany";
 import FormDescriptionCompany from "./FormDescriptionCompany";
 import "./FormsSingup.css";
-import { handleSubmit as apiSubmit } from "../../../services/Api"; // Renomeie para evitar conflitos
+import { handleSubmit as apiSubmit } from "../../../services/Api";
 
 const FormsSignup = () => {
-  const navigate = useNavigate(); // Hook para redirecionamento
+  const navigate = useNavigate();
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
-      nomeEmpresa: "",
-      senha: "",
-      logo: "",
-      cnpj: "",
-      cep: "",
-      rua: "",
-      bairro: "",
-      numero: "",
-      cidade: "",
-      estado: "",
-      pais: "",
-      ramo: "",
-      site: "",
-      quantidadeFuncionarios: 0,
-      descricao: "",
-      email: "",
-      telefone: "",
+    nomeEmpresa: "",
+    senha: "",
+    logo: "",
+    cnpj: "",
+    cep: "",
+    rua: "",
+    bairro: "",
+    numero: "",
+    cidade: "",
+    estado: "",
+    pais: "",
+    ramo: "",
+    site: "",
+    quantidadeFuncionarios: 0,
+    descricao: "",
+    email: "",
+    telefone: "",
+    confirmSenha: "",
   });
 
-
+  console.log(formData)
 
   const formTitles = [
     "Dados da empresa",

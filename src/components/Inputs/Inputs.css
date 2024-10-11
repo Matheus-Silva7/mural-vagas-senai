@@ -55,10 +55,10 @@
 }
 
 
-.modal-box {
-  background-color: #232B3B;
+ .modal-box {
+  background-color: #CECECE;
+  color: #333;
   text-align: center;
-  color: #fff;
   width: auto;
   padding: 2rem;
 }
@@ -71,9 +71,8 @@
   border-radius: 8px;
 }
 
-.light .modal-box{
-  background-color: #CECECE;
-  color: #333 !important;
+.light .modal-box {
+ 
 }
 
 

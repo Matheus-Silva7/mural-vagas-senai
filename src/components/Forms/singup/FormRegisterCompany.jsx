@@ -1,11 +1,11 @@
 import React from "react";
-import InputText from "../../Inputs/InputText";
+import InputTextSingup from "../../Inputs/inputTextSingup";
 import "./FormsSingup.css";
 
 const FormRegisterCompany = ({ formData, setFormData }) => {
   return (
     <form className="input-container">
-      <InputText
+      <InputTextSingup
         label={"Telefone"}
         type={"text"}
         placeholder={"Informe o telefone ..."}
@@ -14,7 +14,7 @@ const FormRegisterCompany = ({ formData, setFormData }) => {
           setFormData({ ...formData, telefone: event.target.value })
         }
       />
-      <InputText
+      <InputTextSingup
         label={"Email"}
         type={"email"}
         placeholder={"Informe o email..."}
@@ -23,7 +23,7 @@ const FormRegisterCompany = ({ formData, setFormData }) => {
           setFormData({ ...formData, email: event.target.value })
         }
       />
-      <InputText
+      <InputTextSingup
         label={"Senha"}
         type={"password"}
         placeholder={"Crie uma senha de 8 caracteres ..."}
@@ -32,7 +32,7 @@ const FormRegisterCompany = ({ formData, setFormData }) => {
           setFormData({ ...formData, senha: event.target.value })
         }
       />
-      <InputText
+      <InputTextSingup
         label={"Confirmar senha"}
         type={"password"}
         placeholder={"Confirmar senha ..."}
