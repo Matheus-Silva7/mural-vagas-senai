@@ -4,6 +4,7 @@ import FormDataCompany from "./FormDataCompany";
 import FormAdressCompany from "./FormAdressCompany";
 import FormRegisterCompany from "./FormRegisterCompany";
 import FormDescriptionCompany from "./FormDescriptionCompany";
+import ButtonSubmit from "../../Buttons/ButtonSubmit/ButtonSubmit"
 import "./FormsSingup.css";
 import { handleSubmit as apiSubmit } from "../../../services/Api";
 
@@ -85,7 +86,7 @@ const FormsSignup = () => {
             disabled={page === 0}
             onClick={() => setPage((currPage) => currPage - 1)}
           >
-            Anterior
+           
           </button>
           {page === 3 ? (
             <button className="buttonSubmit" onClick={handleFormSubmit}>
