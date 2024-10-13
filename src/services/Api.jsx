@@ -1,9 +1,9 @@
 import axios from "axios";
-const ip = "172.31.16.1";
+const ip = "192.168.100.126";
 
 const API_URL = `http://${ip}:8080`;
 
-const handleSubmit = async (formData) => {
+const cadastroSubmit = async (formData) => {
   try {
     console.log(formData);
     const dataToSend = {
@@ -39,27 +39,34 @@ const handleSubmit = async (formData) => {
       }
     );
 
-    alert("Formulário enviado com sucesso!");
     return response.data;
   } catch (error) {
     console.error("Erro ao enviar o formulário", error);
-    console.log("Detalhes do erro:", error.response?.data); // Detalhes do erro, se houver
+    console.log("Detalhes do erro:", error.response?.data); 
     alert("Ocorreu um erro ao enviar o formulário.");
     throw error;
   }
 };
 
-const loginSubmit = async () => {
+const loginSubmit = async (loginForm) => {
+
   
   try {
     const responseLogin = await axios.post(`${API_URL}/auth/login`, loginForm, {
       headers: { "Content-Type": "application/json" },
     });
+
+    const token = responseLogin.data
+
+    console.log(token)
+    return token
   } catch (error) {
-    
-    alert("Error", error)
+    console.error("Erro ao enviar o formulário", error);
+    console.log("Detalhes do erro:", error.response?.data); 
+    alert(error.response?.data.toString());
+    throw error;
 
   }
 };
 
-export { handleSubmit, loginSubmit };
+export { cadastroSubmit, loginSubmit };

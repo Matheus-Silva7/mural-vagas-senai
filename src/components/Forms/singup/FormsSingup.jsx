@@ -4,9 +4,8 @@ import FormDataCompany from "./FormDataCompany";
 import FormAdressCompany from "./FormAdressCompany";
 import FormRegisterCompany from "./FormRegisterCompany";
 import FormDescriptionCompany from "./FormDescriptionCompany";
-import ButtonSubmit from "../../Buttons/ButtonSubmit/ButtonSubmit"
 import "./FormsSingup.css";
-import { handleSubmit as apiSubmit } from "../../../services/Api";
+import { cadastroSubmit } from "../../../services/Api";
 
 const FormsSignup = () => {
   const navigate = useNavigate();
@@ -32,7 +31,7 @@ const FormsSignup = () => {
     confirmSenha: "",
   });
 
-  console.log(formData)
+/*   console.log(formData) */
 
   const formTitles = [
     "Dados da empresa",
@@ -57,9 +56,9 @@ const FormsSignup = () => {
   };
 
   const handleFormSubmit = async () => {
-    const response = await apiSubmit(formData);
+    const response = await cadastroSubmit(formData);
     if (response) {
-      navigate("/formularioenviado"); // Redireciona após o envio
+      navigate("/formularioenviado"); 
     }
   };
 
@@ -86,7 +85,7 @@ const FormsSignup = () => {
             disabled={page === 0}
             onClick={() => setPage((currPage) => currPage - 1)}
           >
-           
+           Anterior
           </button>
           {page === 3 ? (
             <button className="buttonSubmit" onClick={handleFormSubmit}>
