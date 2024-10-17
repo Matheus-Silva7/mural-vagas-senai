@@ -1,8 +1,14 @@
 import axios from "axios";
-const ip = "192.168.100.126";
-
+const ip = "172.31.16.1";
 const API_URL = `http://${ip}:8080`;
 
+// Configuração base do Axios
+const api = axios.create({
+  baseURL: API_URL,
+  headers: { "Content-Type": "application/json" },
+});
+
+// Função para cadastro de empresa
 const cadastroSubmit = async (formData) => {
   try {
     console.log(formData);
@@ -31,41 +37,31 @@ const cadastroSubmit = async (formData) => {
       autorizacao: null,
     };
 
-    const response = await axios.post(
-      `${API_URL}/auth/cadastro/empresa`,
-      dataToSend,
-      {
-        headers: { "Content-Type": "application/json" },
-      }
-    );
-
+    const response = await api.post(`/auth/cadastro/empresa`, dataToSend);
     return response.data;
   } catch (error) {
     console.error("Erro ao enviar o formulário", error);
-    console.log("Detalhes do erro:", error.response?.data); 
+    console.log("Detalhes do erro:", error.response?.data);
     alert("Ocorreu um erro ao enviar o formulário.");
     throw error;
   }
 };
 
+// Função para login de empresa
 const loginSubmit = async (loginForm) => {
-
-  
   try {
-    const responseLogin = await axios.post(`${API_URL}/auth/login`, loginForm, {
-      headers: { "Content-Type": "application/json" },
-    });
+    const responseLogin = await api.post(`/auth/login`, loginForm);
+    const token = responseLogin.data;
 
-    const token = responseLogin.data
+    // Armazenamento do token no localStorage (ou sessionStorage)
+    localStorage.setItem("token", token);
 
-    console.log(token)
-    return token
+    console.log("Token recebido:", token);
+    return token;
   } catch (error) {
-    console.error("Erro ao enviar o formulário", error);
-    console.log("Detalhes do erro:", error.response?.data); 
-    alert(error.response?.data.toString());
+    console.error("Erro ao enviar o formulário de login:", error);
+    console.log("Detalhes do erro:", error.response?.data);
     throw error;
-
   }
 };
 
