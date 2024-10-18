@@ -1,10 +1,10 @@
 import React from 'react'
 import "./ButtonSubmit.css"
 
-const InputButton = ({ text }) => {
+const ButtonSubmit = ({ text, click }) => {
   return (
-    <button  className='buttonSubmit' type='submit'>{text}</button>
+    <button  className='buttonSubmit' type='submit' onClick={click}>{text}</button>
   )
 }
 
-export default InputButton
+export default ButtonSubmit

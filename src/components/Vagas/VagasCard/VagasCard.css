@@ -9,7 +9,8 @@
    background-color: #232B3B;
    color: #fff;
    padding: 3rem;
-   margin: 2rem;
+   margin: 1.5rem;
+   border-radius: 10px;
    display: flex;
    flex-direction: column;
    gap: 2rem;
@@ -38,7 +39,7 @@
 
  .top-card .right-top h2{
  color: #fff;
- font-size: 24px;
+ font-size: 22px;
  font-weight: 300;
 }
 
@@ -73,6 +74,47 @@
 .light .vagas-card  span p{
   color: #333;
 }
+
+@media screen and (max-width:560px) {
+
+  .top-card img{
+    width: 80px;
+  }
+
+  .top-card .right-top h2{
+    font-size: 18px;
+  }
+
+  .vagas-card{
+    padding: 2rem;
+    margin: 1rem;
+  }
+
+}
+
+@media screen and (max-width:430px) {
+ .vagas-card{
+    padding: 1.5rem;
+  }
+
+  .top-card .right-top h2{
+    font-size: 16px;
+  }
+
+  .vagas-card  span,
+  .vagas-card  p{
+   font-size: 13px;
+  }
+
+  .top-card{
+    gap: 1rem;
+  }
+  
+
+  
+}
+
+
 
 
 

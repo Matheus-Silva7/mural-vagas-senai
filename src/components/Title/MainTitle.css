@@ -22,3 +22,9 @@
   border-top: 2px solid #63E4F2; 
   background-color: #63E4F2;     
 }
+
+@media screen and (max-width:500px) {
+  .main-title{
+    font-size: 25px;
+  }
+}
