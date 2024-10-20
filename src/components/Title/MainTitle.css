@@ -24,6 +24,11 @@
 }
 
 @media screen and (max-width:500px) {
+
+  .content-title {
+    padding: 2rem;
+  }
+  
   .main-title{
     font-size: 25px;
   }

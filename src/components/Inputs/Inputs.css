@@ -60,21 +60,16 @@
   color: #333;
   text-align: center;
   width: auto;
-  padding: 2rem;
+  padding: 3rem;
 }
 
 .modal-box input{
   border: 1px solid #38768E;
-  width: auto;
+  width: 13vw;
   padding: 10px;
   margin: 15px 0;
   border-radius: 8px;
 }
-
-.light .modal-box {
- 
-}
-
 
 @media screen and (max-width: 1000px) {
 
@@ -85,6 +80,16 @@
 
   .inputText {
     height: 37px;
+  }
+
+  .modal-box {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .input-dados{
+    width: 70vw;
   }
 }
 
@@ -101,5 +106,19 @@
   .inputText,
   .textarea {
     width: 90vw;
+  }
+
+  .modal-box {
+    width: 85vw;
+    padding: 1.5rem;
+  }
+
+  .modal-box button{
+    width: 25px;
+    font-size: 10px;
+  }
+
+  .input-dados{
+    width: 75vw;
   }
 }

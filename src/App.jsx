@@ -19,6 +19,7 @@ function App() {
         <Route path="/formularioenviado" element={<SentMessage theme={theme} setTheme={setTheme} />} />
         <Route path="/empresa" element={<Empresa theme={theme} setTheme={setTheme} />}/>
         <Route path="/empresa/dados" element={<EmpresaDados theme={theme} setTheme={setTheme} />}/>
+        <Route />
       </Routes>
     </div>
   );
