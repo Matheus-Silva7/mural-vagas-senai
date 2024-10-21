@@ -1,0 +1,90 @@
+.vaga-content {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin: 1rem 0;
+  color: #FFFFFF;
+}
+
+.button-back{
+  cursor: pointer;
+  font-size: 40px;
+}
+
+.vaga-content .vaga {
+  background-color: #232B3B;
+  border: solid 1px #3D849F;
+  border-radius: 10px;
+  width: 950px;
+  padding: 3rem;
+  margin: 2rem;
+}
+
+.vaga .top-vaga {
+  display: flex;
+  gap: 3rem;
+}
+
+.vaga .top-vaga img {
+  width: 120px;
+}
+
+.top-vaga .right-top{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top-vaga .right-top .titles .title-vaga {
+  font-size: 26px;
+  color: #3D849F;
+}
+
+.top-vaga .right-top .titles .n-empresa {
+  font-size: 20px;
+  color: #3D849F;
+}
+
+.top-vaga .right-top .data-vaga{
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-vaga .right-top .data-vaga p{
+  font-weight: 300;
+}
+
+.infos-vaga{
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #3D849F;
+  border-bottom: 1px solid #3D849F;
+  gap: 3rem;
+}
+
+.infos-vaga .info{
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.infos-vaga .info span{
+  color: #3D849F;
+  font-weight: 600;
+}
+
+.desc-vaga .desc {
+  margin: 1rem 0;
+}
+
+.desc-vaga .desc h3{
+  color: #3D849F;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.desc-vaga .desc p{
+  font-weight: 300;
+}
