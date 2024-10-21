@@ -57,11 +57,11 @@
 .infos-vaga{
   display: flex;
   justify-content: center;
-  margin: 2rem 0;
+  margin: 3rem 0;
   padding: 1rem 0;
   border-top: 1px solid #3D849F;
   border-bottom: 1px solid #3D849F;
-  gap: 3rem;
+  gap: 4rem;
 }
 
 .infos-vaga .info{
@@ -76,15 +76,40 @@
 }
 
 .desc-vaga .desc {
-  margin: 1rem 0;
+  margin: 3rem 0;
 }
 
 .desc-vaga .desc h3{
   color: #3D849F;
-  font-size: 20px;
+  font-size: 24px;
   margin: 10px 0;
 }
 
 .desc-vaga .desc p{
   font-weight: 300;
+  line-height: 1.5;
+}
+
+.desc-vaga .desc ul{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  list-style: inside;
+}
+
+.desc-vaga .desc p span{
+  color: #3D849F;
+  font-weight: 600;
+}
+
+.light .vaga-content .vaga {
+  background-color: #CECECE;
+  border: solid 1px #3D849F;
+}
+
+.light .top-vaga .right-top .data-vaga,
+.light .infos-vaga .info,
+.light .desc-vaga .desc p,
+.light .desc-vaga .desc ul li{
+color: #000;
 }

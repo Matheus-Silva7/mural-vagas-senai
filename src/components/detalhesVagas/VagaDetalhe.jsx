@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const VagaDetalhe = () => {
   return (
     <div className='vaga-content'>
-      <button className='button-back'><Link to={"/empresa"}><MdKeyboardArrowLeft/></Link> </button>
+      <button className='button-back'><Link to={"/empresa"}><MdKeyboardArrowLeft /></Link> </button>
       <div className="vaga">
         <div className="top-vaga">
           <img src={LogoEmpresa} alt="logo empresa" />
@@ -50,12 +50,44 @@ const VagaDetalhe = () => {
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
           </div>
           <div className="desc">
-            <h3>Sobre a empresa</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+            <h3>Contatos da empresa</h3>
+            <ul>
+              <li><strong>email:</strong> lioracontatorh@gmail.com</li>
+              <li><strong>telefone:</strong> (11) 99999-8888</li>
+              <li><strong>endereço:</strong> It has survived not only five centuries, but also the leap into electronic typesetting</li>
+            </ul>
           </div>
           <div className="desc">
-            <h3>Sobre a empresa</h3>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+            <h3>Descrição da vaga</h3>
+            <p>Lorem Ipsumis simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+          </div>
+          <div className="desc">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Cursar engenharia de software</li>
+              <li>Vaga também abrange recém formados  </li>
+            </ul>
+          </div>
+          <div className="desc">
+            <h3>Benefícios</h3>
+            <ul>
+              <li>VT</li>
+              <li>VR</li>
+              <li>Convênio Odontológico</li>
+              <li>Cesta básica</li>
+            </ul>
+          </div>
+          <div className="desc">
+            <h3>Informações adicionais</h3>
+            <ul>
+              <li><strong>Remuneração</strong> À combinar</li>
+              <li><strong>Horário de trabalho:</strong> 7:30 á 17:18</li>
+              <li><strong>Quantidade de vagas:</strong>1</li>
+            </ul>
+          </div>
+          <div className="desc">
+            <h3>Candidatura</h3>
+            <p>A candidatura deve ser feito diretamente com a empresa por <span>email</span> </p>
           </div>
         </div>
       </div>
