@@ -1,16 +1,17 @@
 import React from 'react'
 import NavBarEmpresa from '../components/NavBar/NavBarEmpresa'
 import Footer from '../components/Footer/Footer'
-import VagaDetalhe from '../components/detalhesVagas/VagaDetalhe'
+import FormCriarVaga from '../components/Forms/criarVaga/FormCriarVaga'
 
-const DetalhesVaga = ({ theme, setTheme }) => {
+
+const CriarVaga = ({ theme, setTheme }) => {
   return (
     <>
       <NavBarEmpresa theme={theme} setTheme={setTheme}/>
-      <VagaDetalhe/>
+      <FormCriarVaga/>
       <Footer/>
     </>
   )
 }
 
-export default DetalhesVaga
+export default CriarVaga

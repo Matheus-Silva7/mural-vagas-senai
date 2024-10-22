@@ -7,7 +7,7 @@ import "./App.css";
 import SentMessage from "./Routes/SentMessage";
 import Empresa from "./Routes/Empresa";
 import EmpresaDados from "./Routes/EmpresaDados";
-import DetalhesVaga from "./Routes/detalhesVaga";
+import DetalhesVaga from "./Routes/DetalhesVaga";
 
 function App() {
   const [theme, setTheme] = useState("dark");
