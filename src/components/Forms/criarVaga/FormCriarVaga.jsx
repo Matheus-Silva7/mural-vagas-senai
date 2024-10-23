@@ -19,8 +19,13 @@ const FormCriarVaga = () => {
 
         <div className="double-input">
           <InputText
+            label="Candidatura"
+            type="text"
+            placeholder="Ifa..."
+          />
+          <InputText
             label="Senha"
-            type="password"
+            type="text"
             placeholder="Insira sua senha..."
           />
         </div>
