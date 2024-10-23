@@ -8,6 +8,7 @@ import SentMessage from "./Routes/SentMessage";
 import Empresa from "./Routes/Empresa";
 import EmpresaDados from "./Routes/EmpresaDados";
 import DetalhesVaga from "./Routes/DetalhesVaga";
+import CriarVaga from "./Routes/CriarVaga";
 
 function App() {
   const [theme, setTheme] = useState("dark");
@@ -21,7 +22,7 @@ function App() {
         <Route path="/empresa" element={<Empresa theme={theme} setTheme={setTheme} />}/>
         <Route path="/empresa/vaga" element={<DetalhesVaga theme={theme} setTheme={setTheme} />}/>
         <Route path="/empresa/dados" element={<EmpresaDados theme={theme} setTheme={setTheme} />}/>
-        <Route />
+        <Route path="/empresa/criarVaga" element={<CriarVaga theme={theme} setTheme={setTheme} />}/>
       </Routes>
     </div>
   );

@@ -4,6 +4,7 @@ import NavBarEmpresa from '../components/NavBar/NavBarEmpresa'
 import MainTitle from '../components/Title/MainTitle'
 import VagasCard from '../components/Vagas/VagasCard/VagasCard'
 import ButtonMain from '../components/Buttons/ButtonMain/ButtonMain'
+import { Link } from 'react-router-dom'
 
 const Empresa = ({ theme, setTheme }) => {
   return (
@@ -11,7 +12,7 @@ const Empresa = ({ theme, setTheme }) => {
       <NavBarEmpresa theme={theme} setTheme={setTheme} />
       <MainTitle title={"Minhas Vagas"} />
       <VagasCard />
-      <ButtonMain text={"Criar vaga"} classname={"button-center"}/>
+      <ButtonMain text={<Link to={"/empresa/criarVaga"}>Criar vaga</Link>} classname={"button-center"}/>
       <Footer />
     </>
   )
