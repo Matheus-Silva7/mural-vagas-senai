@@ -5,7 +5,7 @@ const TextArea = ({ label, placeholder, onChange, value}) => {
   return (
     <div className='input-content'>
     <label>{label}</label>
-    <textarea  className='textarea' placeholder={placeholder} onChange={onChange} value={value}/>
+    <textarea  className={`textarea ${label}`} placeholder={placeholder} onChange={onChange} value={value}/>
   </div>
   )
 }
