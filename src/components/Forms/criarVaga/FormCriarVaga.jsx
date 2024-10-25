@@ -3,10 +3,14 @@ import "./FormCriarVaga.css";
 import InputText from '../../Inputs/InputText';
 import ButtonSubmit from '../../Buttons/ButtonSubmit/ButtonSubmit';
 import TextArea from '../../Inputs/TextArea';
+import { Link } from 'react-router-dom';
+import { MdKeyboardArrowLeft } from 'react-icons/md';
 
 const FormCriarVaga = () => {
   return (
+
     <div className="form-criar">
+      <button className='button-back'><Link to={"/empresa"}><MdKeyboardArrowLeft /></Link> </button>
       <form>   
           <div>
           <h2>Criar nova vaga</h2>    
@@ -65,19 +69,23 @@ const FormCriarVaga = () => {
           />
         </div>
 
-        <div className="input-radio">
+        <div className="input-check">
           <p>Benefícios</p>
           <label>
-            <input type="radio" name="tipoContratacao" value="vt" />
+            <input type="checkbox" name="vt" value="vt" />
             Vale Transporte
           </label>
           <label>
-            <input type="radio" name="tipoContratacao" value="vr" />
+            <input type="checkbox" name="vr" value="vr" />
             Vale Refeição
           </label>
           <label>
-            <input type="radio" name="tipoContratacao" value="convenio" />
-            Convênio
+            <input type="checkbox" name="convenio" value="convenio" />
+            Convênio médico
+          </label>
+          <label>
+            <input type="checkbox" name="cestabasica" value="convenio" />
+            Cesta básica
           </label>
         </div>
 

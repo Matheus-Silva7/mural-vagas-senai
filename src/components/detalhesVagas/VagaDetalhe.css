@@ -7,8 +7,13 @@
 }
 
 .button-back{
+  color: #fff;
   cursor: pointer;
-  font-size: 40px;
+  font-size: 45px;
+}
+
+.light .button-back{
+  color: #3D849F;
 }
 
 .vaga-content .vaga {
