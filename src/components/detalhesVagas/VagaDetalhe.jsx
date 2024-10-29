@@ -82,7 +82,7 @@ const VagaDetalhe = () => {
             <ul>
               <li><strong>Remuneração</strong> À combinar</li>
               <li><strong>Horário de trabalho:</strong> 7:30 á 17:18</li>
-              <li><strong>Quantidade de vagas:</strong>1</li>
+              <li><strong>Quantidade de vagas:</strong> 1</li>
             </ul>
           </div>
           <div className="desc">
