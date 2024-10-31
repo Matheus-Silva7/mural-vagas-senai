@@ -23,7 +23,8 @@ const FormCriarVaga = () => {
           placeholder="Informe o nome da vaga..."
         />
 
-        <div className="input-radio">
+      <div className="double-input">
+      <div className="input-radio">
           <p>Tipo de contratação</p>
           <label>
             <input type="radio" name="tipoContratacao" value="efetivo" />
@@ -38,6 +39,22 @@ const FormCriarVaga = () => {
             PJ
           </label>
         </div>
+        <div className="input-radio">
+          <p>Modelo de trabalho</p>
+          <label>
+            <input type="radio" name="tipoContratacao" value="presencial" />
+            Presencial
+          </label>
+          <label>
+            <input type="radio" name="tipoContratacao" value="hibrido" />
+            Híbrido
+          </label>
+          <label>
+            <input type="radio" name="tipoContratacao" value="home-office" />
+            Home-Office
+          </label>
+        </div>
+      </div>
 
         <div className="double-input">
           <InputText
