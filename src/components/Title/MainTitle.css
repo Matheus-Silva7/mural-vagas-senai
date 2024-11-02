@@ -1,5 +1,5 @@
 .content-title{
-  padding: 3rem;
+  padding: 2rem;
 }
 
 .main-title{
@@ -14,8 +14,19 @@
   height: 2px;            
 }
 
+.title-mural{
+  font-size: 20px;
+  color: #FFF;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
 .light .main-title{
   color: #63E4F2;
+}
+
+.light .title-mural{
+  color: #000;
 }
 
 .light .content-title hr{
@@ -24,12 +35,8 @@
 }
 
 @media screen and (max-width:500px) {
-
-  .content-title {
-    padding: 2rem;
-  }
   
   .main-title{
-    font-size: 25px;
+    font-size: 24px;
   }
 }
