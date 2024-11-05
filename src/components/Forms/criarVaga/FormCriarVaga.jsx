@@ -8,14 +8,13 @@ import { MdKeyboardArrowLeft } from 'react-icons/md';
 
 const FormCriarVaga = () => {
   return (
-
     <div className="form-criar">
-      <button className='button-back'><Link to={"/empresa"}><MdKeyboardArrowLeft /></Link> </button>
+      <button className='button-back'><Link to={"/empresa"}><MdKeyboardArrowLeft /></Link></button>
       <form>   
-          <div>
+        <div>
           <h2>Criar nova vaga</h2>    
           <p>Somente empresas aprovadas podem cadastrar vagas</p>
-          </div>
+        </div>
 
         <InputText
           label="Vaga"
@@ -23,38 +22,25 @@ const FormCriarVaga = () => {
           placeholder="Informe o nome da vaga..."
         />
 
-      <div className="double-input">
-      <div className="input-radio">
-          <p>Tipo de contratação</p>
-          <label>
-            <input type="radio" name="tipoContratacao" value="efetivo" />
-            Efetivo
-          </label>
-          <label>
-            <input type="radio" name="tipoContratacao" value="estagio" />
-            estagio
-          </label>
-          <label>
-            <input type="radio" name="tipoContratacao" value="pj" />
-            PJ
-          </label>
+        <div className="double-input">
+          <div className="input-select">
+            <p>Tipo de contratação</p>
+            <select name="tipoContratacao">
+              <option value="efetivo">Efetivo</option>
+              <option value="estagio">Estágio</option>
+              <option value="pj">PJ</option>
+            </select>
+          </div>
+
+          <div className="input-select">
+            <p>Modelo de trabalho</p>
+            <select name="modeloTrabalho">
+              <option value="presencial">Presencial</option>
+              <option value="hibrido">Híbrido</option>
+              <option value="home-office">Home-Office</option>
+            </select>
+          </div>
         </div>
-        <div className="input-radio">
-          <p>Modelo de trabalho</p>
-          <label>
-            <input type="radio" name="tipoContratacao" value="presencial" />
-            Presencial
-          </label>
-          <label>
-            <input type="radio" name="tipoContratacao" value="hibrido" />
-            Híbrido
-          </label>
-          <label>
-            <input type="radio" name="tipoContratacao" value="home-office" />
-            Home-Office
-          </label>
-        </div>
-      </div>
 
         <div className="double-input">
           <InputText
@@ -63,15 +49,15 @@ const FormCriarVaga = () => {
             placeholder="Informe a candidatura..."
           />
           <InputText
-            label="Carga Horaria semanal"
+            label="Carga Horária semanal"
             type="text"
-            placeholder="Informe a carga horaria..."
+            placeholder="Informe a carga horária..."
           />
         </div>
 
-        <TextArea label={"Descrição da vaga"} placeholder={"Informe descrição da vaga..."}/>
+        <TextArea label={"Descrição da vaga"} placeholder={"Informe descrição da vaga..."} />
 
-        <TextArea label={"Requisitos da vaga"} placeholder={"Informe requisitos da vaga..."}/>
+        <TextArea label={"Requisitos da vaga"} placeholder={"Informe requisitos da vaga..."} />
 
         <div className="double-input">
           <InputText
@@ -101,13 +87,13 @@ const FormCriarVaga = () => {
             Convênio médico
           </label>
           <label>
-            <input type="checkbox" name="cestabasica" value="convenio" />
+            <input type="checkbox" name="cestabasica" value="cestabasica" />
             Cesta básica
           </label>
         </div>
 
         <InputText
-          label="Data de expiração da vaga "
+          label="Data de expiração da vaga"
           type="date"
           placeholder="Informe a data de expiração..."
         />
