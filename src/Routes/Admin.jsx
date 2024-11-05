@@ -4,6 +4,7 @@ import Footer from "../components/Footer/Footer"
 import TitleMural from '../components/Title/TitleMural'
 import MainTitle from '../components/Title/MainTitle'
 import CardEmpresa from '../components/CardEmpresa/CardEmpresa'
+import VagasCard from '../components/Vagas/VagasCard/VagasCard'
 
 const Admin = ({theme, setTheme}) => {
   return (
@@ -12,6 +13,8 @@ const Admin = ({theme, setTheme}) => {
       <TitleMural text={"mural de aprovação"}/>
       <MainTitle title={"Ultimas solicitações"}/>
       <CardEmpresa/>
+      <MainTitle title={"Vagas públicadas"}/>
+      <VagasCard/>
       <Footer/>
     </div>
   )

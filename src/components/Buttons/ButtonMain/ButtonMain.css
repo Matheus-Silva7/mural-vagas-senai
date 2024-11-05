@@ -30,3 +30,9 @@
 .ButtonMain.editButton{
   margin: 0 0 5px 10px;
 }
+
+@media screen and (max-width:500px) {
+  .ButtonMain{
+    font-size: 14px;
+  }
+}
