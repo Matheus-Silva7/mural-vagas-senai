@@ -34,14 +34,11 @@ const FormDataCompany = ({ formData, setFormData }) => {
       />
       <InputTextSingup
         label={"Logo"}
-        type={"text"}
-        placeholder={"Link da imagem"}
-        value={formData.logo || ""}
+        type={"file"} // Altere para "file" para permitir o envio de imagens
         onChange={(event) =>
-          setFormData({ ...formData, logo: event.target.value })
+          setFormData({ ...formData, logo: event.target.files[0] })
         }
       />
-    
     </form>
   );
 };

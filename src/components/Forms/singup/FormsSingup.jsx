@@ -6,6 +6,7 @@ import FormRegisterCompany from "./FormRegisterCompany";
 import FormDescriptionCompany from "./FormDescriptionCompany";
 import "./FormsSingup.css";
 import { cadastroSubmit } from "../../../services/Api";
+import axios from "axios";
 
 const FormsSignup = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const FormsSignup = () => {
   const [formData, setFormData] = useState({
     nomeEmpresa: "",
     senha: "",
-    logo: "",
+    logo: "", // Aqui será armazenado o arquivo de imagem
     cnpj: "",
     cep: "",
     rua: "",
@@ -30,8 +31,6 @@ const FormsSignup = () => {
     telefone: "",
     confirmSenha: "",
   });
-
-/*   console.log(formData) */
 
   const formTitles = [
     "Dados da empresa",
@@ -55,10 +54,39 @@ const FormsSignup = () => {
     }
   };
 
+  const uploadLogoToCloudinary = async (file) => {
+    const cloudinaryUrl = "https://api.cloudinary.com/v1_1/djrz51uc0/image/upload";
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "mural-vagas"); 
+
+    try {
+      const response = await axios.post(cloudinaryUrl, formData);
+      return response.data.secure_url; 
+    } catch (error) {
+      console.error("Erro ao fazer upload da imagem:", error);
+      throw error;
+    }
+  };
+
   const handleFormSubmit = async () => {
-    const response = await cadastroSubmit(formData);
-    if (response) {
-      navigate("/formularioenviado"); 
+    try {
+      // Primeiro faz o upload do logo, caso ele tenha sido selecionado
+      let logoLink = "";
+      if (formData.logo) {
+        logoLink = await uploadLogoToCloudinary(formData.logo);
+      }
+
+      // Monta os dados para enviar ao backend, substituindo o logo pelo link gerado
+      const dataToSend = { ...formData, logo: { linkLogo: logoLink } };
+
+      const response = await cadastroSubmit(dataToSend);
+      if (response) {
+        navigate("/formularioenviado"); 
+      }
+    } catch (error) {
+      console.error("Erro ao enviar o formulário", error);
+      alert("Ocorreu um erro ao enviar o formulário.");
     }
   };
 
@@ -85,7 +113,7 @@ const FormsSignup = () => {
             disabled={page === 0}
             onClick={() => setPage((currPage) => currPage - 1)}
           >
-           Anterior
+            Anterior
           </button>
           {page === 3 ? (
             <button className="buttonSubmit" onClick={handleFormSubmit}>

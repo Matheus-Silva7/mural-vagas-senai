@@ -1,5 +1,6 @@
 import axios from "axios";
-const ip = "10.92.198.47";
+
+const ip = "172.19.64.1";
 const API_URL = `http://${ip}:8080`;
 
 // Configuração base do Axios
@@ -11,11 +12,10 @@ const api = axios.create({
 // Função para cadastro de empresa
 const cadastroSubmit = async (formData) => {
   try {
-    console.log(formData);
     const dataToSend = {
       nomeEmpresa: formData.nomeEmpresa,
       senha: formData.senha,
-      logo: { linkLogo: formData.logo },
+      logo: { linkLogo: formData.logo.linkLogo }, // Aqui o logo será um link gerado após o upload
       cnpj: formData.cnpj,
       endereco: {
         cep: formData.cep,
@@ -34,10 +34,10 @@ const cadastroSubmit = async (formData) => {
       },
       email: formData.email,
       telefone: formData.telefone,
-      autorizacao: null,
     };
 
     const response = await api.post(`/auth/cadastro/empresa`, dataToSend);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error("Erro ao enviar o formulário", error);
