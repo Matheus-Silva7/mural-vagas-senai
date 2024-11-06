@@ -25,6 +25,9 @@ const FormsSingin = () => {
         notifyErr();
       }
     } catch (error) {
+      if(error.status === 403){
+        navigate("/formularioenviado");
+      }
       notifyErr();
       console.error("Erro no login:", error);
     }
