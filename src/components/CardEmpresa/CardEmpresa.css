@@ -69,6 +69,22 @@
     transition: 0.5s;
 }
 
+.sem-empresas{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 20vh;
+}
+
+.sem-empresas h3{
+    color: #FFF;
+    font-size: 20px;
+}
+
+.light .sem-empresas h3{
+    color: #000;
+}
+
 @media screen and (max-width: 750px) {
     .card-empresa{
         flex-direction: column;

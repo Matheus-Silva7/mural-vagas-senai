@@ -1,6 +1,9 @@
 import axios from "axios";
+/* import jwt_decode from 'jwt-decode';
+ */
 
-const ip = "172.19.64.1";
+
+const ip = "172.31.16.1";
 const API_URL = `http://${ip}:8080`;
 
 // Configuração base do Axios
@@ -64,5 +67,35 @@ const loginSubmit = async (loginForm) => {
     throw error;
   }
 };
+
+/* // Função para obter dados da empresa usando o ID extraído do token
+const getDadosEmpresa = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      throw new Error("Token não encontrado. Por favor, faça login novamente.");
+    }
+
+    // Decodificar o token para extrair o ID da empresa
+    const decodedToken = jwt_decode(token);
+    const empresaId = decodedToken.empresaId;  // Supondo que o token contenha o campo 'empresaId'
+
+    // Configuração do cabeçalho com o token de autenticação
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const response = await api.get(`/empresa/${empresaId}`, config);
+    console.log("Dados da empresa:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao obter os dados da empresa:", error);
+    const errorData = error.response?.data || { message: "Erro desconhecido. Tente novamente mais tarde." };
+    console.log("Detalhes do erro:", errorData);
+    throw error;
+  }
+}; */
 
 export { cadastroSubmit, loginSubmit };

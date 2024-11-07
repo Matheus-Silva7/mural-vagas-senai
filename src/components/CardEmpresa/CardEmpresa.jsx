@@ -4,44 +4,56 @@ import ButtonMain from "../Buttons/ButtonMain/ButtonMain";
 import { IoCheckmark } from 'react-icons/io5';
 import { HiXMark } from 'react-icons/hi2';
 import { autorizarEmpresa, excluirEmpresa, getEmpresas } from '../../services/ApiAdmin';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
 
 const CardEmpresa = () => {
   const [dadosEmpresa, setDadosEmpresa] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchEmpresas = async () => {
-      try {
-        const empresas = await getEmpresas();
-        setDadosEmpresa(empresas);
-      } catch (error) {
-        console.error("Erro ao obter as empresas:", error);
-      }
-    };
-
-    fetchEmpresas();
-  }, []);
-
-  const aprovarEmpresa = async (idEmpresa) => {
+ 
+  const fetchEmpresas = async () => {
     try {
-      await autorizarEmpresa(idEmpresa);  
+      const empresas = await getEmpresas();
+      setDadosEmpresa(empresas);
     } catch (error) {
-      console.error("Erro ao autorizar empresa:", error);
+      console.error("Erro ao obter as empresas:", error);
     }
   };
 
+  
+  useEffect(() => {
+    fetchEmpresas();
+  }, []);
+
+    
+  const aprovarEmpresa = async (idEmpresa) => {
+    try {
+      const response = await autorizarEmpresa(idEmpresa); 
+      if (response) {
+        toast.success("Empresa autorizada com sucesso!");
+        fetchEmpresas(); 
+      }
+    } catch (error) {
+      toast.error("Erro ao autorizar empresa!");
+    }
+  };
+
+ 
   const recusarEmpresa = async (idEmpresa) => {
     try {
-      setLoading(true);
-      await excluirEmpresa(idEmpresa);
-      
-      setTimeout(async () => {
-        await fetchEmpresas();
-        setLoading(false);
-      }, 3000);
+      setLoading(true); 
+      const response = await excluirEmpresa(idEmpresa);
+  
+      if (response) {
+        toast.success("Empresa excluída com sucesso!");
+        fetchEmpresas(); 
+      }
     } catch (error) {
       console.error("Erro ao excluir empresa:", error);
-      setLoading(false);
+      toast.error("Erro ao excluir a empresa!"); 
+    } finally {
+      setLoading(false); 
     }
   };
 
@@ -88,8 +100,9 @@ const CardEmpresa = () => {
           </div>
         ))
       ) : (
-        <p>Carregando empresas...</p>
+        <div className="sem-empresas"><h3>Sem novas solicitações...</h3></div>
       )}
+      <ToastContainer />
     </>
   );
 };

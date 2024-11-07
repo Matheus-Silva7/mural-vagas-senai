@@ -20,22 +20,29 @@ const FormsSingin = () => {
 
   const loginClick = async () => {
     try {
-      const response = await loginSubmit(loginData);
-        if (response.roles[0]==="ROLE_ADMIN") {
-          navigate("/admin");
-        } else if(response.roles[0]==="ROLE_EMPRESA"){
-          navigate("/empresa");
-        }else {
-          notifyErr();
-       }  
-    } catch (error) {
-      if (error.status === 403) {
-        navigate("/formularioenviado");
+      const response = await loginSubmit(loginData); 
+  
+      if (response.roles[0] === "ROLE_ADMIN") {
+        navigate("/admin"); 
+      } else if (response.roles[0] === "ROLE_EMPRESA") {
+    
+/*         const dadosEmpresa = await getDadosEmpresa(); 
+        console.log("Dados da empresa:", dadosEmpresa); */
+        navigate("/empresa"); 
+      } else {
+        notifyErr(); 
       }
-      notifyErr();
-      console.error("Erro no login:", error);
+    } catch (error) {
+    
+      if (error.response && error.response.status === 403) {
+        navigate("/formularioenviado"); 
+      } else {
+        notifyErr(); 
+      }
+      console.error("Erro no login:", error); 
     }
   };
+  
 
   return (
     <div className="content-forms">
