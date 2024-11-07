@@ -15,7 +15,7 @@
 .content-forms form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
     background-color: #273145c4;
     padding: 2rem 5rem;
     border-radius: 10px;
@@ -44,6 +44,11 @@
     cursor: pointer;
 }
 
+.content-forms form .not-acess a:hover{
+    color: #ffffff8e;
+    transition: 0.5s;
+}
+    
 .light .content-forms form {
     background-color: #CECECE;
     color: #333;

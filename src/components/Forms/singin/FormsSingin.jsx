@@ -11,6 +11,8 @@ const FormsSingin = () => {
   const navigate = useNavigate();
   const notifyErr = () => toast.error("Erro no login. Verifique suas credenciais.");
 
+
+
   const [loginData, setLoginData] = useState({
     email: "",
     senha: "",
@@ -19,13 +21,15 @@ const FormsSingin = () => {
   const loginClick = async () => {
     try {
       const response = await loginSubmit(loginData);
-      if (response) {
-        navigate("/empresa");
-      } else {
-        notifyErr();
-      }
+        if (response.roles[0]==="ROLE_ADMIN") {
+          navigate("/admin");
+        } else if(response.roles[0]==="ROLE_EMPRESA"){
+          navigate("/empresa");
+        }else {
+          notifyErr();
+       }  
     } catch (error) {
-      if(error.status === 403){
+      if (error.status === 403) {
         navigate("/formularioenviado");
       }
       notifyErr();
@@ -58,9 +62,9 @@ const FormsSingin = () => {
             setLoginData({ ...loginData, senha: event.target.value })
           }
         />
-
         <a className="forgot-password">Esqueci minha senha</a>
-        <p className="not-access">
+
+        <p className="not-acess">
           Não tenho acesso? <Link to="/cadastro">Cadastre-se</Link>
         </p>
 

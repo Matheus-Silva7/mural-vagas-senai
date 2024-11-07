@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ip = "172.31.16.1";
+const ip = "172.19.64.1";
 const API_URL = `http://${ip}:8080`;
 
 // Configuração base do Axios
@@ -15,7 +15,7 @@ const cadastroSubmit = async (formData) => {
     const dataToSend = {
       nomeEmpresa: formData.nomeEmpresa,
       senha: formData.senha,
-      logo: { linkLogo: formData.logo.linkLogo }, // Aqui o logo será um link gerado após o upload
+      logo: { linkLogo: formData.logo.linkLogo },
       cnpj: formData.cnpj,
       endereco: {
         cep: formData.cep,
@@ -40,9 +40,9 @@ const cadastroSubmit = async (formData) => {
     console.log(response.data);
     return response.data;
   } catch (error) {
-    console.error("Erro ao enviar o formulário", error);
-    console.log("Detalhes do erro:", error.response?.data);
-    alert("Ocorreu um erro ao enviar o formulário.");
+    console.error("Erro ao enviar o formulário:", error);
+    const errorData = error.response?.data || { message: "Erro desconhecido. Tente novamente mais tarde." };
+    console.log("Detalhes do erro:", errorData);
     throw error;
   }
 };
@@ -54,9 +54,9 @@ const loginSubmit = async (loginForm) => {
     const token = responseLogin.data;
 
     // Armazenamento do token no localStorage (ou sessionStorage)
-    localStorage.setItem("token", token);
+    localStorage.setItem("token", token.token);
 
-    console.log("Token recebido:", token);
+    console.log("Token recebido:", token.token);
     return token;
   } catch (error) {
     console.error("Erro ao enviar o formulário de login:", error);

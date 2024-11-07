@@ -4,6 +4,8 @@ import FormDataCompany from "./FormDataCompany";
 import FormAdressCompany from "./FormAdressCompany";
 import FormRegisterCompany from "./FormRegisterCompany";
 import FormDescriptionCompany from "./FormDescriptionCompany";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
 import "./FormsSingup.css";
 import { cadastroSubmit } from "../../../services/Api";
 import axios from "axios";
@@ -14,7 +16,7 @@ const FormsSignup = () => {
   const [formData, setFormData] = useState({
     nomeEmpresa: "",
     senha: "",
-    logo: "", // Aqui será armazenado o arquivo de imagem
+    logo: "",
     cnpj: "",
     cep: "",
     rua: "",
@@ -22,10 +24,10 @@ const FormsSignup = () => {
     numero: "",
     cidade: "",
     estado: "",
-    pais: "",
+    pais: "Brasil",
     ramo: "",
     site: "",
-    quantidadeFuncionarios: 0,
+    quantidadeFuncionarios: "",
     descricao: "",
     email: "",
     telefone: "",
@@ -58,11 +60,11 @@ const FormsSignup = () => {
     const cloudinaryUrl = "https://api.cloudinary.com/v1_1/djrz51uc0/image/upload";
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "mural-vagas"); 
+    formData.append("upload_preset", "mural-vagas");
 
     try {
       const response = await axios.post(cloudinaryUrl, formData);
-      return response.data.secure_url; 
+      return response.data.secure_url;
     } catch (error) {
       console.error("Erro ao fazer upload da imagem:", error);
       throw error;
@@ -76,19 +78,33 @@ const FormsSignup = () => {
       if (formData.logo) {
         logoLink = await uploadLogoToCloudinary(formData.logo);
       }
+  
+      if(formData.senha !== formData.confirmSenha){
+        toast.error("A confimação da senha deve ser igual a senha!");
+        return
+      } 
 
-      // Monta os dados para enviar ao backend, substituindo o logo pelo link gerado
       const dataToSend = { ...formData, logo: { linkLogo: logoLink } };
-
+  
+      // Envia os dados de cadastro para o backend
       const response = await cadastroSubmit(dataToSend);
       if (response) {
-        navigate("/formularioenviado"); 
+        navigate("/formularioenviado");
       }
     } catch (error) {
-      console.error("Erro ao enviar o formulário", error);
-      alert("Ocorreu um erro ao enviar o formulário.");
+      console.log("Erro ao enviar o formulário:", error);
+  
+      
+      const errorData = error.response?.data;
+      if (errorData && typeof errorData === "object") {
+        const [campo, mensagem] = Object.entries(errorData)[0]; 
+        toast.error(`${campo}: ${mensagem}`);
+      } else {
+        toast.error("Erro desconhecido ao enviar o formulário.");
+      }
     }
   };
+  
 
   return (
     <div className="form-progress">
@@ -130,6 +146,7 @@ const FormsSignup = () => {
           )}
         </div>
       </div>
+      <ToastContainer /> 
     </div>
   );
 };
