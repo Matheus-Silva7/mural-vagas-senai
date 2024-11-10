@@ -78,6 +78,11 @@ const FormsSignup = () => {
       if (formData.logo) {
         logoLink = await uploadLogoToCloudinary(formData.logo);
       }
+
+      if(formData.senha.length < 8){
+        toast.error("A senha deve conter 8 caracteres!");
+        return
+      }
   
       if(formData.senha !== formData.confirmSenha){
         toast.error("A confimação da senha deve ser igual a senha!");
