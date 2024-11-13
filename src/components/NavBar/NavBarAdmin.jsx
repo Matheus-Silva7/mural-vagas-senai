@@ -31,9 +31,9 @@ const NavBarAdmin = ({ theme, setTheme }) => {
       <Logo />
       <div className={`right-side ${active ? "active" : ""}`}>
         <ul>
-          <li><Link to={"/admin/vagas"}>Vagas</Link></li>
+          <li><Link to={"/admin"}>Home</Link></li>
           <li><Link to={"/admin/empresas"}>Empresas</Link></li>
-          <li>Olá, Trela</li>
+          <li><Link to={"/admin/vagas"}>Vagas</Link></li>
         </ul>
         <ToogleMode setTheme={setTheme} theme={theme} />
       </div>

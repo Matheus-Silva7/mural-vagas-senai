@@ -1,6 +1,6 @@
   import axios from "axios";
 
-  const ip = "192.168.0.100";
+  const ip = "172.19.64.1";
   const API_URL = `http://${ip}:8080`;
 
   // Configuração base do Axios
@@ -10,9 +10,18 @@
   });
 
   // Função para obter empresas
-  const getEmpresas = async () => {
+  const getEmpresasAceitar = async () => {
     try {
-      const response = await api.get("/empresa");
+      const response = await api.get("/empresa/false");
+      return response.data;
+    } catch (error) {
+      console.error("Erro ao obter empresas:", error);
+      throw error;
+    }
+  };
+  const getEmpresasAceitas = async () => {
+    try {
+      const response = await api.get("/empresa/true");
       return response.data;
     } catch (error) {
       console.error("Erro ao obter empresas:", error);
@@ -71,4 +80,4 @@
   };
   
 
-  export { getEmpresas, autorizarEmpresa, excluirEmpresa };
+  export { getEmpresasAceitar, getEmpresasAceitas, autorizarEmpresa, excluirEmpresa };

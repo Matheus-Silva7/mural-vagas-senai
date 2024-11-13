@@ -23,7 +23,7 @@ const VagasCard = () => {
         </div>
         <div className="bottom-card">
           <span>Data de postagem: <p>02/08/2024</p></span>
-          <ButtonMain text={<Link to={"/empresa/vaga"}>Vaga</Link>}/>
+          <ButtonMain text={<Link to={"/vagaDetalhe"}>Vaga</Link>}/>
         </div>
       </div>
       <div className="vagas-card">
@@ -42,7 +42,7 @@ const VagasCard = () => {
         </div>
         <div className="bottom-card">
           <span>Data de postagem: <p>02/08/2024</p></span>
-          <ButtonMain text={<Link to={"/empresa/vaga"}>Vaga</Link>}/>
+          <ButtonMain text={<Link to={"/vagaDetalhe"}>Vaga</Link>}/>
         </div>
       </div>
       <div className="vagas-card">
@@ -61,7 +61,7 @@ const VagasCard = () => {
         </div>
         <div className="bottom-card">
           <span>Data de postagem: <p>02/08/2024</p></span>
-         <ButtonMain text={<Link to={"/empresa/vaga"}>Vaga</Link>}/>
+         <ButtonMain text={<Link to={"/vagaDetalhe"}>Vaga</Link>}/>
         </div>
       </div>
       <div className="vagas-card">
@@ -80,7 +80,7 @@ const VagasCard = () => {
         </div>
         <div className="bottom-card">
           <span>Data de postagem: <p>02/08/2024</p></span>
-          <ButtonMain text={<Link to={"/empresa/vaga"}>Vaga</Link>}/>
+          <ButtonMain text={<Link to={"/vagaDetalhe"}>Vaga</Link>}/>
         </div>
       </div>
       <div className="vagas-card">
@@ -99,7 +99,7 @@ const VagasCard = () => {
         </div>
         <div className="bottom-card">
           <span>Data de postagem: <p>02/08/2024</p></span>
-          <ButtonMain text={<Link to={"/empresa/vaga"}>Vaga</Link>}/>
+          <ButtonMain text={<Link to={"/vagaDetalhe"}>Vaga</Link>}/>
         </div>
       </div>
     </div>

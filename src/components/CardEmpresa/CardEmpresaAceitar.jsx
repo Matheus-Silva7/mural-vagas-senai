@@ -3,7 +3,7 @@ import "./CardEmpresa.css";
 import ButtonMain from "../Buttons/ButtonMain/ButtonMain";
 import { IoCheckmark } from 'react-icons/io5';
 import { HiXMark } from 'react-icons/hi2';
-import { autorizarEmpresa, excluirEmpresa, getEmpresas } from '../../services/ApiAdmin';
+import { autorizarEmpresa, excluirEmpresa, getEmpresasAceitar } from '../../services/ApiAdmin';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
 
@@ -14,7 +14,7 @@ const CardEmpresa = () => {
  
   const fetchEmpresas = async () => {
     try {
-      const empresas = await getEmpresas();
+      const empresas = await getEmpresasAceitar();
       setDadosEmpresa(empresas);
     } catch (error) {
       console.error("Erro ao obter as empresas:", error);
@@ -74,8 +74,7 @@ const CardEmpresa = () => {
             </div>
             <ButtonMain text={"Mais detalhes"} />
             <div className="right-card">
-              <p>Data solicitação:</p>
-              <p>{empresa.dataSolicitacao}</p>
+              <p>Aceitar Empresa:</p>
               <div className="buttons-aprovar">
                 <button 
                   className='check' 

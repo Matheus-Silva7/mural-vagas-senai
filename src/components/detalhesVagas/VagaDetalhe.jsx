@@ -2,12 +2,16 @@ import React from 'react'
 import "./VagaDetalhe.css"
 import LogoEmpresa from "../../assets/logo-empresa.png"
 import { MdKeyboardArrowLeft } from 'react-icons/md'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom' 
 
 const VagaDetalhe = () => {
+  const navigate = useNavigate(); 
+
   return (
     <div className='vaga-content'>
-      <button className='button-back'><Link to={"/empresa"}><MdKeyboardArrowLeft /></Link> </button>
+      <button className='button-back' onClick={() => navigate(-1)}> 
+        <MdKeyboardArrowLeft />
+      </button>
       <div className="vaga">
         <div className="top-vaga">
           <img src={LogoEmpresa} alt="logo empresa" />
