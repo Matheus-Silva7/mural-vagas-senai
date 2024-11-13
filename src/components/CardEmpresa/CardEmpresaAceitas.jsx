@@ -25,8 +25,6 @@ const CardEmpresa = () => {
     fetchEmpresas();
   }, []);
 
-    
-
  
   const recusarEmpresa = async (idEmpresa) => {
     try {

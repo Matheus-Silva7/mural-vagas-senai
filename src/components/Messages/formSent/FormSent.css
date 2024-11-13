@@ -49,3 +49,9 @@
     color: #48a31e;
     border: solid 1px #48a31e;
 }
+
+@media screen and (max-width: 500px){
+    .form-sent{
+        padding: 3rem;
+    }
+}

@@ -5,10 +5,11 @@ import FormAdressCompany from "./FormAdressCompany";
 import FormRegisterCompany from "./FormRegisterCompany";
 import FormDescriptionCompany from "./FormDescriptionCompany";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; 
+import "react-toastify/dist/ReactToastify.css";
 import "./FormsSingup.css";
 import { cadastroSubmit } from "../../../services/Api";
 import axios from "axios";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
 const FormsSignup = () => {
   const navigate = useNavigate();
@@ -79,18 +80,18 @@ const FormsSignup = () => {
         logoLink = await uploadLogoToCloudinary(formData.logo);
       }
 
-      if(formData.senha.length < 8){
+      if (formData.senha.length < 8) {
         toast.error("A senha deve conter 8 caracteres!");
         return
       }
-  
-      if(formData.senha !== formData.confirmSenha){
+
+      if (formData.senha !== formData.confirmSenha) {
         toast.error("A confimação da senha deve ser igual a senha!");
         return
-      } 
+      }
 
       const dataToSend = { ...formData, logo: { linkLogo: logoLink } };
-  
+
       // Envia os dados de cadastro para o backend
       const response = await cadastroSubmit(dataToSend);
       if (response) {
@@ -98,21 +99,23 @@ const FormsSignup = () => {
       }
     } catch (error) {
       console.log("Erro ao enviar o formulário:", error);
-  
-      
+
+
       const errorData = error.response?.data;
       if (errorData && typeof errorData === "object") {
-        const [campo, mensagem] = Object.entries(errorData)[0]; 
+        const [campo, mensagem] = Object.entries(errorData)[0];
         toast.error(`${campo}: ${mensagem}`);
       } else {
         toast.error("Erro desconhecido ao enviar o formulário.");
       }
     }
   };
-  
 
   return (
     <div className="form-progress">
+      <button className='button-back' onClick={() => navigate(-1)}>
+        <MdKeyboardArrowLeft />
+      </button>
       <div className="form-container">
         <div className="progressbar">
           <div
@@ -151,7 +154,7 @@ const FormsSignup = () => {
           )}
         </div>
       </div>
-      <ToastContainer /> 
+      <ToastContainer />
     </div>
   );
 };
