@@ -1,60 +1,145 @@
-import React, { useState } from 'react';
-import InputDadosEmpresa from '../Inputs/InputDadosEmpresa';
-import "./DadosEmpresa.css"
+import React, { useEffect, useState } from "react";
+import InputDadosEmpresa from "../Inputs/InputDadosEmpresa";
+import "./DadosEmpresa.css";
+import { getDadosEmpresa } from "../../services/Api";
 
 const DadosEmpresa = () => {
+  const [empresa, setEmpresa] = useState({
+    nome: "",
+    cnpj: "",
+    endereco: {
+      rua: "",
+      numero: "",
+      bairro: "",
+      cidade: "",
+      estado: "",
+    },
+    ramo: "",
+    site: "",
+    telefone: "",
+    email: "",
+    senhaAtual: "",
+  });
 
-/*   const [nomeEmpresa, setNomeEmpresa] = useState("Senai Ricardo Lerner") */;
+  const fetchDadosEmpresas = async () => {
+    try {
+      const dadosEmpresa = await getDadosEmpresa(); // Chamada para obter os dados
+      setEmpresa({
+        nome: dadosEmpresa.nomeEmpresa || "",
+        cnpj: dadosEmpresa.cnpj || "",
+        endereco: {
+          rua: dadosEmpresa.endereco?.rua || "",
+          numero: dadosEmpresa.endereco?.numero || "",
+          bairro: dadosEmpresa.endereco?.bairro || "",
+          cidade: dadosEmpresa.endereco?.cidade || "",
+          estado: dadosEmpresa.endereco?.estado || "",
+        },
+        ramo: dadosEmpresa.descricao?.ramo || "",
+        site: dadosEmpresa.descricao?.site || "Não informado",
+        telefone: dadosEmpresa.telefone || "",
+        email: dadosEmpresa.email || "",
+        senhaAtual: "", // Nunca preencha a senha atual diretamente por segurança
+      });
+    } catch (error) {
+      console.error("Erro ao obter os dados da empresa:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDadosEmpresas();
+  }, []);
+
+  // Função para atualizar os campos dinamicamente, inclusive para objetos aninhados
+  const handleInputChange = (field, value, nestedField) => {
+    if (nestedField) {
+      setEmpresa((prev) => ({
+        ...prev,
+        [field]: {
+          ...prev[field],
+          [nestedField]: value,
+        },
+      }));
+    } else {
+      setEmpresa((prev) => ({
+        ...prev,
+        [field]: value,
+      }));
+    }
+  };
 
   return (
-    <div className='content-dados'>
+    <div className="content-dados">
       <InputDadosEmpresa
         label={"Nome"}
         type={"text"}
-        value={"Trela"}
-        onValueChange={(newValue) => setNomeEmpresa(newValue)}
+        value={empresa.nome}
+        onValueChange={(newValue) => handleInputChange("nome", newValue)}
       />
       <InputDadosEmpresa
-        label={"Cnpj"}
+        label={"CNPJ"}
         type={"text"}
-        value={"321.31233.412/0001-23"}
-        onValueChange={(newValue) => setNomeEmpresa(newValue)}
+        value={empresa.cnpj}
+        onValueChange={(newValue) => handleInputChange("cnpj", newValue)}
       />
       <InputDadosEmpresa
-        label={"Endereço"}
+        label={"Rua"}
         type={"text"}
-        value={"Rua ali perto, nº30, jardim cotia, São Paulo"}
-        onValueChange={(newValue) => setNomeEmpresa(newValue)}
+        value={empresa.endereco.rua}
+        onValueChange={(newValue) => handleInputChange("endereco", newValue, "rua")}
+      />
+      <InputDadosEmpresa
+        label={"Número"}
+        type={"text"}
+        value={empresa.endereco.numero}
+        onValueChange={(newValue) => handleInputChange("endereco", newValue, "numero")}
+      />
+      <InputDadosEmpresa
+        label={"Bairro"}
+        type={"text"}
+        value={empresa.endereco.bairro}
+        onValueChange={(newValue) => handleInputChange("endereco", newValue, "bairro")}
+      />
+      <InputDadosEmpresa
+        label={"Cidade"}
+        type={"text"}
+        value={empresa.endereco.cidade}
+        onValueChange={(newValue) => handleInputChange("endereco", newValue, "cidade")}
+      />
+      <InputDadosEmpresa
+        label={"Estado"}
+        type={"text"}
+        value={empresa.endereco.estado}
+        onValueChange={(newValue) => handleInputChange("endereco", newValue, "estado")}
       />
       <InputDadosEmpresa
         label={"Ramo"}
         type={"text"}
-        value={"Tecnologia"}
-        onValueChange={(newValue) => setNomeEmpresa(newValue)}
+        value={empresa.ramo}
+        onValueChange={(newValue) => handleInputChange("ramo", newValue)}
       />
       <InputDadosEmpresa
         label={"Site"}
         type={"text"}
-        value={"www.trela.com.br"}
-        onValueChange={(newValue) => setNomeEmpresa(newValue)}
+        value={empresa.site}
+        onValueChange={(newValue) => handleInputChange("site", newValue)}
       />
-        <InputDadosEmpresa
-          label={"Telefone"}
-          type={"text"}
-          value={"(11) 99999-8888"}
-          onValueChange={(newValue) => setNomeEmpresa(newValue)}
-        />
+      <InputDadosEmpresa
+        label={"Telefone"}
+        type={"text"}
+        value={empresa.telefone}
+        onValueChange={(newValue) => handleInputChange("telefone", newValue)}
+      />
       <InputDadosEmpresa
         label={"Email"}
         type={"text"}
-        value={"trela@email.com"}
-        onValueChange={(newValue) => setNomeEmpresa(newValue)}
+        value={empresa.email}
+        onValueChange={(newValue) => handleInputChange("email", newValue)}
       />
       <InputDadosEmpresa
-        label={"Senha atual"}
+        label={"Senha Atual"}
         type={"password"}
-        value={"Trela"}
-        onValueChange={(newValue) => setNomeEmpresa(newValue)}
+        value={empresa.senhaAtual}
+        onValueChange={(newValue) => handleInputChange("senhaAtual", newValue)}
       />
     </div>
   );

@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import "./FormsSingin.css";
 import InputText from "../../Inputs/InputText";
 import { Link, useNavigate } from "react-router-dom";
-import { loginSubmit } from "../../../services/Api";
+import { getDadosEmpresa, loginSubmit } from "../../../services/Api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ButtonSubmit from "../../Buttons/ButtonSubmit/ButtonSubmit";
 
 const FormsSingin = () => {
   const navigate = useNavigate();
-  const notifyErr = () => toast.error("Erro no login. Verifique suas credenciais.");
+  const notifyErr = (message) => toast.error(message);
 
 
 
@@ -26,9 +26,10 @@ const FormsSingin = () => {
         navigate("/admin"); 
       } else if (response.roles[0] === "ROLE_EMPRESA") {
     
-/*         const dadosEmpresa = await getDadosEmpresa(); 
-        console.log("Dados da empresa:", dadosEmpresa); */
+        const dadosEmpresa = await getDadosEmpresa(); 
+        console.log("Dados da empresa:", dadosEmpresa);
         navigate("/empresa"); 
+      
       } else {
         notifyErr(); 
       }
@@ -36,8 +37,12 @@ const FormsSingin = () => {
     
       if (error.response && error.response.status === 403) {
         navigate("/formularioenviado"); 
-      } else {
-        notifyErr(); 
+      } else if(error.response && error.response.status === 404) {
+        notifyErr("Usuario não encontrado, realize o cadastro ou verifique as credênciais digitadas."); 
+      } else if(error.response && error.response.status === 401){
+        notifyErr("Email e/ou senha incorretos!"); 
+      } else{
+        notifyErr("Erro no login, verifique as credênciais digitadas."); 
       }
       console.error("Erro no login:", error); 
     }
