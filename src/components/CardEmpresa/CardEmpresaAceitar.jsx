@@ -57,6 +57,10 @@ const CardEmpresa = () => {
     }
   };
 
+  const clickDetalhesEmpres = (empresaId)=>{
+    console.log(empresaId)
+  }
+
   return (
     <>
       {loading && <p>Excluindo empresa, atualizando lista...</p>}
@@ -72,7 +76,7 @@ const CardEmpresa = () => {
                 <p>{empresa.endereco.cidade}</p>
               </div>
             </div>
-            <ButtonMain text={"Mais detalhes"} />
+            <ButtonMain text={"Mais detalhes"} click={clickDetalhesEmpres(empresa.empresaId)}/>
             <div className="right-card">
               <p>Aceitar Empresa:</p>
               <div className="buttons-aprovar">

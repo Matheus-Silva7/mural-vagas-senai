@@ -44,6 +44,11 @@
   color: #333;
 }
 
+.light .inputText,
+.light .textarea{
+  border: solid 1px #b9b9b9;
+}
+
 .light .color-text label {
   color: #63E4F2;
 }

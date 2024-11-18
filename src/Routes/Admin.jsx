@@ -15,6 +15,7 @@ const Admin = ({ theme, setTheme }) => {
     try {
       const vagas = await getTodasVagas();
       setVagas(vagas);
+   
     } catch (error) {
       console.error("Erro ao obter as vagas:", error);
     }
@@ -31,10 +32,11 @@ const Admin = ({ theme, setTheme }) => {
       <MainTitle title={"Ultimas solicitações"} />
       <CardEmpresaAceitar />
       <MainTitle title={"Vagas públicadas"} />
-      <div className='vagas-content'>
+      <div className={`vagas-content ${vagas.length > 3? ("tres-vagas"):("")}`}>
         {vagas.map((vaga) => (
           <VagasCard
             key={vaga.vagaId}
+            vagasExist={vagas.length}
             nomeVaga={vaga.nomeVaga}
             dataPublicacao={vaga.dataPublicacao}
           />

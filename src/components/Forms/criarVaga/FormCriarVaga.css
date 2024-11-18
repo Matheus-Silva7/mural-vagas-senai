@@ -47,7 +47,11 @@
     border: 1px solid #ccc;
     margin-top: 5px;
     outline: none;
-    background-color: #ccc;
+    background-color: #D9D9D9;
+  }
+
+  .light .form-criar .input-select select{
+  border: solid 1px #b9b9b9;
   }
   
 

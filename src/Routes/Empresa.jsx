@@ -30,11 +30,13 @@ const Empresa = ({ theme, setTheme }) => {
     <>
       <NavBarEmpresa theme={theme} setTheme={setTheme} />
       <MainTitle title={"Minhas Vagas"} />
-      <div className='vagas-content'>
+      <div className={`vagas-content ${vagas.length > 3? ("tres-vagas"):("")}`}>
 
         {vagas.map((vaga) => (
           <VagasCard
             key={vaga.vagaId}
+            vagaid={vaga.vagaId}
+            vagasExist={vagas.length}
             nomeVaga={vaga.nomeVaga}
             dataPublicacao={vaga.dataPublicacao}
           />
