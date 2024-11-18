@@ -5,7 +5,7 @@ import ButtonSubmit from "../../Buttons/ButtonSubmit/ButtonSubmit";
 import TextArea from "../../Inputs/TextArea";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import { criarVaga } from "../../../services/ApiVaga";
+import { criarVaga, getTodasVagas } from "../../../services/ApiVaga";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
 
@@ -23,14 +23,14 @@ const FormCriarVaga = () => {
     dataExpiracao: "",
   });
 
-  console.log(formData.tipoContratacao)
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const vagaCriada = await criarVaga(formData);
       console.log("Vaga criada:", vagaCriada);
       toast.success("Vaga criada com sucesso!");
+      const vagas = await getTodasVagas();
+      console.log(vagas)
     } catch (error) {
       console.error("Erro ao criar a vaga:", error);
       toast.error("Erro ao criar a vaga!");

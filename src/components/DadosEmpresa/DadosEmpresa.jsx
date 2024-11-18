@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import InputDadosEmpresa from "../Inputs/InputDadosEmpresa";
+import { Button } from "@mui/material"; // Importando o componente Button do Material UI
 import "./DadosEmpresa.css";
-import { getDadosEmpresa } from "../../services/Api";
+import { getDadosEmpresa, updateEmpresa } from "../../services/Api"; // Importando as funções necessárias
 
 const DadosEmpresa = () => {
   const [empresa, setEmpresa] = useState({
@@ -13,17 +14,21 @@ const DadosEmpresa = () => {
       bairro: "",
       cidade: "",
       estado: "",
+      cep: "",
+      pais: "",
     },
     ramo: "",
     site: "",
     telefone: "",
     email: "",
+    descricao: "",
     senhaAtual: "",
+    logo: { linkLogo: "" }, // Adicionando logo
   });
 
   const fetchDadosEmpresas = async () => {
     try {
-      const dadosEmpresa = await getDadosEmpresa(); // Chamada para obter os dados
+      const dadosEmpresa = await getDadosEmpresa();
       setEmpresa({
         nome: dadosEmpresa.nomeEmpresa || "",
         cnpj: dadosEmpresa.cnpj || "",
@@ -33,12 +38,17 @@ const DadosEmpresa = () => {
           bairro: dadosEmpresa.endereco?.bairro || "",
           cidade: dadosEmpresa.endereco?.cidade || "",
           estado: dadosEmpresa.endereco?.estado || "",
+          cep: dadosEmpresa.endereco?.cep || "",
+          pais: dadosEmpresa.endereco?.pais || "",
         },
+        descricao: dadosEmpresa.descricao?.descricao || "",
         ramo: dadosEmpresa.descricao?.ramo || "",
         site: dadosEmpresa.descricao?.site || "Não informado",
+        qntdFuncionarios: dadosEmpresa.descricao?.qntdFuncionarios,
         telefone: dadosEmpresa.telefone || "",
         email: dadosEmpresa.email || "",
-        senhaAtual: "", // Nunca preencha a senha atual diretamente por segurança
+        senhaAtual: "", // Senha atual, que pode ser alterada no futuro
+        logo: { linkLogo: dadosEmpresa.logo?.linkLogo || "" }, // Adicionando logo
       });
     } catch (error) {
       console.error("Erro ao obter os dados da empresa:", error);
@@ -49,7 +59,6 @@ const DadosEmpresa = () => {
     fetchDadosEmpresas();
   }, []);
 
-  // Função para atualizar os campos dinamicamente, inclusive para objetos aninhados
   const handleInputChange = (field, value, nestedField) => {
     if (nestedField) {
       setEmpresa((prev) => ({
@@ -67,8 +76,49 @@ const DadosEmpresa = () => {
     }
   };
 
+ // Função para formatar os dados antes de enviar para a API
+const handleSave = async () => {
+  try {
+    const updatedData = {
+      nomeEmpresa: empresa.nome,
+      senha: empresa.senhaAtual, // Senha atual
+      logo: empresa.logo,
+      cnpj: empresa.cnpj,
+      endereco: {
+        cep: empresa.endereco.cep,
+        rua: empresa.endereco.rua,
+        bairro: empresa.endereco.bairro,
+        pais: empresa.endereco.pais,
+        numero: empresa.endereco.numero,
+        cidade: empresa.endereco.cidade,
+        estado: empresa.endereco.estado,
+      },
+      descricao: {
+        descricao: empresa.descricao,
+        qntdFuncionarios: empresa.qntdFuncionarios,
+        ramo: empresa.ramo,
+        site: empresa.site,
+      },
+      email: empresa.email,
+      telefone: empresa.telefone,
+    };
+
+    // Verificar os dados enviados
+    console.log("Dados enviados para a API:", updatedData);
+
+    // Enviar os dados para a API
+    await updateEmpresa(updatedData); // Envia os dados formatados para a API
+    alert("Dados atualizados com sucesso!");
+  } catch (error) {
+    console.error("Erro ao atualizar os dados:", error);
+    alert("Falha ao atualizar os dados. Tente novamente.");
+  }
+};
+
+
   return (
     <div className="content-dados">
+      {/* Campos de input para editar os dados da empresa */}
       <InputDadosEmpresa
         label={"Nome"}
         type={"text"}
@@ -112,6 +162,12 @@ const DadosEmpresa = () => {
         onValueChange={(newValue) => handleInputChange("endereco", newValue, "estado")}
       />
       <InputDadosEmpresa
+        label={"Descrição"}
+        type={"text"}
+        value={empresa.descricao}
+        onValueChange={(newValue) => handleInputChange("descricao", newValue)}
+      />
+      <InputDadosEmpresa
         label={"Ramo"}
         type={"text"}
         value={empresa.ramo}
@@ -122,6 +178,12 @@ const DadosEmpresa = () => {
         type={"text"}
         value={empresa.site}
         onValueChange={(newValue) => handleInputChange("site", newValue)}
+      />
+      <InputDadosEmpresa
+        label={"Quantidade Funcionarios"}
+        type={"number"}
+        value={empresa.qntdFuncionarios}
+        onValueChange={(newValue) => handleInputChange("qntdFuncionarios", newValue)}
       />
       <InputDadosEmpresa
         label={"Telefone"}
@@ -141,6 +203,11 @@ const DadosEmpresa = () => {
         value={empresa.senhaAtual}
         onValueChange={(newValue) => handleInputChange("senhaAtual", newValue)}
       />
+
+      {/* Botão para salvar as alterações */}
+      <Button variant="contained" onClick={handleSave}>
+        Salvar Alterações
+      </Button>
     </div>
   );
 };

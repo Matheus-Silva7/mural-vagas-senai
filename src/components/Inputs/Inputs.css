@@ -28,10 +28,15 @@
 .input-dados {
   border: 1px solid #38768E;
   background-color: #232B3B;
+  color: #fff;
   width: 700px;
   border-radius: 10px;
   height: 50px;
   padding: 10px;
+}
+
+.input-dados.textarea{
+  height: 200px;
 }
 
 .light .input-dados {

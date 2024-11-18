@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ip = "172.31.16.1";
+const ip = "172.19.64.1";
 const API_URL = `http://${ip}:8080`;
 
 const api = axios.create({
@@ -8,7 +8,7 @@ const api = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
-export const criarVaga = async (formData) => {
+ const criarVaga = async (formData) => {
   try {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -53,3 +53,19 @@ export const criarVaga = async (formData) => {
     throw error;
   }
 };
+
+const getTodasVagas= async () => {
+  try {
+    const response = await api.get(`/vagas`);
+    console.log("vagas:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao obter as vagas:", error);
+    const errorData = error.response?.data || { message: "Erro desconhecido. Tente novamente mais tarde." };
+    console.log("Detalhes do erro:", errorData);
+    throw error;
+  }
+};
+
+
+export  {criarVaga, getTodasVagas}

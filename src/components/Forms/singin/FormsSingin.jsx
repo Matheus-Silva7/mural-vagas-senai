@@ -38,9 +38,9 @@ const FormsSingin = () => {
       if (error.response && error.response.status === 403) {
         navigate("/formularioenviado"); 
       } else if(error.response && error.response.status === 404) {
-        notifyErr("Usuario não encontrado, realize o cadastro ou verifique as credênciais digitadas."); 
+        notifyErr("Email e/ou senha incorretos! Tente novamente ou faça seu cadastro."); 
       } else if(error.response && error.response.status === 401){
-        notifyErr("Email e/ou senha incorretos!"); 
+        notifyErr("Email e/ou senha incorretos! Tente novamente ou faça seu cadastro."); 
       } else{
         notifyErr("Erro no login, verifique as credênciais digitadas."); 
       }

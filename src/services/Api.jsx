@@ -3,7 +3,7 @@ import axios from "axios";
  */
 
 
-const ip = "172.31.16.1";
+const ip = "172.19.64.1";
 const API_URL = `http://${ip}:8080`;
 
 // Configuração base do Axios
@@ -72,7 +72,7 @@ const loginSubmit = async (loginForm) => {
 const getDadosEmpresa = async () => {
   try {
   
-    const empresaId = 11
+    const empresaId = 10
 
     const response = await api.get(`/empresa/${empresaId}`);
     console.log("Dados da empresa:", response.data);
@@ -85,4 +85,36 @@ const getDadosEmpresa = async () => {
   }
 };
 
-export { cadastroSubmit, loginSubmit, getDadosEmpresa };
+const updateEmpresa = async (updatedData) => {
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      throw new Error("Token não encontrado");
+    }
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    };
+
+    const empresaId = 10;  // Certifique-se de que o ID está correto
+
+    const response = await api.patch(`/empresa/${empresaId}`, updatedData, config);
+    console.log("Dados atualizados com sucesso:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao atualizar os dados da empresa:", error);
+    if (error.response) {
+      console.log("Erro detalhado da resposta:", error.response.data);
+    } else {
+      console.log("Erro sem resposta:", error.message);
+    }
+    const errorData = error.response?.data || { message: "Erro desconhecido. Tente novamente mais tarde." };
+    throw new Error(errorData.message);
+  }
+};
+
+
+export { cadastroSubmit, loginSubmit, getDadosEmpresa,updateEmpresa };
