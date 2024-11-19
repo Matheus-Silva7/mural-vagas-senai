@@ -11,7 +11,6 @@ const CardEmpresa = () => {
   const [dadosEmpresa, setDadosEmpresa] = useState([]);
   const [loading, setLoading] = useState(false);
 
- 
   const fetchEmpresas = async () => {
     try {
       const empresas = await getEmpresasAceitar();
@@ -21,12 +20,10 @@ const CardEmpresa = () => {
     }
   };
 
-  
   useEffect(() => {
     fetchEmpresas();
   }, []);
 
-    
   const aprovarEmpresa = async (idEmpresa) => {
     try {
       const response = await autorizarEmpresa(idEmpresa); 
@@ -39,7 +36,6 @@ const CardEmpresa = () => {
     }
   };
 
- 
   const recusarEmpresa = async (idEmpresa) => {
     try {
       setLoading(true); 
@@ -57,9 +53,11 @@ const CardEmpresa = () => {
     }
   };
 
-  const clickDetalhesEmpres = (empresaId)=>{
-    console.log(empresaId)
-  }
+  // Função chamada ao clicar no botão "Mais Detalhes"
+  const handleMostrarDetalhes = (empresaId) => {
+    console.log(`ID da empresa: ${empresaId}`);
+    // Aqui você pode realizar qualquer ação com o id, por exemplo, abrir um modal ou redirecionar
+  };
 
   return (
     <>
@@ -76,7 +74,10 @@ const CardEmpresa = () => {
                 <p>{empresa.endereco.cidade}</p>
               </div>
             </div>
-            <ButtonMain text={"Mais detalhes"} click={clickDetalhesEmpres(empresa.empresaId)}/>
+
+            {/* Renderiza o botão "Mais Detalhes" e chama a função ao clicar */}
+            <ButtonMain text={"Mais detalhes"} click={() => handleMostrarDetalhes(empresa.empresaId)} />
+            
             <div className="right-card">
               <p>Aceitar Empresa:</p>
               <div className="buttons-aprovar">

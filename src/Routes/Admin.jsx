@@ -36,6 +36,7 @@ const Admin = ({ theme, setTheme }) => {
         {vagas.map((vaga) => (
           <VagasCard
             key={vaga.vagaId}
+            vagaid={vaga.vagaId}
             vagasExist={vagas.length}
             nomeVaga={vaga.nomeVaga}
             dataPublicacao={vaga.dataPublicacao}

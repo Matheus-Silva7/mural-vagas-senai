@@ -57,7 +57,6 @@ const api = axios.create({
 const getTodasVagas= async () => {
   try {
     const response = await api.get(`/vagas`);
-    console.log("vagas:", response.data);
     return response.data;
   } catch (error) {
     console.error("Erro ao obter as vagas:", error);
@@ -67,5 +66,17 @@ const getTodasVagas= async () => {
   }
 };
 
+const getOneVaga = async (vagaid) =>{
+  try {
+    const response = await api.get(`/vagas/${vagaid}`);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao obter a vaga:", error);
+    const errorData = error.response?.data || { message: "Erro desconhecido. Tente novamente mais tarde." };
+    console.log("Detalhes do erro:", errorData);
+    throw error;
+  }
+}
 
-export  {criarVaga, getTodasVagas}
+
+export  {criarVaga, getTodasVagas, getOneVaga}

@@ -2,9 +2,11 @@ import React from 'react';
 import "./VagasCard.css";
 import ImgEmpresa from "../../../assets/empresa-img.png";
 import ButtonMain from '../../Buttons/ButtonMain/ButtonMain';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Importar useNavigate
+import { getOneVaga } from '../../../services/ApiVaga';
 
 const VagasCard = ({ vagasExist, vagaid, nomeVaga, dataPublicacao }) => {
+  const navigate = useNavigate();
 
   // Função para formatar a data no formato DD/MM/YYYY
   const formatarData = (data) => {
@@ -15,9 +17,18 @@ const VagasCard = ({ vagasExist, vagaid, nomeVaga, dataPublicacao }) => {
     return `${day}/${month}/${year}`; 
   };
 
+  // Função para lidar com o clique no botão "Ver Detalhes"
+  const handleClick = async (vagaId) => {
+    try {
+  
+      const response = await getOneVaga(vagaId)
+      
+      // Passando os dados da vaga para a página de detalhes
+      navigate('/vagaDetalhe', { state: { vaga: response } });
 
-  const handleClick = (id) => {
-    console.log("foi");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -32,17 +43,17 @@ const VagasCard = ({ vagasExist, vagaid, nomeVaga, dataPublicacao }) => {
           <div className="right-top">
             <div className="info-vaga">
               <h2>{nomeVaga}</h2>
-              <span>Tempos Brasil</span>
+              <span>Tempos Brasil</span> {/* Nome da empresa, substitua conforme necessário */}
             </div>
             <div className='info-local'>
               <p>Presencial</p>
-              <p>São Paulo</p>
+              <p>São Paulo</p> {/* Localização da vaga */}
             </div>
           </div>
         </div>
         <div className="bottom-card">
           <span>Data de postagem: <p>{formatarData(dataPublicacao)}</p></span>
-          <ButtonMain text={<Link to={"/vagaDetalhe"}>Vaga</Link>} click={handleClick(vagaid)} />
+          <ButtonMain text="Vaga" click={() => handleClick(vagaid)} />
         </div>
       </div>
     )
