@@ -36,7 +36,7 @@ const VagaDetalhe = () => {
           <div className="right-top">
             <div className="titles">
               <h1 className="title-vaga">{vaga.nomeVaga}</h1>
-              <h2 className="n-empresa">Nome da Empresa</h2> 
+              <h2 className="n-empresa">Liora</h2> 
             </div>
             <div className="data-vaga">
               <p>Publicado em {formatarData(vaga.dataPublicacao)}</p>
@@ -47,29 +47,61 @@ const VagaDetalhe = () => {
         <div className="infos-vaga">
           <div className="info">
             <span>Posição</span>
-            <p>{vaga.tipoContratacao.tipo}</p> {/* Descrição da vaga */}
+            <p>{vaga.tipoContratacao.tipo}</p>
           </div>
           <div className="info">
             <span>Modelo de trabalho</span>
-            <p>Presencial</p> {/* Tipo de contratação */}
+            <p>Presencial</p> 
           </div>
           <div className="info">
-            <span>Salário</span>
-            <p>R$ {vaga.salario}</p> {/* Salário */}
+            <span>Remuneração</span>
+            <p>R$ {vaga.salario}</p>
           </div>
           <div className="info">
             <span>Carga Horaria</span>
-            <p>{vaga.cargaSemanal}</p> {/* Quantidade de vagas */}
+            <p>{vaga.cargaSemanal}</p> 
           </div>
           <div className="info">
             <span>Localização</span>
-            <p>São Paulo</p> {/* Quantidade de vagas */}
+            <p>São Paulo</p> 
           </div>
         </div>
         <div className="desc-vaga">
           <div className="desc">
+            <h3>Sobre a empresa</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+          </div>
+          <div className="desc">
+            <h3>Contatos da empresa</h3>
+           <ul>
+            <li><b>Email:</b> empresa@email.com</li>
+            <li><b>Telefone:</b> 11 987654321</li>
+            <li><b>Endereço:</b> It has survived not only five centuries, but also the leap into electronic typesetting</li>
+           </ul>
+          </div>
+          <div className="desc">
+            <h3>Descrição da vaga</h3>
+            <p>{vaga.descricao}</p> 
+          </div>
+          <div className="desc">
+            <h3>Requisitos</h3>
+            <p>{vaga.requisitos}</p> 
+          </div>
+          <div className="desc">
+            <h3>Benefícios</h3>
+            <p>{vaga.beneficios.beneficio}</p> 
+          </div>
+          <div className="desc">
+            <h3>Informações adicionais</h3>
+           <ul>
+            <li><b>Remuneração:</b> R$ {vaga.salario}</li>
+            <li><b>Carga horária semanal:</b> {vaga.cargaSemanal} horas</li>
+          <li><b>Quantidade de vagas:</b> {vaga.qtdVagasDisponiveis} vagas</li>
+           </ul>
+          </div>
+          <div className="desc">
             <h3>Como se candidatar</h3>
-            <p>{vaga.formaCandidatura.formaCandidatura}</p> {/* Como se candidatar */}
+            <p>A candidatura deve ser feito {vaga.formaCandidatura.formaCandidatura}</p> {/* Como se candidatar */}
           </div>
         </div>
       </div>
