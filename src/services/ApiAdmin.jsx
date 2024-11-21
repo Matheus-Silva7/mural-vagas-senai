@@ -1,6 +1,6 @@
   import axios from "axios";
 
-  const ip = "192.168.100.126";
+  const ip = "172.31.16.1";
   const API_URL = `http://${ip}:8080`;
 
   // Configuração base do Axios

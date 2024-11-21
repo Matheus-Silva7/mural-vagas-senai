@@ -11,9 +11,9 @@ const VagaDetalhe = () => {
   // Pegando os dados da vaga a partir do state
   const vaga = location.state?.vaga; 
 
-  // Caso não tenha dados da vaga, exibe uma mensagem de erro
+  
   if (!vaga) {
-    return <div>Vaga não encontrada.</div>; 
+    return <div className='sem-vaga'>Vaga não encontrada.</div>; 
   }
 
   // Função para formatar a data no formato DD/MM/YYYY
@@ -101,7 +101,7 @@ const VagaDetalhe = () => {
           </div>
           <div className="desc">
             <h3>Como se candidatar</h3>
-            <p>A candidatura deve ser feito {vaga.formaCandidatura.formaCandidatura}</p> {/* Como se candidatar */}
+            <p>A candidatura deve ser feito {vaga.formaCandidatura.formaCandidatura}</p> 
           </div>
         </div>
       </div>
