@@ -5,8 +5,12 @@ import { HiXMark } from 'react-icons/hi2';
 import {  excluirEmpresa, getEmpresasAceitas } from '../../services/ApiAdmin';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
+import { getDadosEmpresa } from '../../services/Api';
+import { useNavigate } from 'react-router-dom';
 
 const CardEmpresa = () => {
+
+  const navigate = useNavigate();
   const [dadosEmpresa, setDadosEmpresa] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -43,6 +47,19 @@ const CardEmpresa = () => {
     }
   };
 
+  const handleMostrarDetalhes = async (empresaId) => {
+    try {
+  
+      const response = await getDadosEmpresa(empresaId)
+      
+      // Passando os dados da empresa para a página de detalhes
+      navigate('/admin/empresaDetalhe', { state: { empresa: response } });
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       {loading && <p>Excluindo empresa, atualizando lista...</p>}
@@ -58,7 +75,7 @@ const CardEmpresa = () => {
                 <p>{empresa.endereco.cidade}</p>
               </div>
             </div>
-            <ButtonMain text={"Mais detalhes"} />
+            <ButtonMain text={"Mais detalhes"} click={() => handleMostrarDetalhes(empresa.empresaId)} />
             <div className="right-card">
               <p>Excluir Empresa:</p>
               <p>{empresa.dataSolicitacao}</p>

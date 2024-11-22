@@ -12,6 +12,7 @@ import CriarVaga from "./Routes/CriarVaga";
 import Admin from "./Routes/Admin";
 import AdminEmpresas from "./Routes/AdminEmpresas";
 import AdminVaga from "./Routes/AdminVaga";
+import EmpresaDetalhes from "./Routes/EmpresaDetalhes";
 
 function App() {
   const [theme, setTheme] = useState("dark");
@@ -28,6 +29,7 @@ function App() {
         <Route path="/empresa/criarVaga" element={<CriarVaga theme={theme} setTheme={setTheme} />}/> 
         <Route path="/admin" element={<Admin theme={theme} setTheme={setTheme} />}/> 
         <Route path="/admin/empresas" element={<AdminEmpresas theme={theme} setTheme={setTheme} />}/> 
+        <Route path="/admin/empresaDetalhe" element={<EmpresaDetalhes theme={theme} setTheme={setTheme} />}/> 
         <Route path="/admin/vagas" element={<AdminVaga theme={theme} setTheme={setTheme} />}/> 
       </Routes>
     </div>

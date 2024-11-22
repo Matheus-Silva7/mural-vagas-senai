@@ -1,0 +1,72 @@
+.empresa-content{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    margin: 5rem;
+    color: #fff;
+}
+
+.light .empresa-content{
+    color: #000;
+}
+
+.empresa-content .empresa{
+    background-color: #232B3B;
+    border: solid 1px #3D849F;
+    border-radius: 10px;
+    width: 950px;
+    padding: 3rem;
+    margin: 1rem;
+}
+
+.light .empresa-content .empresa{
+    background-color: #CECECE;
+    border: solid 1px #3D849F;
+}
+
+.topEmpresa{
+    display: flex;
+    gap: 3rem;
+}
+
+.topEmpresa img{
+    width: 120px;
+}
+
+.topEmpresa .top-right-empresa .texts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.topEmpresa .top-right-empresa .texts h1{
+    font-size: 28px;
+}
+
+.topEmpresa .top-right-empresa .texts h2 {
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.topEmpresa .top-right-empresa .texts h2 span{
+    color: #3D849F;
+}
+
+.bottomEmpresa .desc-empresa h3{
+    font-size: 24px;
+    color: #3D849F;
+    margin: 1rem 0;
+}
+
+.bottomEmpresa .desc-empresa {
+    margin: 2rem 0;
+}
+
+.bottomEmpresa .desc-empresa ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: inside;
+    margin: 1rem;
+}

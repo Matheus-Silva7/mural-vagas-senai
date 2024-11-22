@@ -6,8 +6,12 @@ import { HiXMark } from 'react-icons/hi2';
 import { autorizarEmpresa, excluirEmpresa, getEmpresasAceitar } from '../../services/ApiAdmin';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
+import { getDadosEmpresa } from '../../services/Api';
+import { useNavigate } from 'react-router-dom';
 
 const CardEmpresa = () => {
+
+  const navigate = useNavigate();
   const [dadosEmpresa, setDadosEmpresa] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -53,10 +57,18 @@ const CardEmpresa = () => {
     }
   };
 
-  // Função chamada ao clicar no botão "Mais Detalhes"
-  const handleMostrarDetalhes = (empresaId) => {
-    console.log(`ID da empresa: ${empresaId}`);
-    // Aqui você pode realizar qualquer ação com o id, por exemplo, abrir um modal ou redirecionar
+
+  const handleMostrarDetalhes = async (empresaId) => {
+    try {
+  
+      const response = await getDadosEmpresa(empresaId)
+      
+      // Passando os dados da empresa para a página de detalhes
+      navigate('/admin/empresaDetalhe', { state: { empresa: response } });
+
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -75,7 +87,7 @@ const CardEmpresa = () => {
               </div>
             </div>
 
-            {/* Renderiza o botão "Mais Detalhes" e chama a função ao clicar */}
+            
             <ButtonMain text={"Mais detalhes"} click={() => handleMostrarDetalhes(empresa.empresaId)} />
             
             <div className="right-card">

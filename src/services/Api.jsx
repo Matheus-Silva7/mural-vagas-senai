@@ -3,7 +3,7 @@ import axios from "axios";
  */
 
 
-const ip = "172.31.16.1";
+const ip = "172.29.160.1";
 const API_URL = `http://${ip}:8080`;
 
 // Configuração base do Axios
@@ -69,11 +69,10 @@ const loginSubmit = async (loginForm) => {
 };
 
 // Função para obter dados da empresa usando o ID extraído do token
-const getDadosEmpresa = async () => {
+const getDadosEmpresa = async (empresaId) => {
   try {
   
-    const empresaId = 10
-
+    //const empresaId = 15
 
     const response = await api.get(`/empresa/${empresaId}`);
     console.log("Dados da empresa:", response.data);
@@ -100,7 +99,7 @@ const updateEmpresa = async (updatedData) => {
       },
     };
 
-    const empresaId = 10;  // Certifique-se de que o ID está correto
+    const empresaId = 15;  // Certifique-se de que o ID está correto
 
     const response = await api.patch(`/empresa/${empresaId}`, updatedData, config);
     console.log("Dados atualizados com sucesso:", response.data);
@@ -116,6 +115,8 @@ const updateEmpresa = async (updatedData) => {
     throw new Error(errorData.message);
   }
 };
+
+
 
 
 export { cadastroSubmit, loginSubmit, getDadosEmpresa,updateEmpresa };
