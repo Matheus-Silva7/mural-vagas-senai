@@ -26,7 +26,7 @@ const FormsSingin = () => {
         navigate("/admin"); 
       } else if (response.roles[0] === "ROLE_EMPRESA") {
     
-        const dadosEmpresa = await getDadosEmpresa(); 
+        const dadosEmpresa = await getDadosEmpresa(10); 
         console.log("Dados da empresa:", dadosEmpresa);
         navigate("/empresa"); 
       

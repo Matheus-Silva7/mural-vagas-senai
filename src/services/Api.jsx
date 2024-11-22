@@ -3,7 +3,7 @@ import axios from "axios";
  */
 
 
-const ip = "172.29.160.1";
+const ip = "172.31.16.1";
 const API_URL = `http://${ip}:8080`;
 
 // Configuração base do Axios
@@ -99,7 +99,7 @@ const updateEmpresa = async (updatedData) => {
       },
     };
 
-    const empresaId = 15;  // Certifique-se de que o ID está correto
+    const empresaId = 10;  // Certifique-se de que o ID está correto
 
     const response = await api.patch(`/empresa/${empresaId}`, updatedData, config);
     console.log("Dados atualizados com sucesso:", response.data);
