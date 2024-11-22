@@ -2,7 +2,8 @@
     display: flex;
     align-items: start;
     justify-content: center;
-    margin: 5rem;
+    margin: 2rem;
+    height: 70vh;
     color: #fff;
 }
 
@@ -69,4 +70,12 @@
     gap: 1rem;
     list-style: inside;
     margin: 1rem;
+}
+
+.aceitar-empresa{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+    gap: 2rem;
 }
