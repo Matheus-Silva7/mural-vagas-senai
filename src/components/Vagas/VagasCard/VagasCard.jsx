@@ -8,7 +8,8 @@ import { getOneVaga } from '../../../services/ApiVaga';
 const VagasCard = ({ vagasExist, vagaid, nomeVaga, dataPublicacao }) => {
   const navigate = useNavigate();
 
-  // Função para formatar a data no formato DD/MM/YYYY
+
+ 
   const formatarData = (data) => {
     const date = new Date(data);
     const day = String(date.getDate()).padStart(2, '0'); 
@@ -52,7 +53,7 @@ const VagasCard = ({ vagasExist, vagaid, nomeVaga, dataPublicacao }) => {
           </div>
         </div>
         <div className="bottom-card">
-          <span>Data de postagem: <p>{formatarData(dataPublicacao)}</p></span>
+          <span>Data de postagem: <p>{dataPublicacao}</p></span>
           <ButtonMain text="Vaga" click={() => handleClick(vagaid)} />
         </div>
       </div>

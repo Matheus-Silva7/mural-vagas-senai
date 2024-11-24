@@ -11,7 +11,6 @@ const EmpresaDados = ({ theme, setTheme }) => {
     <NavBarEmpresa theme={theme} setTheme={setTheme} />
     <MainTitle title={"Meus Dados"}/>
     <DadosEmpresa/>
-    <ButtonMain text={"Salvar"} classname={"button-center"}/>
     <Footer/>
     </>
   )

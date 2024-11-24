@@ -3,7 +3,7 @@ import axios from "axios";
  */
 
 
-const ip = "172.29.160.1";
+const ip = "localhost";
 const API_URL = `http://${ip}:8080`;
 
 // Configuração base do Axios
@@ -55,11 +55,14 @@ const loginSubmit = async (loginForm) => {
   try {
     const responseLogin = await api.post(`/auth/login`, loginForm);
     const token = responseLogin.data;
+    const id = responseLogin.data
 
-    // Armazenamento do token no localStorage (ou sessionStorage)
+    
     localStorage.setItem("token", token.token);
+    localStorage.setItem("id", id.userId)
 
-    console.log("Token recebido:", token.token);
+   /*  console.log("Token recebido:", token.token);
+    console.log("o id:", id.userId); */
     return token;
   } catch (error) {
     console.error("Erro ao enviar o formulário de login:", error);
@@ -72,7 +75,7 @@ const loginSubmit = async (loginForm) => {
 const getDadosEmpresa = async (empresaId) => {
   try {
   
-    const empresaId = 15
+    //const empresaId = 15
 
     const response = await api.get(`/empresa/${empresaId}`);
     console.log("Dados da empresa:", response.data);
@@ -85,7 +88,7 @@ const getDadosEmpresa = async (empresaId) => {
   }
 };
 
-const updateEmpresa = async (updatedData) => {
+const updateEmpresa = async (updatedData, empresaId) => {
   try {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -99,10 +102,12 @@ const updateEmpresa = async (updatedData) => {
       },
     };
 
-    const empresaId = 15;  // Certifique-se de que o ID está correto
 
+    // Fazendo a requisição PATCH
     const response = await api.patch(`/empresa/${empresaId}`, updatedData, config);
-    console.log("Dados atualizados com sucesso:", response.data);
+    
+    // Verificando a resposta da API
+    console.log("Resposta da API:", response.data);
     return response.data;
   } catch (error) {
     console.error("Erro ao atualizar os dados da empresa:", error);
@@ -115,8 +120,6 @@ const updateEmpresa = async (updatedData) => {
     throw new Error(errorData.message);
   }
 };
-
-
 
 
 export { cadastroSubmit, loginSubmit, getDadosEmpresa,updateEmpresa };

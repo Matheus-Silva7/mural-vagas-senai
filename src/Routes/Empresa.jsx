@@ -32,15 +32,19 @@ const Empresa = ({ theme, setTheme }) => {
           vagas.length > 3 ? 'tres-vagas' : ''
         }`}
       >
-        {vagas.map((vaga) => (
-          <VagasCard
-            key={vaga.vagaId}
-            vagaid={vaga.vagaId}
-            vagasExist={vagas.length}
-            nomeVaga={vaga.nomeVaga}
-            dataPublicacao={new Date(vaga.dataPublicacao).toLocaleDateString('pt-BR')}
-          />
-        ))}
+          {vagas.length === 0 ? (
+          <div className='sem-vagas'><h2>Sem vagas</h2></div>
+        ) : (
+          vagas.map((vaga) => (
+            <VagasCard
+              key={vaga.vagaId}
+              vagaid={vaga.vagaId}
+              vagasExist={vagas.length}
+              nomeVaga={vaga.nomeVaga}
+              dataPublicacao={new Date(vaga.dataPublicacao).toLocaleDateString('pt-BR')}
+            />
+          ))
+        )}
       </div>
       <ButtonMain
         text={<Link to="/empresa/criarVaga">Criar vaga</Link>}

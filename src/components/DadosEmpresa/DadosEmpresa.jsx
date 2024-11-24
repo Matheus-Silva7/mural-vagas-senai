@@ -3,8 +3,13 @@ import InputDadosEmpresa from "../Inputs/InputDadosEmpresa";
 import { Button } from "@mui/material"; // Importando o componente Button do Material UI
 import "./DadosEmpresa.css";
 import { getDadosEmpresa, updateEmpresa } from "../../services/Api"; // Importando as funções necessárias
+import ButtonMain from "../Buttons/ButtonMain/ButtonMain";
+import { toast, ToastContainer } from "react-toastify";
 
 const DadosEmpresa = () => {
+
+  const idEmpresa = localStorage.getItem("id");
+ 
   const [empresa, setEmpresa] = useState({
     nome: "",
     cnpj: "",
@@ -28,7 +33,7 @@ const DadosEmpresa = () => {
 
   const fetchDadosEmpresas = async () => {
     try {
-      const dadosEmpresa = await getDadosEmpresa();
+      const dadosEmpresa = await getDadosEmpresa(idEmpresa);
       setEmpresa({
         nome: dadosEmpresa.nomeEmpresa || "",
         cnpj: dadosEmpresa.cnpj || "",
@@ -76,44 +81,44 @@ const DadosEmpresa = () => {
     }
   };
 
- // Função para formatar os dados antes de enviar para a API
-const handleSave = async () => {
-  try {
-    const updatedData = {
-      nomeEmpresa: empresa.nome,
-      senha: empresa.senhaAtual, // Senha atual
-      logo: empresa.logo,
-      cnpj: empresa.cnpj,
-      endereco: {
-        cep: empresa.endereco.cep,
-        rua: empresa.endereco.rua,
-        bairro: empresa.endereco.bairro,
-        pais: empresa.endereco.pais,
-        numero: empresa.endereco.numero,
-        cidade: empresa.endereco.cidade,
-        estado: empresa.endereco.estado,
-      },
-      descricao: {
-        descricao: empresa.descricao,
-        qntdFuncionarios: empresa.qntdFuncionarios,
-        ramo: empresa.ramo,
-        site: empresa.site,
-      },
-      email: empresa.email,
-      telefone: empresa.telefone,
-    };
-
-    // Verificar os dados enviados
-    console.log("Dados enviados para a API:", updatedData);
-
-    // Enviar os dados para a API
-    await updateEmpresa(updatedData); // Envia os dados formatados para a API
-    alert("Dados atualizados com sucesso!");
-  } catch (error) {
-    console.error("Erro ao atualizar os dados:", error);
-    alert("Falha ao atualizar os dados. Tente novamente.");
-  }
-};
+  const handleSave = async () => {
+    try {
+      const updatedData = {
+        nomeEmpresa: empresa.nome,
+        logo: empresa.logo,
+        cnpj: empresa.cnpj,
+        endereco: {
+          cep: empresa.endereco.cep,
+          rua: empresa.endereco.rua,
+          bairro: empresa.endereco.bairro,
+          pais: empresa.endereco.pais,
+          numero: empresa.endereco.numero,
+          cidade: empresa.endereco.cidade,
+          estado: empresa.endereco.estado,
+        },
+        descricao: {
+          descricao: empresa.descricao,
+          qntdFuncionarios: empresa.qntdFuncionarios,
+          ramo: empresa.ramo,
+          site: empresa.site,
+        },
+        email: empresa.email,
+        telefone: empresa.telefone,
+      };
+  
+      // Verifique os dados antes de enviar
+      console.log("Dados enviados para a API:", updatedData);
+  
+      await updateEmpresa(updatedData, idEmpresa);
+  
+      toast.success('Dados atualizados com sucesso!');
+    } catch (error) {
+      console.error("Erro ao atualizar os dados:", error);
+      toast.error("Falha ao atualizar os dados. Tente novamente.");
+    }
+  };
+  
+  
 
 
   return (
@@ -197,17 +202,12 @@ const handleSave = async () => {
         value={empresa.email}
         onValueChange={(newValue) => handleInputChange("email", newValue)}
       />
-      <InputDadosEmpresa
-        label={"Senha Atual"}
-        type={"password"}
-        value={empresa.senhaAtual}
-        onValueChange={(newValue) => handleInputChange("senhaAtual", newValue)}
-      />
 
-      {/* Botão para salvar as alterações */}
-      <Button variant="contained" onClick={handleSave}>
+   
+      <Button className="ButtonMain" variant="contained" onClick={handleSave}>
         Salvar Alterações
       </Button>
+      <ToastContainer />
     </div>
   );
 };
