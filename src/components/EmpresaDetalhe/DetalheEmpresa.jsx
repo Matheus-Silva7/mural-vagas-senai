@@ -49,22 +49,6 @@ const EmpresaDetalhes = () => {
     }
   };
 
- /*  const recusarEmpresaAceita = async (idEmpresa) => {
-    try {
-      setLoading(true);
-      const response = await excluirEmpresa(idEmpresa);
-
-      if (response) {
-        toast.success("Empresa excluída com sucesso!");
-        fetchEmpresas(); // Recarrega os dados após a exclusão
-      }
-    } catch (error) {
-      console.error("Erro ao excluir empresa:", error);
-      toast.error("Erro ao excluir a empresa!");
-    } finally {
-      setLoading(false);
-    }
-  }; */
 
   // Caso a empresa não seja encontrada nos dados
   if (!empresa) {

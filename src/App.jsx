@@ -21,8 +21,8 @@ function App() {
   return (
     <div className={`container ${theme}`}>
       <Routes>
-        <Route path="/" element={<Signin theme={theme} setTheme={setTheme} />} />
-        <Route path="/user" element={<UserPage theme={theme} setTheme={setTheme} />}/> 
+        <Route path="/login" element={<Signin theme={theme} setTheme={setTheme} />} />
+        <Route path="/" element={<UserPage theme={theme} setTheme={setTheme} />}/> 
         <Route path="/cadastro" element={<Singup theme={theme} setTheme={setTheme} />} />
         <Route path="/formularioenviado" element={<SentMessage theme={theme} setTheme={setTheme} />} />
         <Route path="/empresa" element={<Empresa theme={theme} setTheme={setTheme} />}/>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ip = "localhost";
+const ip = "172.19.64.1";
 const API_URL = `http://${ip}:8080`;
 
 const api = axios.create({
@@ -78,5 +78,31 @@ const getOneVaga = async (vagaid) =>{
   }
 }
 
+const deleteVaga = async (vagaid) => {
+  try {
+    const token = localStorage.getItem("token");
+    console.log("Token utilizado:", token); // Log do token
+    if (!token) {
+      throw new Error("Token não encontrado. Por favor, faça login.");
+    }
 
-export  {criarVaga, getTodasVagas, getOneVaga}
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const response = await api.delete(`/vagas/${vagaid}`, config);
+    
+    return response;
+  } catch (error) {
+    console.error("Erro ao deletar a vaga:", error);
+    const errorData = error.response?.data || { message: "Erro desconhecido. Tente novamente mais tarde." };
+    console.log("Detalhes do erro:", errorData);
+    throw error;
+  }
+};
+
+
+
+export  {criarVaga, getTodasVagas, getOneVaga, deleteVaga}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Box, Button } from "@mui/material";
 import { FaEdit } from "react-icons/fa";
 
@@ -6,15 +6,19 @@ const InputDadosEmpresa = ({ label, type, value, onValueChange, fieldName }) => 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tempValue, setTempValue] = useState(value || ""); // Valor inicial
 
-  // Atualiza o estado local ao receber novos valores da prop
+  // Sincroniza tempValue com value quando value é alterado
+  useEffect(() => {
+    setTempValue(value || "");
+  }, [value]);
+
+  // Atualiza o estado local ao editar no modal
   const handleInputChange = (e) => {
     setTempValue(e.target.value);
   };
 
   // Função chamada ao salvar os dados
   const handleSave = () => {
-    // Chama a função onValueChange para atualizar os dados no componente pai
-    onValueChange(tempValue);
+    onValueChange(tempValue); // Atualiza no componente pai
     setIsModalOpen(false); // Fecha o modal
   };
 
@@ -74,8 +78,9 @@ const InputDadosEmpresa = ({ label, type, value, onValueChange, fieldName }) => 
 
       <button
         className="ButtonMain editButton"
-        style={{ cursor: "pointer" }}
-        onClick={handleInputClick}
+        style={{ cursor: label === "CNPJ" ? "not-allowed" : "pointer" }}
+        onClick={label !== "CNPJ" ? handleInputClick : undefined}
+        disabled={label === "CNPJ"}
       >
         <FaEdit />
       </button>

@@ -3,13 +3,14 @@ import "./FormCriarVaga.css";
 import InputText from "../../Inputs/InputText";
 import ButtonSubmit from "../../Buttons/ButtonSubmit/ButtonSubmit";
 import TextArea from "../../Inputs/TextArea";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { criarVaga, getTodasVagas } from "../../../services/ApiVaga";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
 
 const FormCriarVaga = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nomeVaga: "",
     tipoContratacao: "Efetivo",
@@ -30,6 +31,7 @@ const FormCriarVaga = () => {
       console.log("Vaga criada:", vagaCriada);
       toast.success("Vaga criada com sucesso!");
       const vagas = await getTodasVagas();
+      navigate(-1)
       console.log(vagas)
     } catch (error) {
       console.error("Erro ao criar a vaga:", error);

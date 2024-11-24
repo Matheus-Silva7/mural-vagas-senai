@@ -2,13 +2,19 @@ import React, { useState, useEffect } from 'react';
 import "./NavBar.css";
 import ToogleMode from "../Buttons/ToogleMode/ToggleMode";
 import Logo from "../Logo/Logo";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Importa o hook useNavigate
 import { IoMdClose } from 'react-icons/io';
 import { IoMenu } from 'react-icons/io5';
 
 const NavBarAdmin = ({ theme, setTheme }) => {
+  const navigate = useNavigate(); // Hook para navegação
 
   const [active, setActive] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.clear(); // Limpa os dados do localStorage
+    navigate("/login"); // Redireciona para a página inicial
+  };
 
   const clickMenu = () => {
     setActive(!active);
@@ -34,6 +40,7 @@ const NavBarAdmin = ({ theme, setTheme }) => {
           <li><Link to={"/admin"}>Home</Link></li>
           <li><Link to={"/admin/empresas"}>Empresas</Link></li>
           <li><Link to={"/admin/vagas"}>Vagas</Link></li>
+          <li><button onClick={handleLogout}>Sair</button></li>
         </ul>
         <ToogleMode setTheme={setTheme} theme={theme} />
       </div>

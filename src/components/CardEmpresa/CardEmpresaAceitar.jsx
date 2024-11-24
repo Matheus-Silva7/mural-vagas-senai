@@ -78,7 +78,7 @@ const CardEmpresa = () => {
               <div className="text-left">
                 <h2>{empresa.nomeEmpresa}</h2>
                 <p className="b-text">Ramo: {empresa.descricao.ramo}</p>
-                <p>{empresa.endereco.cidade}</p>
+                <p>{empresa.endereco.cidade}, {empresa.endereco.estado}</p>
               </div>
             </div>
             <ButtonMain text="Mais detalhes" click={() => handleMostrarDetalhes(empresa.empresaId)} />

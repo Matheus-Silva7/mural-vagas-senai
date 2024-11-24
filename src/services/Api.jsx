@@ -3,7 +3,7 @@ import axios from "axios";
  */
 
 
-const ip = "localhost";
+const ip = "172.19.64.1";
 const API_URL = `http://${ip}:8080`;
 
 // Configuração base do Axios
@@ -54,22 +54,26 @@ const cadastroSubmit = async (formData) => {
 const loginSubmit = async (loginForm) => {
   try {
     const responseLogin = await api.post(`/auth/login`, loginForm);
-    const token = responseLogin.data;
-    const id = responseLogin.data
+    const data = responseLogin.data; // Renomeado para 'data' para clareza
 
-    
-    localStorage.setItem("token", token.token);
-    localStorage.setItem("id", id.userId)
+    // Armazenar o token, userId e roles no localStorage
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("id", data.userId);
+    localStorage.setItem("roles", JSON.stringify(data.roles)); // Armazena o array como string
 
-   /*  console.log("Token recebido:", token.token);
-    console.log("o id:", id.userId); */
-    return token;
+    /* Debug para garantir que os valores estão corretos */
+    console.log("Token recebido:", data.token);
+    console.log("ID do usuário:", data.userId);
+    console.log("Roles:", data.roles);
+
+    return data; // Retorna os dados recebidos
   } catch (error) {
     console.error("Erro ao enviar o formulário de login:", error);
     console.log("Detalhes do erro:", error.response?.data);
     throw error;
   }
 };
+
 
 // Função para obter dados da empresa usando o ID extraído do token
 const getDadosEmpresa = async (empresaId) => {

@@ -35,7 +35,7 @@ const FormsSingin = () => {
       }
     } catch (error) {
     
-      if (error.response && error.response.status === 403) {
+      if (error.response && error.response.status === 403 || error.response && error.response.status === 500 ) {
         navigate("/formularioenviado"); 
       } else if(error.response && error.response.status === 404) {
         notifyErr("Email e/ou senha incorretos! Tente novamente ou faça seu cadastro."); 
