@@ -21,7 +21,7 @@ const EmpresaDetalhes = () => {
       const response = await autorizarEmpresa(idEmpresa);
       if (response) {
         toast.success('Empresa autorizada com sucesso!');
-        navigate('/admin');
+        navigate(-1);
       }
     } catch (error) {
       console.error('Erro ao autorizar empresa:', error);
