@@ -5,11 +5,10 @@ import { getTodasVagas } from '../services/ApiVaga';
 import VagasCard from '../components/Vagas/VagasCard/VagasCard';
 import TitleMural from '../components/Title/TitleMural';
 import MainTitle from '../components/Title/MainTitle';
-import InfoMural from '../components/InfoMural/InfoMural';
-import ButtonMain from '../components/Buttons/ButtonMain/ButtonMain';
-import { Link } from 'react-router-dom';
+import FiltroVagas from '../components/FiltroVagas/FiltroVagas';
 
-const UserPage = ({theme, setTheme}) => {
+
+const VagasUser = ({theme, setTheme}) => {
   const [vagas, setVagas] = useState([]);
 
   const fetchVagas = async () => {
@@ -29,8 +28,8 @@ const UserPage = ({theme, setTheme}) => {
     <>
      <NavBar theme={theme} setTheme={setTheme} /> 
      <TitleMural text="MURAL DE VAGAS  - Comunidade" />
-     <InfoMural/>
-     <MainTitle title="Vagas recém publicadas" />
+     <FiltroVagas/>
+     <MainTitle title="Vagas publicadas" />
      <div
         className={`vagas-content user-vagas ${
           vagas.length > 3 ? 'tres-vagas' : ''
@@ -50,10 +49,9 @@ const UserPage = ({theme, setTheme}) => {
           ))
         )}
       </div>
-      <ButtonMain text={<Link to={"/vagas"}>Ver mais vagas</Link>} classname={"btn-user-vagas"}/>
      <Footer/>
     </>
   )
 }
 
-export default UserPage
+export default VagasUser

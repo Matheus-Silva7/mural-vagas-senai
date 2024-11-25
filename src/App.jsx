@@ -14,6 +14,7 @@ import AdminEmpresas from "./Routes/AdminEmpresas";
 import AdminVaga from "./Routes/AdminVaga";
 import EmpresaDetalhes from "./Routes/EmpresaDetalhes";
 import UserPage from "./Routes/UserPage";
+import VagasUser from "./Routes/VagasUser";
 
 function App() {
   const [theme, setTheme] = useState("dark");
@@ -21,8 +22,9 @@ function App() {
   return (
     <div className={`container ${theme}`}>
       <Routes>
-        <Route path="/login" element={<Signin theme={theme} setTheme={setTheme} />} />
         <Route path="/" element={<UserPage theme={theme} setTheme={setTheme} />}/> 
+        <Route path="/vagas" element={<VagasUser theme={theme} setTheme={setTheme} />}/> 
+        <Route path="/login" element={<Signin theme={theme} setTheme={setTheme} />} />
         <Route path="/cadastro" element={<Singup theme={theme} setTheme={setTheme} />} />
         <Route path="/formularioenviado" element={<SentMessage theme={theme} setTheme={setTheme} />} />
         <Route path="/empresa" element={<Empresa theme={theme} setTheme={setTheme} />}/>

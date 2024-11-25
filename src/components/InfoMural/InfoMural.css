@@ -1,0 +1,64 @@
+.info-mural{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 2rem;
+  width: 100%;
+  color: #FFF;
+}
+
+.light .info-mural{
+  color: #000;
+}
+
+
+.info-mural .title{
+  width: 90%;
+  margin: 1rem 0;
+}
+
+.info-mural h3{
+  font-size: 18px;
+}
+
+.info-mural hr{
+  width: 100%;
+}
+
+.light .info-mural hr{
+  border: #000 1px solid ;
+}
+
+.info-mural .box-info{
+  background-color: #232B3B;
+  width: 500px;
+  text-align: center;
+  padding: 2rem;
+  margin: 3rem auto;
+}
+
+.light .info-mural .box-info{
+  background-color: #CECECE;
+}
+
+.info-mural .box-info p{
+  margin: 10px 0;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+@media screen and (max-width: 560px) {
+  .info-mural h3{
+    font-size: 16px;
+  }
+
+  .info-mural p{
+    font-size: 14px;
+  }
+
+  .info-mural .box-info{
+    width: 300px;
+  }
+  
+}

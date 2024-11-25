@@ -4,6 +4,7 @@ import ToogleMode from "../Buttons/ToogleMode/ToggleMode";
 import Logo from "../Logo/Logo";
 import { IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const NavBar = ({ theme, setTheme }) => {
   const [active, setActive] = useState(false);
@@ -25,8 +26,9 @@ const NavBar = ({ theme, setTheme }) => {
       <Logo />
       <div className={`right-side ${active ? "active" : ""}`}>
         <ul>
-          <li>Vagas</li>
-          <li>Dúvidas</li>
+        <li><Link to={"/"}>Home</Link></li>
+          <li><Link to={"/vagas"}>Vagas</Link></li>
+          <li><Link to={"/duvidas"}>Dúvidas</Link></li>
         </ul>
         <ToogleMode setTheme={setTheme} theme={theme} />
       </div>

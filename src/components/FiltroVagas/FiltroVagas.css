@@ -1,0 +1,41 @@
+.filtro-vaga{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #232B3B;
+}
+
+.filtro-vaga h2{
+  font-size: 30px;
+  font-weight: 600;
+  color: #FFF;
+}
+
+.filtro-vaga .input-vaga{
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+  gap: 2rem;
+}
+
+.filtro-vaga .select-filtro{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.select-filtro select{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  outline: none;
+  background-color: #D9D9D9;
+  cursor: pointer;
+}
