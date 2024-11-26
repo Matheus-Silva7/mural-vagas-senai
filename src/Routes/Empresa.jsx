@@ -5,14 +5,16 @@ import MainTitle from '../components/Title/MainTitle';
 import VagasCard from '../components/Vagas/VagasCard/VagasCard';
 import ButtonMain from '../components/Buttons/ButtonMain/ButtonMain';
 import { Link } from 'react-router-dom';
-import { getTodasVagas } from '../services/ApiVaga';
+import { getVagasEmpresa } from '../services/ApiVaga';
+
 
 const Empresa = ({ theme, setTheme }) => {
   const [vagas, setVagas] = useState([]);
+  const empresaId = localStorage.getItem("id")
 
   const fetchVagas = async () => {
     try {
-      const response = await getTodasVagas();
+      const response = await getVagasEmpresa(empresaId);
       setVagas(response.content || []); // Garante que o content será um array, mesmo se for indefinido.
     } catch (error) {
       console.error('Erro ao obter as vagas:', error);

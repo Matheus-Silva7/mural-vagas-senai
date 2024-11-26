@@ -26,7 +26,7 @@ const AdminVaga = ({ theme, setTheme }) => {
     <>
       <NavBarAdmin theme={theme} setTheme={setTheme} />
       <MainTitle title={"Vagas publicadas"} />
-      <div className={`vagas-content ${vagas.length > 3 ? "tres-vagas" : ""}`}>
+      <div className={`vagas-content ${vagas.length > 3 ? "tres-vagas" : "" || vagas.length === 0? "zero-vagas":""}`}>
 
         {vagas.length > 0 ? (
           vagas.map((vaga) => (
@@ -39,7 +39,7 @@ const AdminVaga = ({ theme, setTheme }) => {
             />
           ))
         ) : (
-          <div>Não há vagas publicadas.</div> 
+          <div className='sem-vagas'><h2>Sem vagas</h2></div>
         )}
         
       </div>

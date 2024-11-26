@@ -103,6 +103,20 @@ const deleteVaga = async (vagaid) => {
   }
 };
 
+const getVagasEmpresa = async (empresaId) =>{
+  try {
+    const response = await api.get(`/empresa/${empresaId}/vagas`);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao obter a vaga:", error);
+    const errorData = error.response?.data || { message: "Erro desconhecido. Tente novamente mais tarde." };
+    console.log("Detalhes do erro:", errorData);
+    throw error;
+  }
+}
 
 
-export  {criarVaga, getTodasVagas, getOneVaga, deleteVaga}
+
+
+
+export  {criarVaga, getTodasVagas, getOneVaga, deleteVaga, getVagasEmpresa}

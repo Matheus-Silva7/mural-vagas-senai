@@ -1,0 +1,33 @@
+.message{
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  text-align: center;
+  color: #FFF;
+}
+
+.light .message{
+  color: #000;
+}
+
+.message h1{
+  font-size: 75px;
+}
+
+.message h2{
+  font-size: 35px;
+}
+
+@media screen and (max-width:430px) {
+  .message h1{
+    font-size: 60px;
+  }
+
+  .message h2{
+    font-size: 30px;
+  }
+}

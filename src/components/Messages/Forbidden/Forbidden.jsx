@@ -1,10 +1,16 @@
 import React from 'react'
-import "./Forbidden.css"
+import "../Message.css"
+import ButtonMain from '../../Buttons/ButtonMain/ButtonMain'
+import { useNavigate } from 'react-router-dom'
 
 const Forbidden = () => {
+  const navigate = useNavigate();
   return (
-    <div>
-      forbidden
+    <div className='message'>
+      <h1>403</h1>
+      <h2>Acesso Negado!</h2>
+      <p>Você não tem permissão para acessar esta pagina.</p>
+      <ButtonMain text={"Voltar para onde estava"} click={() => navigate(-1)} />
     </div>
   )
 }
