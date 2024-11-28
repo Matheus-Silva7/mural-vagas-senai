@@ -12,15 +12,20 @@ const AdminVaga = ({ theme, setTheme }) => {
   const fetchVagas = async () => {
     try {
       const response = await getTodasVagas();
-      setVagas(response.content); // Aqui estamos extraindo os dados do campo `content`
+      if (response && response.content) {
+        setVagas(response.content.map(item => item.vaga)); 
+      } else {
+        setVagas([]); 
+      }
     } catch (error) {
       console.error("Erro ao obter as vagas:", error);
+      setVagas([]); 
     }
   };
 
   useEffect(() => {
     fetchVagas();
-  }, []);
+  }, [])
 
   return (
     <>
@@ -32,6 +37,7 @@ const AdminVaga = ({ theme, setTheme }) => {
           vagas.map((vaga) => (
             <VagasCard
               key={vaga.vagaId}
+              criadorId={item.criadorId} 
               vagaid={vaga.vagaId}
               vagasExist={vagas.length}
               nomeVaga={vaga.nomeVaga}

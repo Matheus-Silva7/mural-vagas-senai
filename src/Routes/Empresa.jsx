@@ -41,6 +41,7 @@ const Empresa = ({ theme, setTheme }) => {
             <VagasCard
               key={vaga.vagaId}
               vagaid={vaga.vagaId}
+              criadorId={empresaId}
               vagasExist={vagas.length}
               nomeVaga={vaga.nomeVaga}
               dataPublicacao={new Date(vaga.dataPublicacao).toLocaleDateString('pt-BR')}

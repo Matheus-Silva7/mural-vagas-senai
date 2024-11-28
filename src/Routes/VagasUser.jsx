@@ -14,9 +14,10 @@ const VagasUser = ({theme, setTheme}) => {
   const fetchVagas = async () => {
     try {
       const response = await getTodasVagas();
-      setVagas(response.content || []); // Garante que "content" seja um array, mesmo se for indefinido.
+      console.log(response); // Verifique o que está vindo da API
+      setVagas(response.content || []); // Garante que "content" seja um array
     } catch (error) {
-      console.error('Erro ao obter as vagas:', error);
+      console.error("Erro ao obter as vagas:", error);
     }
   };
 
@@ -41,6 +42,7 @@ const VagasUser = ({theme, setTheme}) => {
           vagas.map((vaga) => (
             <VagasCard
               key={vaga.vagaId}
+              criadorId={item.criadorId} 
               vagaid={vaga.vagaId}
               vagasExist={vagas.length}
               nomeVaga={vaga.nomeVaga}

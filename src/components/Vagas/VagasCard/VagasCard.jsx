@@ -5,9 +5,8 @@ import ButtonMain from '../../Buttons/ButtonMain/ButtonMain';
 import { useNavigate } from 'react-router-dom'; // Importar useNavigate
 import { getOneVaga } from '../../../services/ApiVaga';
 
-const VagasCard = ({ vagasExist, vagaid, nomeVaga, dataPublicacao }) => {
+const VagasCard = ({ vagasExist, vagaid, nomeVaga, dataPublicacao, criadorId }) => {
   const navigate = useNavigate();
-
 
  
   const formatarData = (data) => {
@@ -17,6 +16,8 @@ const VagasCard = ({ vagasExist, vagaid, nomeVaga, dataPublicacao }) => {
     const year = date.getFullYear(); 
     return `${day}/${month}/${year}`; 
   };
+
+  console.log(criadorId)
 
   // Função para lidar com o clique no botão "Ver Detalhes"
   const handleClick = async (vagaId) => {
