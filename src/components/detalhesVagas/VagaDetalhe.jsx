@@ -170,3 +170,5 @@ const VagaDetalhe = () => {
 };
 
 export default VagaDetalhe;
+
+
