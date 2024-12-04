@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer/Footer';
-import NavBarEmpresa from '../components/NavBar/NavBarEmpresa';
 import MainTitle from '../components/Title/MainTitle';
 import VagasCard from '../components/Vagas/VagasCard/VagasCard';
 import ButtonMain from '../components/Buttons/ButtonMain/ButtonMain';
 import { Link } from 'react-router-dom';
 import { getVagasEmpresa } from '../services/ApiVaga';
+import NavBar from '../components/NavBar/NavBar';
 
 
 const Empresa = ({ theme, setTheme }) => {
@@ -27,7 +27,7 @@ const Empresa = ({ theme, setTheme }) => {
 
   return (
     <>
-      <NavBarEmpresa theme={theme} setTheme={setTheme} />
+      <NavBar theme={theme} setTheme={setTheme} />
       <MainTitle title="Minhas Vagas" />
       <div
         className={`vagas-content ${

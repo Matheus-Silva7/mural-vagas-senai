@@ -1,12 +1,12 @@
 import React from 'react'
-import NavBarAdmin from '../components/NavBar/NavBarAdmin'
 import DetalheEmpresa from '../components/EmpresaDetalhe/DetalheEmpresa'
 import Footer from '../components/Footer/Footer'
+import NavBar from '../components/NavBar/NavBar'
 
 const EmpresaDetalhes = ({ theme, setTheme }) => {
   return (
     <>
-     <NavBarAdmin theme={theme} setTheme={setTheme} />
+     <NavBar theme={theme} setTheme={setTheme} />
      <DetalheEmpresa/>
      <Footer/>
     </>

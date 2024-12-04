@@ -2,12 +2,13 @@ import React from 'react'
 import NavBarEmpresa from '../components/NavBar/NavBarEmpresa'
 import Footer from '../components/Footer/Footer'
 import FormCriarVaga from '../components/Forms/criarVaga/FormCriarVaga'
+import NavBar from '../components/NavBar/NavBar'
 
 
 const CriarVaga = ({ theme, setTheme }) => {
   return (
     <>
-      <NavBarEmpresa theme={theme} setTheme={setTheme}/>
+      <NavBar theme={theme} setTheme={setTheme}/>
       <FormCriarVaga/>
       <Footer/>
     </>

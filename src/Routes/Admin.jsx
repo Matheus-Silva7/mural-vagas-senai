@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import NavBarAdmin from "../components/NavBar/NavBarAdmin";
 import Footer from "../components/Footer/Footer";
 import TitleMural from "../components/Title/TitleMural";
 import MainTitle from "../components/Title/MainTitle";
 import CardEmpresaAceitar from "../components/CardEmpresa/CardEmpresaAceitar";
 import VagasCard from "../components/Vagas/VagasCard/VagasCard";
 import { getTodasVagas } from "../services/ApiVaga";
+import NavBar from "../components/NavBar/NavBar";
 
 const Admin = ({ theme, setTheme }) => {
   const [vagas, setVagas] = useState([]);
@@ -32,7 +32,7 @@ const Admin = ({ theme, setTheme }) => {
   return (
     <div>
       {/* Navbar do administrador */}
-      <NavBarAdmin theme={theme} setTheme={setTheme} />
+      <NavBar theme={theme} setTheme={setTheme} />
 
       {/* Títulos */}
       <TitleMural text="Mural de aprovação" />

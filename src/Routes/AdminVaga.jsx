@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import NavBarAdmin from "../components/NavBar/NavBarAdmin";
 import Footer from "../components/Footer/Footer";
 import MainTitle from "../components/Title/MainTitle";
 import VagasCard from "../components/Vagas/VagasCard/VagasCard";
 import { getTodasVagas } from "../services/ApiVaga";
+import NavBar from "../components/NavBar/NavBar";
 
 const AdminVaga = ({ theme, setTheme }) => {
   const [vagas, setVagas] = useState([]);
@@ -29,7 +29,7 @@ const AdminVaga = ({ theme, setTheme }) => {
 
   return (
     <>
-      <NavBarAdmin theme={theme} setTheme={setTheme} />
+      <NavBar theme={theme} setTheme={setTheme} />
       <MainTitle title="Vagas publicadas" />
       <div
         className={`vagas-content ${

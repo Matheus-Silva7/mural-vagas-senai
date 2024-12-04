@@ -4,31 +4,95 @@ import ToogleMode from "../Buttons/ToogleMode/ToggleMode";
 import Logo from "../Logo/Logo";
 import { IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getDadosEmpresa } from "../../services/Api"; // Importe a função
 
 const NavBar = ({ theme, setTheme }) => {
+  const navigate = useNavigate();
+  const id = localStorage.getItem("id");
+  console.log("ID da empresa:", id);
+
+  const [empresa, setEmpresa] = useState({ nomeEmpresa: "" });
   const [active, setActive] = useState(false);
 
+  // Função de buscar os dados da empresa
+  useEffect(() => {
+    const fetchDadosEmpresa = async () => {
+      try {
+        const response = await getDadosEmpresa(id);
+        if (response) {
+          setEmpresa(response);
+        }
+      } catch (error) {
+        console.error("Erro ao obter os dados da empresa:", error);
+      }
+    };
+
+    fetchDadosEmpresa();
+  }, [id]);
+
+  // Lida com o clique no menu
   const clickMenu = () => {
     setActive(!active);
   };
 
+  // Função para o logout
+  const handleLogout = () => {
+    localStorage.clear(); 
+    navigate("/login"); 
+  };
+
+  // Controle do scroll da página
   useEffect(() => {
     if (active) {
       document.body.classList.add("no-scroll");
     } else {
       document.body.classList.remove("no-scroll");
     }
+
+    return () => {
+      document.body.classList.remove("no-scroll");
+    };
   }, [active]);
+
+  // Determina a role do usuário (admin, empresa, visitante)
+  const roles = JSON.parse(localStorage.getItem("roles") || "[]");
+  const primaryRole = roles[0] || null;
 
   return (
     <nav className="navbar">
       <Logo />
       <div className={`right-side ${active ? "active" : ""}`}>
         <ul>
-        <li><Link to={"/"}>Home</Link></li>
-          <li><Link to={"/vagas"}>Vagas</Link></li>
-          <li><Link to={"/duvidas"}>Dúvidas</Link></li>
+          {primaryRole === "ROLE_ADMIN" && (
+            <>
+              <li><Link to="/admin">Home</Link></li>
+              <li><Link to="/admin/empresas">Empresas</Link></li>
+              <li><Link to="/admin/vagas">Vagas</Link></li>
+              <li><button onClick={handleLogout}>Sair</button></li>
+            </>
+          )}
+
+          {primaryRole === "ROLE_EMPRESA" && (
+            <>
+              <li><Link to="/empresa">Minhas Vagas</Link></li>
+              <li><Link to="/empresa/dados">Meus Dados</Link></li>
+              <li className="dropdown">
+                Olá, {empresa?.nomeEmpresa || "Visitante"}
+                <div className="dropdown-menu">
+                  <button onClick={handleLogout}>Sair</button>
+                </div>
+              </li>
+            </>
+          )}
+
+          {!primaryRole && (
+            <>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/vagas">Vagas</Link></li>
+              <li><Link to="/duvidas">Dúvidas</Link></li>
+            </>
+          )}
         </ul>
         <ToogleMode setTheme={setTheme} theme={theme} />
       </div>
