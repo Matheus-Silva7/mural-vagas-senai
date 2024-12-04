@@ -1,5 +1,4 @@
 import React from 'react'
-import NavBarEmpresa from '../components/NavBar/NavBarEmpresa'
 import Footer from '../components/Footer/Footer'
 import FormCriarVaga from '../components/Forms/criarVaga/FormCriarVaga'
 import NavBar from '../components/NavBar/NavBar'
