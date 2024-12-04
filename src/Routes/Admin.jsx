@@ -14,17 +14,17 @@ const Admin = ({ theme, setTheme }) => {
   const fetchVagas = async () => {
     try {
       const response = await getTodasVagas();
-      if (response && response.content) {
-        setVagas(response.content.map(item => item.vaga)); // Extraindo somente o objeto `vaga`
-      } else {
-        setVagas([]); // Caso o retorno não contenha o campo `content`, define como vazio.
-      }
+      console.log("Vagas recebidas da API:", response);
+
+      // Garante que "content" seja um array válido
+      setVagas(Array.isArray(response.content) ? response.content : []);
     } catch (error) {
       console.error("Erro ao obter as vagas:", error);
-      setVagas([]); // Define como vazio caso haja erro na requisição.
+      setVagas([]); // Define vagas como vazio em caso de erro
     }
   };
 
+  // Chamada inicial da API ao montar o componente
   useEffect(() => {
     fetchVagas();
   }, []);
@@ -49,20 +49,22 @@ const Admin = ({ theme, setTheme }) => {
             <h2>Sem vagas publicadas</h2>
           </div>
         ) : (
-          vagas.map((vaga) => (
-            <VagasCard
-              key={vaga.vagaId}
-              criadorId={item.criadorId} 
-              vagaid={vaga.vagaId}
-              vagasExist={vagas.length}
-              nomeVaga={vaga.nomeVaga || "Título não informado"}
-              dataPublicacao={
-                vaga.dataPublicacao
-                  ? new Date(vaga.dataPublicacao).toLocaleDateString("pt-BR")
-                  : "Data não disponível"
-              }
-            />
-          ))
+          vagas.map((item) =>
+            item.vaga ? (
+              <VagasCard
+                key={item.vaga.vagaId}
+                vagaid={item.vaga.vagaId}
+                criadorId={item.criadorId} // Passando o ID do criador
+                vagasExist={vagas.length}
+                nomeVaga={item.vaga.nomeVaga || "Título não informado"}
+                dataPublicacao={
+                  item.vaga.dataPublicacao
+                    ? new Date(item.vaga.dataPublicacao).toLocaleDateString("pt-BR")
+                    : "Data não disponível"
+                }
+              />
+            ) : null // Garante que apenas itens válidos sejam renderizados
+          )
         )}
       </div>
 

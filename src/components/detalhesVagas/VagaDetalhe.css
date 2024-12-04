@@ -63,6 +63,7 @@
 .top-vaga .right-top .data-vaga {
   display: flex;
   justify-content: space-between;
+  gap: 5rem
 }
 
 .top-vaga .right-top .data-vaga p {

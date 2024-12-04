@@ -7,36 +7,37 @@ import { getOneVaga } from "../../../services/ApiVaga";
 import { getDadosEmpresa } from "../../../services/Api";
 
 const VagasCard = ({ vagasExist, vagaid, nomeVaga, dataPublicacao, criadorId }) => {
-  const [empresa, setEmpresa] = useState(null); // Estado para armazenar os dados da empresa
+  const [empresa, setEmpresa] = useState(null); 
   const navigate = useNavigate();
 
-  // Função para buscar os dados da empresa
+
   const fetchEmpresa = async (criadorId) => {
     try {
-      const response = await getDadosEmpresa(criadorId); // Chama a API para buscar os dados da empresa
-      setEmpresa(response); // Salva os dados da empresa no estado
+      const response = await getDadosEmpresa(criadorId); 
+      setEmpresa(response); 
     } catch (error) {
       console.error("Erro ao buscar dados da empresa:", error);
     }
   };
 
-  // Busca os dados da empresa quando o criadorId muda e somente se a empresa não estiver carregada
+
   useEffect(() => {
-    if (criadorId && !empresa) { // Adicionando a verificação se empresa já foi carregada
+    if (criadorId && !empresa) { 
       fetchEmpresa(criadorId);
     }
-  }, [criadorId, empresa]); // Dependência de criadorId e empresa
+  }, [criadorId, empresa]); 
 
-  // Função para navegar para os detalhes da vaga
+
   const handleClick = async (vagaId) => {
     try {
-      const vagaResponse = await getOneVaga(vagaId); // Busca os dados da vaga
-
-      // Navega para a página de detalhes, passando os dados da vaga e da empresa
+      const vagaResponse = await getOneVaga(vagaId); 
+      const empresaResponse = await getDadosEmpresa(criadorId)
+      console.log("empresaaaa", vagaResponse)
+      console.log("empresa", empresa)
       navigate("/vagaDetalhe", {
         state: {
+          empresa: empresaResponse, 
           vaga: vagaResponse,
-          empresa: empresa, // Dados da empresa
         },
       });
     } catch (error) {
@@ -44,7 +45,7 @@ const VagasCard = ({ vagasExist, vagaid, nomeVaga, dataPublicacao, criadorId }) 
     }
   };
 
-  // Renderiza o componente
+
   return vagasExist === 0 ? (
     <div className="sem-vagas">
       <p>Não há vagas disponíveis no momento.</p>
@@ -52,7 +53,7 @@ const VagasCard = ({ vagasExist, vagaid, nomeVaga, dataPublicacao, criadorId }) 
   ) : (
     <div className="vagas-card">
       <div className="top-card">
-        {/* Exibe a logo da empresa ou uma imagem genérica */}
+      
         <img src={empresa?.logo?.linkLogo || ImgEmpresa} alt="Logo da empresa" />
         <div className="right-top">
           <div className="info-vaga">

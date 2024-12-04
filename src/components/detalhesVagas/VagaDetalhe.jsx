@@ -13,6 +13,7 @@ const VagaDetalhe = () => {
 
   // Pegando os dados da vaga a partir do state
   const vaga = location.state?.vaga?.vaga;
+  const empresaDetalhe = location.state?.empresa || {};
 
   // Recupera os roles do localStorage
   const roles = JSON.parse(localStorage.getItem("roles")) || []; // Garante que seja um array
@@ -71,11 +72,14 @@ const VagaDetalhe = () => {
         </button>
         <div className="vaga">
           <div className="top-vaga">
-            <img src={LogoEmpresa} alt="logo empresa" />
+            <img
+              src={empresaDetalhe?.logo?.linkLogo || LogoEmpresa}
+              alt="Logo da empresa"
+            />
             <div className="right-top">
               <div className="titles">
                 <h1 className="title-vaga">{vaga.nomeVaga || "Título não disponível"}</h1>
-                <h2 className="n-empresa">Liora</h2>
+                <h2 className="n-empresa">{empresaDetalhe.nomeEmpresa || "Empresa desconhecida"}</h2>
               </div>
               <div className="data-vaga">
                 <p>Publicado em {formatarData(vaga.dataPublicacao)}</p>
@@ -108,7 +112,25 @@ const VagaDetalhe = () => {
           <div className="desc-vaga">
             <div className="desc">
               <h3>Sobre a empresa</h3>
-              <p>Lorem Ipsum is simply dummy text...</p>
+              <p>{empresaDetalhe.descricao.descricao}</p>
+            </div>
+            <div className="desc">
+              <h3>Contatos empresa</h3>
+              <ul>
+                <li>
+                  <b>Email:</b> {empresaDetalhe.email || "Não informado"}
+                </li>
+                <li>
+                  <b>Telefone:</b> {empresaDetalhe.telefone || "Não informada"} 
+                </li>
+                <li>
+                  <b>Endereço:</b>
+                  {empresaDetalhe?.endereco
+                    ? ` ${empresaDetalhe.endereco.rua || "Rua não informada"}, nº ${empresaDetalhe.endereco.numero || "Número não informado"}, ${empresaDetalhe.endereco.cidade || "Cidade não informada"} - ${empresaDetalhe.endereco.estado || "Estado não informado"}, CEP: ${empresaDetalhe.endereco.cep || "CEP não informado"}`
+                    : "Endereço não informado"}
+                </li>
+
+              </ul>
             </div>
             <div className="desc">
               <h3>Descrição da vaga</h3>
@@ -142,6 +164,10 @@ const VagaDetalhe = () => {
                 A candidatura deve ser feita{" "}
                 {vaga.formaCandidatura?.formaCandidatura || "Não informado"}
               </p>
+            </div>
+            <div className="desc">
+              <h3>Candidatura</h3>
+              <p>{vaga.formaCandidatura?.formaCandidatura || "Não informado"}</p>
             </div>
           </div>
         </div>
