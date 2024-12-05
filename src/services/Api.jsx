@@ -3,7 +3,7 @@ import axios from "axios";
  */
 
 
-const ip = "172.29.160.1";
+const ip = "localhost";
 const API_URL = `http://${ip}:8080`;
 
 // Configuração base do Axios

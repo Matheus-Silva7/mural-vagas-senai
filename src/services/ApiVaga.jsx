@@ -115,8 +115,28 @@ const getVagasEmpresa = async (empresaId) =>{
   }
 }
 
+const filtrarVagas = async (filtros) => {
+  try {
+ 
+    const params = new URLSearchParams();
+
+    
+    if (filtros.nomeVaga) params.append("nomeVaga", filtros.nomeVaga);
+    if (filtros.salarioMin) params.append("salarioMin", filtros.salarioMin);
+    if (filtros.salarioMax) params.append("salarioMax", filtros.salarioMax);
+    if (filtros.dataPublicacao) params.append("dataPublicacao", filtros.dataPublicacao);
+    if (filtros.page) params.append("page", filtros.page);
+    if (filtros.size) params.append("size", filtros.size);
+
+    const response = await api.get(`/vagas/filter?${params.toString()}`);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao filtrar vagas:", error);
+    const errorData = error.response?.data || { message: "Erro desconhecido. Tente novamente mais tarde." };
+    console.log("Detalhes do erro:", errorData);
+    throw error;
+  }
+};
 
 
-
-
-export  {criarVaga, getTodasVagas, getOneVaga, deleteVaga, getVagasEmpresa}
+export  {criarVaga, getTodasVagas, getOneVaga, deleteVaga, getVagasEmpresa, filtrarVagas}

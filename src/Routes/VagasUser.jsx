@@ -28,26 +28,17 @@ const VagasUser = ({ theme, setTheme }) => {
 
   return (
     <>
-      {/* Barra de navegação */}
+
       <NavBar theme={theme} setTheme={setTheme} />
-
-      {/* Título do mural */}
       <TitleMural text="MURAL DE VAGAS - Comunidade" />
-
-      {/* Filtro de vagas */}
       <FiltroVagas />
-
-      {/* Título da seção */}
       <MainTitle title="Vagas publicadas" />
-
-      {/* Conteúdo das vagas */}
       <div
         className={`vagas-content user-vagas ${
           vagas.length > 3 ? 'tres-vagas' : ''
         }`}
       >
         {vagas.length === 0 ? (
-          // Exibe mensagem se não houver vagas
           <div className="sem-vagas">
             <h2>Sem vagas</h2>
           </div>
