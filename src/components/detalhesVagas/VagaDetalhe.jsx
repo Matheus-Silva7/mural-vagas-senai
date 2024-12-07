@@ -6,20 +6,22 @@ import { useNavigate, useLocation } from "react-router-dom";
 import ButtonMain from "../Buttons/ButtonMain/ButtonMain";
 import { deleteVaga } from "../../services/ApiVaga";
 import { toast, ToastContainer } from "react-toastify";
+import { Modal, Box, Button } from "@mui/material";
+import { FaEdit } from "react-icons/fa";
 
 const VagaDetalhe = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Pegando os dados da vaga a partir do state
   const vaga = location.state?.vaga?.vaga;
   const empresaDetalhe = location.state?.empresa || {};
 
-  // Recupera os roles do localStorage
-  const roles = JSON.parse(localStorage.getItem("roles")) || []; // Garante que seja um array
+  const roles = JSON.parse(localStorage.getItem("roles")) || [];
 
   const [loading, setLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [tempVaga, setTempVaga] = useState(vaga);
 
   useEffect(() => {
     if (vaga) {
@@ -53,7 +55,22 @@ const VagaDetalhe = () => {
     }
   };
 
-  console.log(vaga)
+  const handleEditVaga = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleInputChange = (e, field) => {
+    setTempVaga({
+      ...tempVaga,
+      [field]: e.target.value,
+    });
+  };
+
+  const handleSave = () => {
+    // Atualize os dados da vaga no backend aqui
+    console.log("Dados atualizados:", tempVaga);
+    setIsModalOpen(false);
+  };
 
   if (!vaga) {
     return <div className="sem-vaga">Vaga não encontrada.</div>;
@@ -62,6 +79,18 @@ const VagaDetalhe = () => {
   if (pageLoading) {
     return <div className="loading">Carregando detalhes da vaga...</div>;
   }
+
+  // Estilos do modal
+  const modalStyle = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    bgcolor: "background.transparent",
+    boxShadow: 24,
+    p: 4,
+    borderRadius: "8px",
+  };
 
   return (
     <>
@@ -117,19 +146,9 @@ const VagaDetalhe = () => {
             <div className="desc">
               <h3>Contatos empresa</h3>
               <ul>
-                <li>
-                  <b>Email:</b> {empresaDetalhe.email || "Não informado"}
-                </li>
-                <li>
-                  <b>Telefone:</b> {empresaDetalhe.telefone || "Não informada"} 
-                </li>
-                <li>
-                  <b>Endereço:</b>
-                  {empresaDetalhe?.endereco
-                    ? ` ${empresaDetalhe.endereco.rua || "Rua não informada"}, nº ${empresaDetalhe.endereco.numero || "Número não informado"}, ${empresaDetalhe.endereco.cidade || "Cidade não informada"} - ${empresaDetalhe.endereco.estado || "Estado não informado"}, CEP: ${empresaDetalhe.endereco.cep || "CEP não informado"}`
-                    : "Endereço não informado"}
-                </li>
-
+                <li><b>Email:</b> {empresaDetalhe.email || "Não informado"}</li>
+                <li><b>Telefone:</b> {empresaDetalhe.telefone || "Não informada"}</li>
+                <li><b>Endereço:</b> {empresaDetalhe?.endereco ? `${empresaDetalhe.endereco.rua}, nº ${empresaDetalhe.endereco.numero}, ${empresaDetalhe.endereco.cidade}, ${empresaDetalhe.endereco.estado}, CEP: ${empresaDetalhe.endereco.cep}` : "Endereço não informado"}</li>
               </ul>
             </div>
             <div className="desc">
@@ -147,27 +166,14 @@ const VagaDetalhe = () => {
             <div className="desc">
               <h3>Informações adicionais</h3>
               <ul>
-                <li>
-                  <b>Remuneração:</b> R$ {vaga.salario || "Não informado"}
-                </li>
-                <li>
-                  <b>Carga horária semanal:</b> {vaga.cargaSemanal || "Não informada"} horas
-                </li>
-                <li>
-                  <b>Quantidade de vagas:</b> {vaga.qtdVagasDisponiveis || "Não informado"} vagas
-                </li>
+                <li><b>Remuneração:</b> R$ {vaga.salario || "Não informado"}</li>
+                <li><b>Carga horária semanal:</b> {vaga.cargaSemanal || "Não informada"} horas</li>
+                <li><b>Quantidade de vagas:</b> {vaga.qtdVagasDisponiveis || "Não informado"} vagas</li>
               </ul>
             </div>
             <div className="desc">
               <h3>Como se candidatar</h3>
-              <p>
-                A candidatura deve ser feita{" "}
-                {vaga.formaCandidatura?.formaCandidatura || "Não informado"}
-              </p>
-            </div>
-            <div className="desc">
-              <h3>Candidatura</h3>
-              <p>{vaga.formaCandidatura?.formaCandidatura || "Não informado"}</p>
+              <p>A candidatura deve ser feita {vaga.formaCandidatura?.formaCandidatura || "Não informado"}</p>
             </div>
           </div>
         </div>
@@ -182,7 +188,7 @@ const VagaDetalhe = () => {
         )}
         {roles.includes("ROLE_EMPRESA") && !roles.includes("ROLE_ADMIN") && (
           <>
-            <ButtonMain text="Editar" />
+            <ButtonMain text="Editar" click={handleEditVaga} />
             <ButtonMain
               text={loading ? "Excluindo..." : "Excluir"}
               click={() => deletarVaga(vaga.vagaId)}
@@ -191,10 +197,37 @@ const VagaDetalhe = () => {
           </>
         )}
       </div>
+
+      {/* Modal de Edição */}
+      <Modal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <Box sx={modalStyle}>
+          <div className="modal-box">
+            <h3 id="modal-title">Editar Vaga</h3>
+            <div>
+              <label>Nome da Vaga</label>
+              <input
+                type="text"
+                value={tempVaga.nomeVaga}
+                onChange={(e) => handleInputChange(e, "nomeVaga")}
+                style={{ width: "100%", marginBottom: "20px" }}
+              />
+            </div>
+            <Button variant="contained" onClick={handleSave} sx={{ mr: 2 }}>
+              Salvar
+            </Button>
+            <Button variant="outlined" onClick={() => setIsModalOpen(false)}>
+              Cancelar
+            </Button>
+          </div>
+        </Box>
+      </Modal>
     </>
   );
 };
 
 export default VagaDetalhe;
-
-

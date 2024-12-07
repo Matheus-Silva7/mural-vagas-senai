@@ -1,68 +1,76 @@
-import React, { useEffect, useState } from 'react';
-import NavBar from '../components/NavBar/NavBar';
-import Footer from '../components/Footer/Footer';
-import { getTodasVagas } from '../services/ApiVaga';
-import VagasCard from '../components/Vagas/VagasCard/VagasCard';
-import TitleMural from '../components/Title/TitleMural';
-import MainTitle from '../components/Title/MainTitle';
-import FiltroVagas from '../components/FiltroVagas/FiltroVagas';
+import React, { useEffect, useState } from "react";
+import NavBar from "../components/NavBar/NavBar";
+import Footer from "../components/Footer/Footer";
+import { getTodasVagas, filtrarVagas } from "../services/ApiVaga";
+import VagasCard from "../components/Vagas/VagasCard/VagasCard";
+import TitleMural from "../components/Title/TitleMural";
+import MainTitle from "../components/Title/MainTitle";
+import FiltroVagas from "../components/FiltroVagas/FiltroVagas";
 
 const VagasUser = ({ theme, setTheme }) => {
   const [vagas, setVagas] = useState([]);
+  const [vagasExibidas, setVagasExibidas] = useState([]);
 
-  // Função para buscar as vagas
   const fetchVagas = async () => {
     try {
       const response = await getTodasVagas();
-      console.log('Dados recebidos da API:', response); // Verifique a estrutura recebida
-      setVagas(response.content || []); // Garante que "content" seja um array válido
+      console.log("Dados recebidos da API:", response);
+      const listaVagas = response.content || [];
+      setVagas(listaVagas);
+      setVagasExibidas(listaVagas);
     } catch (error) {
-      console.error('Erro ao obter as vagas:', error);
+      console.error("Erro ao obter as vagas:", error);
     }
   };
 
-  // Chamada da API quando o componente é montado
+  const handleFiltrarVagas = async (filtros) => {
+    try {
+      const vagasFiltradasResponse = await filtrarVagas(filtros);
+      console.log("Vagas filtradas:", vagasFiltradasResponse);
+      setVagasExibidas(vagasFiltradasResponse.content || []);
+    } catch (error) {
+      console.error("Erro ao filtrar vagas:", error);
+    }
+  };
+
   useEffect(() => {
     fetchVagas();
   }, []);
 
   return (
     <>
-
       <NavBar theme={theme} setTheme={setTheme} />
       <TitleMural text="MURAL DE VAGAS - Comunidade" />
-      <FiltroVagas />
+      <FiltroVagas onBuscar={handleFiltrarVagas} />
       <MainTitle title="Vagas publicadas" />
       <div
         className={`vagas-content user-vagas ${
-          vagas.length > 3 ? 'tres-vagas' : ''
+          vagasExibidas.length > 3 ? "tres-vagas" : ""
         }`}
       >
-        {vagas.length === 0 ? (
+        {vagasExibidas.length === 0 ? (
           <div className="sem-vagas">
             <h2>Sem vagas</h2>
           </div>
         ) : (
-          // Mapeamento das vagas para os cartões
-          vagas.map((vaga) =>
+          vagasExibidas.map((vaga) =>
             vaga.vaga ? (
               <VagasCard
                 key={vaga.vaga.vagaId}
-                criadorId={vaga.criadorId} // Passando o ID do criador
+                criadorId={vaga.criadorId}
                 vagaid={vaga.vaga.vagaId}
-                vagasExist={vagas.length}
+                vagasExist={vagasExibidas.length}
                 nomeVaga={vaga.vaga.nomeVaga}
-                dataPublicacao={new Date(vaga.vaga.dataPublicacao).toLocaleDateString('pt-BR')}
+                dataPublicacao={new Date(vaga.vaga.dataPublicacao).toLocaleDateString(
+                  "pt-BR"
+                )}
               />
             ) : (
-              // Fallback para vagas sem dados
               <div key={Math.random()}>Erro ao carregar vaga</div>
             )
           )
         )}
       </div>
-
-      {/* Rodapé */}
       <Footer />
     </>
   );
