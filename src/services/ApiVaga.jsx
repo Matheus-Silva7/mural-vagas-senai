@@ -25,6 +25,7 @@ const criarVaga = async (formData) => {
       nomeVaga: formData.nomeVaga,
       tipoContratacao: { tipo: formData.tipoContratacao },
       formaCandidatura: { formaCandidatura: formData.formaCandidatura },
+     /*  modeloTrabalho: formData.modeloTrabalho, */
       descricao: formData.descricao,
       requisitos: formData.requisitos,
       cargaSemanal: Number(formData.cargaSemanal),
@@ -119,4 +120,54 @@ const filtrarVagas = async (filtros) => {
   }
 };
 
-export { criarVaga, getTodasVagas, getOneVaga, deleteVaga, getVagasEmpresa, filtrarVagas };
+// Método para atualizar uma vaga
+const atualizarVaga = async (vagaId, formData) => {
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("Token não encontrado. Por favor, faça login.");
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    console.log(formData  )
+
+
+    const dataToSend = {
+      vagaId,
+      nomeVaga: formData.nomeVaga,
+      tipoContratacao: {
+        tipoContratacaoId: formData.tipoContratacao.tipoContratacaoId, 
+        tipo: "CLT",
+      },
+      formaCandidatura: {
+        formaCandidaturaId: vagaId, // ID correto para a forma de candidatura
+        formaCandidatura:  formData.formaCandidatura,
+      },
+      descricao: formData.descricao,
+      requisitos: formData.requisitos,
+      cargaSemanal: Number(formData.cargaSemanal),
+      beneficios: {
+        beneficioId: vagaId, // ID correto para o benefício
+        beneficio: formData.beneficios,
+      },
+      salario: Number(formData.salario),
+      qtdVagasDisponiveis: Number(formData.qtdVagasDisponiveis),
+      dataExpiracao: `${formData.dataExpiracao}T22:47:24.903Z`, 
+    };
+
+    const response = await api.patch(`/vagas/${vagaId}`, dataToSend, config);
+    console.log("Vaga atualizada com sucesso:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao atualizar vaga:", error);
+    throw error.response?.data || { message: "Erro desconhecido." };
+  }
+};
+
+
+
+export { criarVaga, getTodasVagas, getOneVaga, deleteVaga, getVagasEmpresa, filtrarVagas, atualizarVaga };

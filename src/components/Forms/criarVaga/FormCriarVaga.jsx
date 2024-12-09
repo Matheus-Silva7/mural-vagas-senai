@@ -1,41 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./FormCriarVaga.css";
 import InputText from "../../Inputs/InputText";
 import ButtonSubmit from "../../Buttons/ButtonSubmit/ButtonSubmit";
 import TextArea from "../../Inputs/TextArea";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import { criarVaga, getTodasVagas } from "../../../services/ApiVaga";
+import { criarVaga, atualizarVaga } from "../../../services/ApiVaga";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; 
+import "react-toastify/dist/ReactToastify.css";
 
 const FormCriarVaga = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const vagaRecebida = location.state?.vaga;
+  console.log("vaga recebida",vagaRecebida)
+
   const [formData, setFormData] = useState({
     nomeVaga: "",
-    tipoContratacao: "Efetivo",
+    tipoContratacao: "",
     formaCandidatura: "",
+    modeloTrabalho: "",
     descricao: "",
     requisitos: "",
     cargaSemanal: "",
-    beneficios: "", 
+    beneficios: "",
     salario: "",
     qtdVagasDisponiveis: "",
     dataExpiracao: "",
   });
 
+  useEffect(() => {
+    if (vagaRecebida) {
+      setFormData({
+        nomeVaga: vagaRecebida.nomeVaga || "",
+        tipoContratacao: vagaRecebida.tipoContratacao?.tipo || "",
+        formaCandidatura: vagaRecebida.formaCandidatura?.formaCandidatura || "",
+        modeloTrabalho: vagaRecebida.modeloTrabalho || "",
+        descricao: vagaRecebida.descricao || "",
+        requisitos: vagaRecebida.requisitos || "",
+        cargaSemanal: vagaRecebida.cargaSemanal || "",
+        beneficios: vagaRecebida.beneficios?.beneficio || "", // Corrigido
+        salario: vagaRecebida.salario || "",
+        qtdVagasDisponiveis: vagaRecebida.qtdVagasDisponiveis || "",
+        dataExpiracao: vagaRecebida.dataExpiracao?.slice(0, 10) || "",
+      });
+    }
+  }, [vagaRecebida]);
+  console.log(formData.formaCandidatura)
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const vagaCriada = await criarVaga(formData);
-      console.log("Vaga criada:", vagaCriada);
-      toast.success("Vaga criada com sucesso!");
-      const vagas = await getTodasVagas();
-      navigate(-1)
-      console.log(vagas)
+      if (vagaRecebida) {
+       await atualizarVaga(vagaRecebida.vagaId, formData);
+        toast.success("Vaga atualizada com sucesso!");
+      } else {
+        await criarVaga(formData);
+        toast.success("Vaga criada com sucesso!");
+        navigate("/empresa");
+      }
     } catch (error) {
-      console.error("Erro ao criar a vaga:", error);
-      toast.error("Erro ao criar a vaga!");
+      toast.error("Erro ao processar a vaga!");
     }
   };
 
@@ -48,7 +73,7 @@ const FormCriarVaga = () => {
       </button>
       <form onSubmit={handleSubmit}>
         <div>
-          <h2>Criar nova vaga</h2>
+          <h2>{vagaRecebida ? "Editar Vaga" : "Criar nova vaga"}</h2>
           <p>Somente empresas aprovadas podem cadastrar vagas</p>
         </div>
 
@@ -82,7 +107,7 @@ const FormCriarVaga = () => {
             <p>Modelo de trabalho</p>
             <select
               name="modeloTrabalho"
-              value={formData.modeloTrabalho}
+              value={formData.modeloTrabalho || ""}
               onChange={(e) =>
                 setFormData({ ...formData, modeloTrabalho: e.target.value })
               }
@@ -166,16 +191,15 @@ const FormCriarVaga = () => {
         <InputText
           label="Data de expiração da vaga"
           type="date"
-          placeholder="Informe a data de expiração..."
           value={formData.dataExpiracao}
           onChange={(e) =>
             setFormData({ ...formData, dataExpiracao: e.target.value })
           }
         />
 
-        <ButtonSubmit text="Enviar" />
+        <ButtonSubmit text={vagaRecebida ? "Salvar Alterações" : "Enviar"} />
       </form>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };

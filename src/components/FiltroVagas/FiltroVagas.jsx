@@ -14,7 +14,7 @@ const FiltroVagas = ({ onBuscar }) => {
     "ate-mil": { salarioMin: 0, salarioMax: 1000 },
     "entre-mil-dois-mil": { salarioMin: 1000, salarioMax: 2000 },
     "entre-dois-mil-3-mil": { salarioMin: 2000, salarioMax: 3000 },
-    "acima-tres-mil": { salarioMin: 3000 },
+    "acima-tres-mil": { salarioMin: 3000, salarioMax:100000 },
   };
 
   // Função para calcular a data de acordo com o filtro selecionado

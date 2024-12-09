@@ -6,8 +6,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import ButtonMain from "../Buttons/ButtonMain/ButtonMain";
 import { deleteVaga } from "../../services/ApiVaga";
 import { toast, ToastContainer } from "react-toastify";
-import { Modal, Box, Button } from "@mui/material";
-import { FaEdit } from "react-icons/fa";
 
 const VagaDetalhe = () => {
   const navigate = useNavigate();
@@ -15,13 +13,10 @@ const VagaDetalhe = () => {
 
   const vaga = location.state?.vaga?.vaga;
   const empresaDetalhe = location.state?.empresa || {};
-
   const roles = JSON.parse(localStorage.getItem("roles")) || [];
 
   const [loading, setLoading] = useState(false);
   const [pageLoading, setPageLoading] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [tempVaga, setTempVaga] = useState(vaga);
 
   useEffect(() => {
     if (vaga) {
@@ -42,13 +37,11 @@ const VagaDetalhe = () => {
     try {
       setLoading(true);
       const response = await deleteVaga(id);
-      console.log("Resposta da API:", response);
       if (response) {
         toast.success("Vaga excluída com sucesso!");
         navigate(-1);
       }
     } catch (error) {
-      console.error("Erro ao excluir a vaga:", error);
       toast.error("Erro ao excluir a vaga!");
     } finally {
       setLoading(false);
@@ -56,20 +49,7 @@ const VagaDetalhe = () => {
   };
 
   const handleEditVaga = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleInputChange = (e, field) => {
-    setTempVaga({
-      ...tempVaga,
-      [field]: e.target.value,
-    });
-  };
-
-  const handleSave = () => {
-    // Atualize os dados da vaga no backend aqui
-    console.log("Dados atualizados:", tempVaga);
-    setIsModalOpen(false);
+    navigate("/empresa/criarVaga", { state: { vaga } });
   };
 
   if (!vaga) {
@@ -79,18 +59,6 @@ const VagaDetalhe = () => {
   if (pageLoading) {
     return <div className="loading">Carregando detalhes da vaga...</div>;
   }
-
-  // Estilos do modal
-  const modalStyle = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    bgcolor: "background.transparent",
-    boxShadow: 24,
-    p: 4,
-    borderRadius: "8px",
-  };
 
   return (
     <>
@@ -176,7 +144,7 @@ const VagaDetalhe = () => {
               <p>A candidatura deve ser feita {vaga.formaCandidatura?.formaCandidatura || "Não informado"}</p>
             </div>
           </div>
-        </div>
+          </div>
       </div>
       <div className="botoes">
         {roles.includes("ROLE_ADMIN") && (
@@ -197,37 +165,10 @@ const VagaDetalhe = () => {
           </>
         )}
       </div>
-
-      {/* Modal de Edição */}
-      <Modal
-        open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        aria-labelledby="modal-title"
-        aria-describedby="modal-description"
-      >
-        <Box sx={modalStyle}>
-          <div className="modal-box">
-            <h3 id="modal-title">Editar Vaga</h3>
-            <div>
-              <label>Nome da Vaga</label>
-              <input
-                type="text"
-                value={tempVaga.nomeVaga}
-                onChange={(e) => handleInputChange(e, "nomeVaga")}
-                style={{ width: "100%", marginBottom: "20px" }}
-              />
-            </div>
-            <Button variant="contained" onClick={handleSave} sx={{ mr: 2 }}>
-              Salvar
-            </Button>
-            <Button variant="outlined" onClick={() => setIsModalOpen(false)}>
-              Cancelar
-            </Button>
-          </div>
-        </Box>
-      </Modal>
     </>
   );
 };
 
 export default VagaDetalhe;
+
+     
