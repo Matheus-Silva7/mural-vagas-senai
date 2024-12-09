@@ -24,12 +24,17 @@ const VagasUser = ({ theme, setTheme }) => {
   };
 
   const handleFiltrarVagas = async (filtros) => {
-    try {
-      const vagasFiltradasResponse = await filtrarVagas(filtros);
-      console.log("Vagas filtradas:", vagasFiltradasResponse);
-      setVagasExibidas(vagasFiltradasResponse.content || []);
-    } catch (error) {
-      console.error("Erro ao filtrar vagas:", error);
+    if (Object.keys(filtros).length === 0) {
+      // Se o filtro estiver vazio, chama a função fetchVagas para buscar todas as vagas
+      fetchVagas();
+    } else {
+      try {
+        const vagasFiltradasResponse = await filtrarVagas(filtros);
+        console.log("Vagas filtradas:", vagasFiltradasResponse);
+        setVagasExibidas(vagasFiltradasResponse.content || []);
+      } catch (error) {
+        console.error("Erro ao filtrar vagas:", error);
+      }
     }
   };
 
@@ -77,3 +82,4 @@ const VagasUser = ({ theme, setTheme }) => {
 };
 
 export default VagasUser;
+``

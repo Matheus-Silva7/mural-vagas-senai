@@ -72,9 +72,9 @@ const FormCriarVaga = () => {
                 setFormData({ ...formData, tipoContratacao: e.target.value })
               }
             >
-              <option value="efetivo">Efetivo</option>
-              <option value="estagio">Estágio</option>
-              <option value="pj">PJ</option>
+              <option value="CLT">Efetivo</option>
+              <option value="ESTAGIO">Estágio</option>
+              <option value="PJ">PJ</option>
             </select>
           </div>
 
