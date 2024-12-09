@@ -13,7 +13,7 @@ const FormCriarVaga = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const vagaRecebida = location.state?.vaga;
-  console.log("vaga recebida",vagaRecebida)
+  console.log("vaga recebida", vagaRecebida);
 
   const [formData, setFormData] = useState({
     nomeVaga: "",
@@ -46,13 +46,13 @@ const FormCriarVaga = () => {
       });
     }
   }, [vagaRecebida]);
-  console.log(formData.formaCandidatura)
-  
+  console.log(formData.formaCandidatura);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (vagaRecebida) {
-       await atualizarVaga(vagaRecebida.vagaId, formData);
+        await atualizarVaga(vagaRecebida.vagaId, formData);
         toast.success("Vaga atualizada com sucesso!");
       } else {
         await criarVaga(formData);
@@ -66,10 +66,8 @@ const FormCriarVaga = () => {
 
   return (
     <div className="form-criar">
-      <button className="button-back">
-        <Link to={"/empresa"}>
-          <MdKeyboardArrowLeft />
-        </Link>
+      <button className="button-back" onClick={() => navigate(-1)}>
+        <MdKeyboardArrowLeft />
       </button>
       <form onSubmit={handleSubmit}>
         <div>
