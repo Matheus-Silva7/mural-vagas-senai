@@ -15,6 +15,7 @@ import UserPage from "./Routes/UserPage";
 import VagasUser from "./Routes/VagasUser";
 import ForbiddenPage from "./Routes/ForbiddenPage";
 import UnauthorizedPage from "./Routes/UnauthorizedPage";
+import NotFoundPage from "./Routes/NotFoundPage"; 
 
 function ProtectedRoute({ children, roleRequired }) {
   const roles = JSON.parse(localStorage.getItem("roles") || "[]");
@@ -108,6 +109,9 @@ function App() {
         <Route path="/cadastro" element={<Singup theme={theme} setTheme={setTheme} />} />
         <Route path="/formularioenviado" element={<SentMessage theme={theme} setTheme={setTheme} />} />
         <Route path="/vagaDetalhe" element={<DetalhesVaga theme={theme} setTheme={setTheme} />} />
+
+        {/* Rota para página não encontrada */}
+        <Route path="*" element={<NotFoundPage theme={theme} setTheme={setTheme} />} />
       </Routes>
     </div>
   );
