@@ -80,3 +80,54 @@
     margin: 2rem;
     gap: 2rem;
 }
+
+@media screen and (max-width: 820px) {
+    .topEmpresa .top-right-empresa .texts h1{
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 625px) {
+.topEmpresa{
+    flex-direction: column;
+}
+
+.empresa-content .empresa{
+    padding: 1.2rem;
+    margin: 0;
+}
+
+    .topEmpresa img{
+        width: 80px;
+    }
+
+    .topEmpresa .top-right-empresa .texts h1{
+        font-size: 18px;
+    }
+
+    .topEmpresa{
+        gap: 1rem;
+    }
+
+    .empresa-content{
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 516px) {
+    .bottomEmpresa .desc-empresa h3{
+        font-size: 18px;
+    }
+
+    .bottomEmpresa .desc-empresa ul li{
+        font-size: 14px;
+    }
+
+    .topEmpresa .top-right-empresa .texts h2{
+        font-size: 14px;
+    }
+
+    .aceitar-empresa{
+        margin: 3rem;
+    }
+}

@@ -86,7 +86,7 @@ const VagaDetalhe = () => {
           </div>
           <div className="infos-vaga">
             <div className="info">
-              <span>Posição</span>
+              <span>Contratação</span>
               <p>{vaga.tipoContratacao?.tipo || "Não informado"}</p>
             </div>
             <div className="info">
@@ -99,7 +99,7 @@ const VagaDetalhe = () => {
             </div>
             <div className="info">
               <span>Carga Horária</span>
-              <p>{vaga.cargaSemanal || "Não informada"}</p>
+              <p>{vaga.cargaSemanal || "Não informada"} horas semanais</p>
             </div>
             <div className="info">
               <span>Localização</span>

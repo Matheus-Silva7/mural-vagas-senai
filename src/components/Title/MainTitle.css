@@ -22,7 +22,7 @@
 }
 
 .light .main-title{
-  color: #63E4F2;
+  color: #70dde9;
 }
 
 .light .title-mural{
@@ -30,8 +30,8 @@
 }
 
 .light .content-title hr{
-  border-top: 2px solid #63E4F2; 
-  background-color: #63E4F2;     
+  border-top: 2px solid #70dde9; 
+  background-color: #70dde9;     
 }
 
 @media screen and (max-width:500px) {

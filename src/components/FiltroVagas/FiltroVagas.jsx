@@ -14,47 +14,46 @@ const FiltroVagas = ({ onBuscar }) => {
     "ate-mil": { salarioMin: 0, salarioMax: 1000 },
     "entre-mil-dois-mil": { salarioMin: 1000, salarioMax: 2000 },
     "entre-dois-mil-3-mil": { salarioMin: 2000, salarioMax: 3000 },
-    "acima-tres-mil": { salarioMin: 3000, salarioMax:100000 },
+    "acima-tres-mil": { salarioMin: 3000, salarioMax: 100000 },
   };
 
-  // Função para calcular a data de acordo com o filtro selecionado
   const calcularDataFiltro = () => {
     const hoje = new Date();
-    const hojeFormatted = hoje.toISOString().split("T")[0]; // yyyy-MM-dd
 
     switch (dataPublicacao) {
       case "hoje":
-        return hojeFormatted; // Retorna a data de hoje
+        return hoje.toISOString().split("T")[0];
       case "ontem":
         hoje.setDate(hoje.getDate() - 1);
-        return hoje.toISOString().split("T")[0]; // Retorna a data de ontem
+        return hoje.toISOString().split("T")[0];
       case "ultimos-3-dias":
         hoje.setDate(hoje.getDate() - 3);
-        return hoje.toISOString().split("T")[0]; // Retorna a data de 3 dias atrás
+        return hoje.toISOString().split("T")[0];
       case "ultima-semana":
         hoje.setDate(hoje.getDate() - 7);
-        return hoje.toISOString().split("T")[0]; // Retorna a data de 7 dias atrás
+        return hoje.toISOString().split("T")[0];
       default:
-        return hojeFormatted; // Quando não houver filtro de data, retorna a data de hoje
+        return null; // Sem filtro de data
     }
   };
 
-  // Função de busca que chama onBuscar passando os filtros
   const handleBuscar = () => {
-    const filtros = {
-      nomeVaga: nomeVaga.trim() || "",  // Garantir que o nomeVaga não seja vazio
-      modeloTrabalho,
-      tipoContrato,
-      salarioMin: salarioMap[salario]?.salarioMin || null,
-      salarioMax: salarioMap[salario]?.salarioMax || null,
-      dataPublicacao: calcularDataFiltro(), // Usa a função para calcular a data
-    };
+    const filtros = {};
 
-    console.log("Filtros enviados:", filtros); // Para depuração
-    onBuscar(filtros);
+    if (nomeVaga.trim()) filtros.nomeVaga = nomeVaga.trim();
+    if (modeloTrabalho) filtros.modeloTrabalho = modeloTrabalho;
+    if (tipoContrato) filtros.tipoContrato = tipoContrato;
+    if (salario) {
+      filtros.salarioMin = salarioMap[salario]?.salarioMin || null;
+      filtros.salarioMax = salarioMap[salario]?.salarioMax || null;
+    }
+    const dataFiltro = calcularDataFiltro();
+    if (dataFiltro) filtros.dataPublicacao = dataFiltro;
+
+    console.log("Filtros aplicados no front:", filtros); // Para depuração
+    onBuscar(filtros); // Envia os filtros ao componente pai
   };
 
-  // Função para limpar os filtros
   const handleLimpar = () => {
     setNomeVaga("");
     setModeloTrabalho("");
@@ -62,8 +61,7 @@ const FiltroVagas = ({ onBuscar }) => {
     setTipoContrato("");
     setSalario("");
 
-    // Chama onBuscar com um objeto vazio para buscar todas as vagas
-    onBuscar({});
+    onBuscar({}); // Busca todas as vagas sem filtro
   };
 
   return (
@@ -75,7 +73,7 @@ const FiltroVagas = ({ onBuscar }) => {
           type="text"
           placeholder="Informe o nome da vaga"
           value={nomeVaga}
-          onChange={(e) => setNomeVaga(e.target.value)} // Atualiza o nome da vaga
+          onChange={(e) => setNomeVaga(e.target.value)}
         />
         <ButtonMain text="Buscar" click={handleBuscar} />
       </div>
@@ -84,7 +82,7 @@ const FiltroVagas = ({ onBuscar }) => {
         <select
           name="modeloTrabalho"
           value={modeloTrabalho}
-          onChange={(e) => setModeloTrabalho(e.target.value)} // Atualiza o modelo de trabalho
+          onChange={(e) => setModeloTrabalho(e.target.value)}
         >
           <option value="">Todos os modelos</option>
           <option value="presencial">Presencial</option>
@@ -95,7 +93,7 @@ const FiltroVagas = ({ onBuscar }) => {
         <select
           name="dataPublicacao"
           value={dataPublicacao}
-          onChange={(e) => setDataPublicacao(e.target.value)} // Atualiza a data de publicação
+          onChange={(e) => setDataPublicacao(e.target.value)}
         >
           <option value="">Qualquer data</option>
           <option value="hoje">Hoje</option>
@@ -107,7 +105,7 @@ const FiltroVagas = ({ onBuscar }) => {
         <select
           name="tipoContrato"
           value={tipoContrato}
-          onChange={(e) => setTipoContrato(e.target.value)} // Atualiza o tipo de contrato
+          onChange={(e) => setTipoContrato(e.target.value)}
         >
           <option value="">Todos os contratos</option>
           <option value="clt">CLT</option>
@@ -119,7 +117,7 @@ const FiltroVagas = ({ onBuscar }) => {
         <select
           name="salario"
           value={salario}
-          onChange={(e) => setSalario(e.target.value)} // Atualiza o salário
+          onChange={(e) => setSalario(e.target.value)}
         >
           <option value="">Qualquer salário</option>
           <option value="ate-mil">Até R$ 1.000,00</option>
