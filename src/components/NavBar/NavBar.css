@@ -48,6 +48,10 @@
     z-index: 100;
 }
 
+.light .dropdown-menu{
+    background-color: #000;
+}
+
 .dropdown-menu button {
     background: none;
     border: none;

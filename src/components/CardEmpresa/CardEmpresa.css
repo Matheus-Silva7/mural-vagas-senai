@@ -86,9 +86,9 @@
     color: #000;
 }
 
-.card-empresa{
-    background-color: #CECECE !important;
-    color: #000 !important;
+.light .card-empresa{
+    background-color: #CECECE;
+    color: #000;
 }
 
 @media screen and (max-width: 750px) {

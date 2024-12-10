@@ -103,7 +103,7 @@ const VagaDetalhe = () => {
             </div>
             <div className="info">
               <span>Localização</span>
-              <p>São Paulo</p>
+              <p>{empresaDetalhe?.endereco?.cidade || "Localização não informada"}, {empresaDetalhe?.endereco?.estado || "Localização não informada"}</p>
             </div>
           </div>
           <div className="desc-vaga">
@@ -116,7 +116,7 @@ const VagaDetalhe = () => {
               <ul>
                 <li><b>Email:</b> {empresaDetalhe.email || "Não informado"}</li>
                 <li><b>Telefone:</b> {empresaDetalhe.telefone || "Não informada"}</li>
-                <li><b>Endereço:</b> {empresaDetalhe?.endereco ? `${empresaDetalhe.endereco.rua}, nº ${empresaDetalhe.endereco.numero}, ${empresaDetalhe.endereco.cidade}, ${empresaDetalhe.endereco.estado}, CEP: ${empresaDetalhe.endereco.cep}` : "Endereço não informado"}</li>
+                <li><b>Endereço:</b> {empresaDetalhe?.endereco ? `${empresaDetalhe.endereco.rua}, nº ${empresaDetalhe.endereco.numero}, ${empresaDetalhe.endereco.cidade} - ${empresaDetalhe.endereco.estado}, CEP: ${empresaDetalhe.endereco.cep}` : "Endereço não informado"}</li>
               </ul>
             </div>
             <div className="desc">

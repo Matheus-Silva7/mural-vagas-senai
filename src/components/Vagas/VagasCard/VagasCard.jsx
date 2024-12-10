@@ -62,7 +62,7 @@ const VagasCard = ({ vagasExist, vagaid, nomeVaga, dataPublicacao, criadorId }) 
           </div>
           <div className="info-local">
             <p>{empresa?.descricao?.ramo || "Ramo não informado"}</p>
-            <p>{empresa?.endereco?.cidade || "Localização não informada"}</p> {/* Localização */}
+            <p>{empresa?.endereco?.cidade || "Localização não informada"}, {empresa?.endereco?.estado || "Localização não informada"}</p> {/* Localização */}
           </div>
         </div>
       </div>

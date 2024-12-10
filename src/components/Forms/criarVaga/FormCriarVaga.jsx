@@ -66,7 +66,7 @@ const FormCriarVaga = () => {
 
   return (
     <div className="form-criar">
-      <button className="button-back" onClick={() => navigate(-1)}>
+      <button className="button-back" onClick={() => navigate("/empresa")}>
         <MdKeyboardArrowLeft />
       </button>
       <form onSubmit={handleSubmit}>
@@ -98,6 +98,7 @@ const FormCriarVaga = () => {
               <option value="CLT">Efetivo</option>
               <option value="ESTAGIO">Estágio</option>
               <option value="PJ">PJ</option>
+              <option value="APRENDIZ">APRENDIZ</option>
             </select>
           </div>
 

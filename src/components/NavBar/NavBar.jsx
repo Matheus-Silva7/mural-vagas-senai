@@ -90,7 +90,6 @@ const NavBar = ({ theme, setTheme }) => {
             <>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/vagas">Vagas</Link></li>
-              <li><Link to="/duvidas">Dúvidas</Link></li>
             </>
           )}
         </ul>
