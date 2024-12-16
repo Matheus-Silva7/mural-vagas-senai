@@ -10,11 +10,11 @@ import "react-toastify/dist/ReactToastify.css";
 const EmpresaDetalhes = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const empresa = location.state?.empresa; // Pegando os dados da empresa do state passado na navegação
+  const empresa = location.state?.empresa; 
 
   const [loading, setLoading] = useState(false);
 
-  // Função para aprovar a empresa (semelhante ao botão de "Aceitar" no CardEmpresa)
+ 
   const aprovarEmpresa = async (idEmpresa) => {
     try {
       setLoading(true);
@@ -31,14 +31,13 @@ const EmpresaDetalhes = () => {
     }
   };
 
-  // Função para recusar a empresa (semelhante ao botão de "Excluir" no CardEmpresa)
   const recusarEmpresa = async (idEmpresa) => {
     try {
       setLoading(true);
       const response = await excluirEmpresa(idEmpresa);
       if (response) {
         toast.success('Empresa excluída com sucesso!');
-        // Recarregar as empresas após exclusão (exemplo: atualização na lista)
+ 
         navigate('/admin');
       }
     } catch (error) {
@@ -50,7 +49,7 @@ const EmpresaDetalhes = () => {
   };
 
 
-  // Caso a empresa não seja encontrada nos dados
+
   if (!empresa) {
     return <div>Empresa não encontrada!</div>;
   }

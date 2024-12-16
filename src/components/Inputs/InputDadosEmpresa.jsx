@@ -4,29 +4,28 @@ import { FaEdit } from "react-icons/fa";
 
 const InputDadosEmpresa = ({ label, type, value, onValueChange, fieldName }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [tempValue, setTempValue] = useState(value || ""); // Valor inicial
+  const [tempValue, setTempValue] = useState(value || ""); 
 
-  // Sincroniza tempValue com value quando value é alterado
+  
   useEffect(() => {
     setTempValue(value || "");
   }, [value]);
 
-  // Atualiza o estado local ao editar no modal
+ 
   const handleInputChange = (e) => {
     setTempValue(e.target.value);
   };
 
-  // Função chamada ao salvar os dados
   const handleSave = () => {
-    onValueChange(tempValue); // Atualiza no componente pai
-    setIsModalOpen(false); // Fecha o modal
+    onValueChange(tempValue);
+    setIsModalOpen(false); 
   };
 
   const handleInputClick = () => {
     setIsModalOpen(true);
   };
 
-  // Estilos para o modal
+
   const style = {
     position: "absolute",
     top: "50%",

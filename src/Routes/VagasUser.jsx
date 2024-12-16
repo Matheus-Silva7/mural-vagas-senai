@@ -25,7 +25,7 @@ const VagasUser = ({ theme, setTheme }) => {
 
   const handleFiltrarVagas = async (filtros) => {
     if (Object.keys(filtros).length === 0) {
-      // Se o filtro estiver vazio, chama a função fetchVagas para buscar todas as vagas
+ 
       fetchVagas();
     } else {
       try {

@@ -28,7 +28,7 @@ const DadosEmpresa = () => {
     email: "",
     descricao: "",
     senhaAtual: "",
-    logo: { linkLogo: "" }, // Adicionando logo
+    logo: { linkLogo: "" }, 
   });
 
   const fetchDadosEmpresas = async () => {
@@ -52,8 +52,7 @@ const DadosEmpresa = () => {
         qntdFuncionarios: dadosEmpresa.descricao?.qntdFuncionarios,
         telefone: dadosEmpresa.telefone || "",
         email: dadosEmpresa.email || "",
-        senhaAtual: "", // Senha atual, que pode ser alterada no futuro
-        logo: { linkLogo: dadosEmpresa.logo?.linkLogo || "" }, // Adicionando logo
+        logo: { linkLogo: dadosEmpresa.logo?.linkLogo || "" },
       });
     } catch (error) {
       console.error("Erro ao obter os dados da empresa:", error);
@@ -106,7 +105,7 @@ const DadosEmpresa = () => {
         telefone: empresa.telefone,
       };
   
-      // Verifique os dados antes de enviar
+  
       console.log("Dados enviados para a API:", updatedData);
   
       await updateEmpresa(updatedData, idEmpresa);
@@ -123,7 +122,7 @@ const DadosEmpresa = () => {
 
   return (
     <div className="content-dados">
-      {/* Campos de input para editar os dados da empresa */}
+   
       <InputDadosEmpresa
         label={"Nome"}
         type={"text"}

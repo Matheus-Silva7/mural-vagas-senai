@@ -33,7 +33,7 @@ const FiltroVagas = ({ onBuscar }) => {
         hoje.setDate(hoje.getDate() - 7);
         return hoje.toISOString().split("T")[0];
       default:
-        return null; // Sem filtro de data
+        return null; 
     }
   };
 
@@ -50,8 +50,8 @@ const FiltroVagas = ({ onBuscar }) => {
     const dataFiltro = calcularDataFiltro();
     if (dataFiltro) filtros.dataPublicacao = dataFiltro;
 
-    console.log("Filtros aplicados no front:", filtros); // Para depuração
-    onBuscar(filtros); // Envia os filtros ao componente pai
+    console.log("Filtros aplicados no front:", filtros); 
+    onBuscar(filtros); 
   };
 
   const handleLimpar = () => {
@@ -61,7 +61,7 @@ const FiltroVagas = ({ onBuscar }) => {
     setTipoContrato("");
     setSalario("");
 
-    onBuscar({}); // Busca todas as vagas sem filtro
+    onBuscar({}); 
   };
 
   return (

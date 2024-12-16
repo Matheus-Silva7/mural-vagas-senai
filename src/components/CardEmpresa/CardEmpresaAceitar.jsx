@@ -17,7 +17,7 @@ const CardEmpresa = () => {
   const fetchEmpresas = async () => {
     try {
       const response = await getEmpresasAceitar();
-      setDadosEmpresa(response.content || []); // Garante que content seja sempre um array.
+      setDadosEmpresa(response.content || []); 
     } catch (error) {
       console.error('Erro ao obter as empresas:', error);
       toast.error('Erro ao carregar as empresas.');
@@ -33,7 +33,7 @@ const CardEmpresa = () => {
       const response = await autorizarEmpresa(idEmpresa);
       if (response) {
         toast.success('Empresa autorizada com sucesso!');
-        fetchEmpresas(); // Atualiza a lista após aprovação.
+        fetchEmpresas();
       }
     } catch (error) {
       console.error('Erro ao autorizar empresa:', error);
@@ -47,7 +47,7 @@ const CardEmpresa = () => {
       const response = await excluirEmpresa(idEmpresa);
       if (response) {
         toast.success('Empresa excluída com sucesso!');
-        fetchEmpresas(); // Atualiza a lista após exclusão.
+        fetchEmpresas(); 
       }
     } catch (error) {
       console.error('Erro ao excluir empresa:', error);

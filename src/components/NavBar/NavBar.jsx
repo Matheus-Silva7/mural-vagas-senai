@@ -15,7 +15,7 @@ const NavBar = ({ theme, setTheme }) => {
   const [empresa, setEmpresa] = useState({ nomeEmpresa: "" });
   const [active, setActive] = useState(false);
 
-  // Função de buscar os dados da empresa
+  
   useEffect(() => {
     const fetchDadosEmpresa = async () => {
       try {
@@ -31,18 +31,17 @@ const NavBar = ({ theme, setTheme }) => {
     fetchDadosEmpresa();
   }, [id]);
 
-  // Lida com o clique no menu
+
   const clickMenu = () => {
     setActive(!active);
   };
 
-  // Função para o logout
   const handleLogout = () => {
     localStorage.clear(); 
     navigate("/login"); 
   };
 
-  // Controle do scroll da página
+
   useEffect(() => {
     if (active) {
       document.body.classList.add("no-scroll");
@@ -55,7 +54,7 @@ const NavBar = ({ theme, setTheme }) => {
     };
   }, [active]);
 
-  // Determina a role do usuário (admin, empresa, visitante)
+
   const roles = JSON.parse(localStorage.getItem("roles") || "[]");
   const primaryRole = roles[0] || null;
 

@@ -15,8 +15,8 @@ const CardEmpresa = () => {
 
   const fetchEmpresas = async () => {
     try {
-      const response = await getEmpresasAceitas(); // Supondo que esta função já retorna o JSON completo
-      setDadosEmpresa(response.content); // Apenas o array `content` será armazenado
+      const response = await getEmpresasAceitas(); 
+      setDadosEmpresa(response.content); 
     } catch (error) {
       console.error("Erro ao obter as empresas:", error);
     }
@@ -33,7 +33,7 @@ const CardEmpresa = () => {
 
       if (response) {
         toast.success("Empresa excluída com sucesso!");
-        fetchEmpresas(); // Recarrega os dados após a exclusão
+        fetchEmpresas(); 
       }
     } catch (error) {
       console.error("Erro ao excluir empresa:", error);
@@ -47,7 +47,7 @@ const CardEmpresa = () => {
     try {
       const response = await getDadosEmpresa(empresaId);
 
-      // Passando os dados da empresa para a página de detalhes
+     
       navigate('/admin/empresaDetalhe', { state: { empresa: response } });
     } catch (error) {
       console.error(error);

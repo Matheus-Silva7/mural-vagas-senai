@@ -74,7 +74,6 @@ const FormsSingin = () => {
             setLoginData({ ...loginData, senha: event.target.value })
           }
         />
-        {/* <a className="forgot-password">Esqueci minha senha</a> */}
 
         <p className="not-acess">
           Não tenho acesso? <Link to="/cadastro">Cadastre-se</Link>

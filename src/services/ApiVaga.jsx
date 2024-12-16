@@ -8,7 +8,7 @@ const api = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
-// Método para criar uma vaga
+
 const criarVaga = async (formData) => {
   try {
     const token = localStorage.getItem("token");
@@ -44,7 +44,7 @@ const criarVaga = async (formData) => {
   }
 };
 
-// Método para buscar todas as vagas
+
 const getTodasVagas = async () => {
   try {
     const response = await api.get(`/vagas`);
@@ -55,7 +55,7 @@ const getTodasVagas = async () => {
   }
 };
 
-// Método para buscar uma vaga específica
+
 const getOneVaga = async (vagaId) => {
   try {
     const response = await api.get(`/vagas/${vagaId}`);
@@ -66,7 +66,7 @@ const getOneVaga = async (vagaId) => {
   }
 };
 
-// Método para deletar uma vaga
+
 const deleteVaga = async (vagaId) => {
   try {
     const token = localStorage.getItem("token");
@@ -88,7 +88,7 @@ const deleteVaga = async (vagaId) => {
   }
 };
 
-// Método para buscar vagas de uma empresa
+
 const getVagasEmpresa = async (empresaId) => {
   try {
     const response = await api.get(`/empresa/${empresaId}/vagas`);
@@ -99,7 +99,7 @@ const getVagasEmpresa = async (empresaId) => {
   }
 };
 
-// Método para filtrar vagas
+
 const filtrarVagas = async (filtros) => {
   try {
     const params = new URLSearchParams();
@@ -120,7 +120,6 @@ const filtrarVagas = async (filtros) => {
   }
 };
 
-// Método para atualizar uma vaga
 const atualizarVaga = async (vagaId, formData) => {
   try {
     const token = localStorage.getItem("token");
@@ -144,14 +143,14 @@ const atualizarVaga = async (vagaId, formData) => {
         tipo: "CLT",
       },
       formaCandidatura: {
-        formaCandidaturaId: vagaId, // ID correto para a forma de candidatura
+        formaCandidaturaId: vagaId, 
         formaCandidatura:  formData.formaCandidatura,
       },
       descricao: formData.descricao,
       requisitos: formData.requisitos,
       cargaSemanal: Number(formData.cargaSemanal),
       beneficios: {
-        beneficioId: vagaId, // ID correto para o benefício
+        beneficioId: vagaId,
         beneficio: formData.beneficios,
       },
       salario: Number(formData.salario),

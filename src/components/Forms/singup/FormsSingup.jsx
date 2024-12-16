@@ -74,7 +74,7 @@ const FormsSignup = () => {
 
   const handleFormSubmit = async () => {
     try {
-      // Primeiro faz o upload do logo, caso ele tenha sido selecionado
+    
       let logoLink = "";
       if (formData.logo) {
         logoLink = await uploadLogoToCloudinary(formData.logo);
@@ -92,7 +92,7 @@ const FormsSignup = () => {
 
       const dataToSend = { ...formData, logo: { linkLogo: logoLink } };
 
-      // Envia os dados de cadastro para o backend
+   
       const response = await cadastroSubmit(dataToSend);
       if (response) {
         navigate("/formularioenviado");

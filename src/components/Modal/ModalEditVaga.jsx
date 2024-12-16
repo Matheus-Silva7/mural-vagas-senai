@@ -5,7 +5,7 @@ const ModalEditVaga = ({ vaga, open, onClose, onSave }) => {
   const [tempVaga, setTempVaga] = useState(vaga);
 
   useEffect(() => {
-    setTempVaga(vaga); // Reseta os dados da vaga quando o modal for reaberto
+    setTempVaga(vaga); 
   }, [vaga]);
 
   const handleInputChange = (e) => {
@@ -14,8 +14,8 @@ const ModalEditVaga = ({ vaga, open, onClose, onSave }) => {
   };
 
   const handleSave = () => {
-    onSave(tempVaga); // Passa os dados atualizados para o componente pai
-    onClose(); // Fecha o modal
+    onSave(tempVaga); 
+    onClose(); 
   };
 
   const style = {

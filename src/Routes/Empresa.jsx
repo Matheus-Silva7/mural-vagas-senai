@@ -15,7 +15,7 @@ const Empresa = ({ theme, setTheme }) => {
   const fetchVagas = async () => {
     try {
       const response = await getVagasEmpresa(empresaId);
-      setVagas(response.content || []); // Garante que o content será um array, mesmo se for indefinido.
+      setVagas(response.content || []); 
     } catch (error) {
       console.error('Erro ao obter as vagas:', error);
     }

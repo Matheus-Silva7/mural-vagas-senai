@@ -39,7 +39,7 @@ const FormCriarVaga = () => {
         descricao: vagaRecebida.descricao || "",
         requisitos: vagaRecebida.requisitos || "",
         cargaSemanal: vagaRecebida.cargaSemanal || "",
-        beneficios: vagaRecebida.beneficios?.beneficio || "", // Corrigido
+        beneficios: vagaRecebida.beneficios?.beneficio || "", 
         salario: vagaRecebida.salario || "",
         qtdVagasDisponiveis: vagaRecebida.qtdVagasDisponiveis || "",
         dataExpiracao: vagaRecebida.dataExpiracao?.slice(0, 10) || "",

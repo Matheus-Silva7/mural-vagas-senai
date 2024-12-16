@@ -19,15 +19,15 @@ import NotFoundPage from "./Routes/NotFoundPage";
 
 function ProtectedRoute({ children, roleRequired }) {
   const roles = JSON.parse(localStorage.getItem("roles") || "[]");
-  const primaryRole = roles[0] || null; // Garante um valor padrão
+  const primaryRole = roles[0] || null; 
 
   if (!roles.length) {
-    // Se o usuário não está logado, redireciona para UnauthorizedPage
+ 
     return <Navigate to="/unauthorized" replace />;
   }
 
   if (roleRequired && primaryRole !== roleRequired) {
-    // Logado, mas sem a role necessária, redireciona para ForbiddenPage
+    
     return <Navigate to="/forbidden" replace />;
   }
 
@@ -40,7 +40,7 @@ function App() {
   return (
     <div className={`container ${theme}`}>
       <Routes>
-        {/* Rotas para usuários com a role "ROLE_ADMIN" */}
+ 
         <Route
           path="/admin"
           element={
@@ -74,7 +74,7 @@ function App() {
           }
         />
 
-        {/* Rotas para usuários com a role "ROLE_EMPRESA" */}
+ 
         <Route
           path="/empresa"
           element={
@@ -100,7 +100,7 @@ function App() {
           }
         />
 
-        {/* Rotas acessíveis a todos os usuários */}
+
         <Route path="/" element={<UserPage theme={theme} setTheme={setTheme} />} />
         <Route path="/forbidden" element={<ForbiddenPage theme={theme} setTheme={setTheme} />} />
         <Route path="/unauthorized" element={<UnauthorizedPage theme={theme} setTheme={setTheme} />} />
@@ -110,7 +110,6 @@ function App() {
         <Route path="/formularioenviado" element={<SentMessage theme={theme} setTheme={setTheme} />} />
         <Route path="/vagaDetalhe" element={<DetalhesVaga theme={theme} setTheme={setTheme} />} />
 
-        {/* Rota para página não encontrada */}
         <Route path="*" element={<NotFoundPage theme={theme} setTheme={setTheme} />} />
       </Routes>
     </div>

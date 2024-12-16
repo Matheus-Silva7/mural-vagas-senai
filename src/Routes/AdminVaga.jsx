@@ -8,21 +8,21 @@ import NavBar from "../components/NavBar/NavBar";
 const AdminVaga = ({ theme, setTheme }) => {
   const [vagas, setVagas] = useState([]);
 
-  // Função para buscar as vagas
+
   const fetchVagas = async () => {
     try {
       const response = await getTodasVagas();
       console.log("Vagas recebidas da API:", response);
 
-      // Garante que "content" seja um array válido
+   
       setVagas(Array.isArray(response.content) ? response.content : []);
     } catch (error) {
       console.error("Erro ao obter as vagas:", error);
-      setVagas([]); // Define vagas como vazio em caso de erro
+      setVagas([]);
     }
   };
 
-  // Chamada inicial da API ao montar o componente
+ 
   useEffect(() => {
     fetchVagas();
   }, []);
